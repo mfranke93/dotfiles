@@ -1,0 +1,42 @@
+#!/bin/zsh
+#
+# Script to send commands to a running mpv instance.
+#
+# The instance has to be launched with the --input-ipc-server flag pointing to
+# a path where a socket is then created. Writing mpv commands to that socket
+# then executes those commands in the mpv instance. This script collects some
+# basic functionalities, like play/pause, for the purpose of making mpv
+# controllable via hotkeys in i3.
+#
+
+# ipc socket
+SOCKET=/tmp/mpvsocket
+
+# method wrapper to send string to socket
+write_to_config()
+{
+    if [ -e $SOCKET ]; then
+        echo "$*" | socat - $SOCKET
+    fi
+}
+
+case "$1" in
+    toggle)
+        # toggle play/pause
+        write_to_config "cycle pause"
+        ;;
+    next)
+        # next song in playlist
+        write_to_config "playlist-next"
+        ;;
+    prev)
+        # previous song in playlist
+        write_to_config "playlist-prev"
+        ;;
+    *)
+        echo "Usage: $0 toggle|next|prev|spawn|destroy"
+        exit 1
+        ;;
+esac
+exit 0
+    

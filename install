@@ -12,6 +12,7 @@ install-file()
     ln -s $(pwd)/$1 $2
 }
 
+install-file bin/mpvctl ~/bin/mpvctl
 install-file i3config ~/.config/i3/config
 install-file liquidpromptrc ~/.config/liquidpromptrc
 install-file mpv_config ~/.mpv/config
