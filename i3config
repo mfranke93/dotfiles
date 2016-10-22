@@ -165,9 +165,12 @@ exec --no-startup-id cbatticon
 bindsym $mod+c exec dwb 
 
 ######################
-# Sreen brightness controls
+# Screen brightness controls
 bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
 bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
+
+# Lock key
+bindsym XF86ScreenSaver exec /home/max/bin/i3exit lock
 
 # Media player controls
 bindsym XF86AudioPlay exec /home/max/bin/mpvctl toggle
@@ -183,12 +186,12 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute s
 # Exiting i3
 set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
 mode "$mode_system" {
-    bindsym l exec --no-startup-id /home/max/dotfiles/bin/i3exit lock, mode "default"
-    bindsym e exec --no-startup-id /home/max/dotfiles/bin/i3exit logout, mode "default"
-    bindsym s exec --no-startup-id /home/max/dotfiles/bin/i3exit suspend, mode "default"
-    bindsym h exec --no-startup-id /home/max/dotfiles/bin/i3exit hibernate, mode "default"
-    bindsym r exec --no-startup-id /home/max/dotfiles/bin/i3exit reboot, mode "default"
-    bindsym Shift+s exec --no-startup-id /home/max/dotfiles/bin/i3exit shutdown, mode "default"
+    bindsym l exec --no-startup-id /home/max/bin/i3exit lock, mode "default"
+    bindsym e exec --no-startup-id /home/max/bin/i3exit logout, mode "default"
+    bindsym s exec --no-startup-id /home/max/bin/i3exit suspend, mode "default"
+    bindsym h exec --no-startup-id /home/max/bin/i3exit hibernate, mode "default"
+    bindsym r exec --no-startup-id /home/max/bin/i3exit reboot, mode "default"
+    bindsym Shift+s exec --no-startup-id /home/max/bin/i3exit shutdown, mode "default"
 
     # back to normal: Enter or Escape
     bindsym Return mode "default"
