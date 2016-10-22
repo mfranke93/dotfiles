@@ -3,15 +3,15 @@
 install-file()
 {
     if [ -e $2 ]; then
-        cp $2 $2.bak
-        rm $2
+        mv $2 $2.bak
+    fi
+    if [ -h $2 ]; then
+	rm $2
     fi
     mkdir -p `dirname $2`
-    ln -sf $1 $2
+    ln -s $(pwd)/$1 $2
 }
 
-# vim config
-install-file gitconfig ~/.gitconfig
 install-file i3config ~/.config/i3/config
 install-file liquidpromptrc ~/.config/liquidpromptrc
 install-file mpv_config ~/.mpv/config
