@@ -13,6 +13,7 @@ install-file()
 }
 
 install-file bin/mpvctl ~/bin/mpvctl
+install-file gpg-agent.conf ~/.gnupg/gpg-agent.conf
 install-file i3config ~/.config/i3/config
 install-file liquidpromptrc ~/.config/liquidpromptrc
 install-file mpv_config ~/.mpv/config

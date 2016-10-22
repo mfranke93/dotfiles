@@ -14,6 +14,7 @@ location.
 | File name | Description |
 |:--------- |:----------- |
 | bin/mpvctl | Script to control a running mpv instance.
+| gpg-agent.conf | Configuration file for gpg-agent.
 | i3config | Configuration file for i3 window manager.
 | liquidpromptrc | Configuration file for liquidprompt, a shell prompt plugin for zsh.
 | mpv\_config | Configuration file for mpv.
