@@ -1,0 +1,23 @@
+#!/bin/bash
+
+install-file()
+{
+    if [ -e $2 ]; then
+        cp $2 $2.bak
+        rm $2
+    fi
+    mkdir -p `dirname $2`
+    ln -sf $1 $2
+}
+
+# vim config
+install-file gitconfig ~/.gitconfig
+install-file i3config ~/.config/i3/config
+install-file liquidpromptrc ~/.config/liquidpromptrc
+install-file mpv_config ~/.mpv/config
+install-file tmuxconf ~/.tmux.conf
+install-file vimrc ~/.vimrc
+install-file xinitrc ~/.xinitrc
+install-file Xresources ~/.Xresources
+install-file zshenv ~/.zshenv
+install-file zshrc ~/.zshrc

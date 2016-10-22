@@ -1,0 +1,13 @@
+# do not show user name by default
+LP_USER_ALWAYS=0
+# show whether directory writable
+LP_ENABLE_TERM=1
+LP_ENABLE_SHORTEN_PATH=1
+LP_ENABLE_JOBS=1
+LP_ENABLE_GIT=1
+LP_ENABLE_SVN=0
+LP_ENABLE_HG=0
+LP_ENABLE_BZR=0
+LP_ENABLE_VCS_ROOT=0
+# different color when sudo active
+LP_ENABLE_SUDO=1

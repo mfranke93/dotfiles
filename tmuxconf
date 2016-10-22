@@ -1,0 +1,77 @@
+set-window-option -g mouse on
+=======
+set -g mouse on
+set-window-option -g mode-keys vi
+
+# utf8
+#set -g utf8
+#set-window-option -g utf8 on
+
+=======
+# make tmux display things in 256 colors
+set -g default-terminal "screen-256color"
+
+#urxvt tab like window switching (-n: no prior escape seq)
+bind -n S-left select-pane -L
+bind -n S-right select-pane -R
+bind -n S-up select-pane -U
+bind -n S-down select-pane -D
+bind -n C-down new-window
+bind -n C-left prev
+bind -n C-right next
+
+# ----------------------
+# set some pretty colors
+# ----------------------
+# set pane colors - hilight the active pane
+set-option -g pane-border-fg black
+set-option -g pane-active-border-fg red
+set-option -g pane-active-border-bg colour15
+
+# colorize messages in the command line
+set-option -g message-bg black
+set-option -g message-fg red
+
+#set inactive/active window styles (needs tmux >= 2.1)
+set -g window-style 'fg=colour238,bg=colour255'
+set -g window-active-style 'fg=colour0,bg=colour15'
+
+# set color for status bar
+set-option -g status-bg colour0
+set-option -g status-fg colour15
+
+# set window list colors - red for active and cyan for inactive
+set-window-option -g window-status-fg colour15
+set-window-option -g window-status-bg colour0
+
+set-window-option -g window-status-current-fg colour15
+set-window-option -g window-status-current-bg colour196
+
+# ----------------------
+# Status Bar
+# -----------------------
+set-option -g status on                # turn the status bar on
+set -g status-interval 5               # set update frequencey (default 15 seconds)
+set -g status-justify centre           # center window list for clarity
+# set-option -g status-position top    # position the status bar at top of screen
+
+# visual notification of activity in other windows
+setw -g monitor-activity on
+set -g visual-activity off
+set-option -gw window-status-activity-attr bold
+set-option -gw window-status-activity-bg yellow
+set-option -gw window-status-activity-fg black
+
+# status
+# show host name and IP address on left side of status bar
+set -g status-left-length 70
+set -g status-left "#[fg=colour87]: #h : "
+
+# show session name, window & pane number, date and time on right side of
+# status bar
+set -g status-right-length 60
+set -g status-right "#[fg=colour87] %l:%M %p"
+
+# tab names
+set-window-option -g window-status-current-format "[# #W]"
+set-window-option -g window-status-format "[#I #W]"

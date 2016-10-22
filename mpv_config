@@ -1,0 +1,4 @@
+keep-open
+gapless-audio
+no-audio-display
+input-ipc-server=/tmp/mpvsocket
