@@ -3,3 +3,6 @@ Xcursor.theme:    Vanilla-DMZ-AA
 xterm*font: xft:monospace:size=10
 xterm*boldFont: xft:monospace:bold:size=10
 xterm*metaSendsEscape: true
+
+xterm.inputMethod: ibus
+xterm.preeditType: OverTheSpot
