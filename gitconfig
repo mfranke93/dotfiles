@@ -31,8 +31,6 @@
 	prompt = false
 [commit]
 	gpgsign = true
-[init]
-	templatedir = ~/.gittemplate
 [alias]
 	gtags = !.git/hooks/gtags
 	co = checkout
@@ -47,5 +45,3 @@
 	cmd = vim -R -f -d -c \"wincmd J\" \"$MERGED\" \"$LOCAL\" \"$BASE\" \"$REMOTE\" -c \"set noro\"
 [github]
 	user = mfranke93
-[gpg]
-	program = gpg
