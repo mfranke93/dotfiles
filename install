@@ -18,6 +18,7 @@ install-file i3config ~/.config/i3/config
 install-file bin/i3exit ~/bin/i3exit
 install-file liquidpromptrc ~/.config/liquidpromptrc
 install-file gitconfig ~/.gitconfig
+install-file i3status.conf ~/.i3status.conf
 install-file mpv_config ~/.mpv/config
 install-file tmuxconf ~/.tmux.conf
 install-file vimrc ~/.vimrc
