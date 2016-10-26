@@ -1,0 +1,51 @@
+[user]
+	name = Max Franke
+	email = max@mumintroll.org
+[credential]
+	helper = cache
+[push]
+	default = simple
+[svn]
+	pushmergeinfo = true
+[diff]
+	tool = vimdiff
+	mnemonicprefix = true
+[merge]
+	tool = vimdiff
+	stat = true
+	conflictstyle = diff3
+[color]
+	ui = true
+[advice]
+	statusHints = false
+[core]
+	whitespace = trailing-space,space-before-tab
+	autocrlf = input
+	excludesfile = ~/.gitignore
+	editor = vim
+[branch]
+	autosetupmerge = true
+	pager = less -r
+[mergetool]
+	keepBackup = false
+	prompt = false
+[commit]
+	gpgsign = true
+[init]
+	templatedir = ~/.gittemplate
+[alias]
+	gtags = !.git/hooks/gtags
+	co = checkout
+	ci = commit
+	st = status
+	br = branch
+[log]
+	date = local
+[difftool "vimdiff"]
+	cmd = vim -R -f -d -c \"wincmd l\" -c 'cd \"$GIT_PREFIX\"' \"$LOCAL\" \"$REMOTE\"
+[mergetool "vimdiff"]
+	cmd = vim -R -f -d -c \"wincmd J\" \"$MERGED\" \"$LOCAL\" \"$BASE\" \"$REMOTE\" -c \"set noro\"
+[github]
+	user = mfranke93
+[gpg]
+	program = gpg
