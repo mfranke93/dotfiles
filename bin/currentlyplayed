@@ -1,0 +1,22 @@
+#!/bin/sh
+
+json=`echo '{ "command": ["get_property", "metadata"]}' | socat - /tmp/mpvsocket`
+
+echo $json | python -c "
+import json
+import sys
+
+s = sys.stdin.readlines()
+_s = \" \".join(s)
+j = json.loads(_s)['data']
+title=None
+album=None
+artist=None
+if 'artist' in j:
+   artist=j['artist']
+if 'album' in j:
+   album=j['album']
+if 'title' in j:
+   title=j['title']
+print('{} - {}\n{}'.format(artist, title, album))
+"
