@@ -173,6 +173,7 @@ exec --no-startup-id nm-applet
 exec --no-startup-id pasystray
 exec --no-startup-id unclutter -idle 5.0 -root
 exec --no-startup-id cbatticon
+exec --no-startup-id dunst
 
 bindsym $mod+c exec dwb 
 
@@ -217,4 +218,4 @@ bindsym $mod+Print mode "$mode_system"
 # set wallpaper
 exec --no-startup-id feh --bg-scale /home/max/Pictures/wallpaper
 
-bindsym $mod+m exec notify-send hello
+bindsym $mod+m exec /home/max/bin/currentlyplayed
