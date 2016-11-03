@@ -26,3 +26,5 @@ install-file xinitrc ~/.xinitrc
 install-file Xresources ~/.Xresources
 install-file zshenv ~/.zshenv
 install-file zshrc ~/.zshrc
+install-file conkyrc ~/.conkybarrc
+install-file bin/i3bar-wrapper ~/bin/i3bar-wrapper
