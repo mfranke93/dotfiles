@@ -29,6 +29,12 @@ font pango:DejaVu Sans Mono 8
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
+# do not warp mouse when switching workspace
+mouse_warping none
+
+# no window borders at screen edges
+hide_edge_borders both
+
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
 
@@ -219,3 +225,17 @@ bindsym $mod+Print mode "$mode_system"
 exec --no-startup-id feh --bg-scale /home/max/Pictures/wallpaper
 
 bindsym $mod+m exec /home/max/bin/currentlyplayed
+
+## Manual management of external displays
+# Set the shortcuts and what they do
+set $mode_display Ext Screen (v) VGA ON, (x) VGA OFF
+mode "$mode_display" {
+    bindsym v exec --no-startup-id xrandr --output VGA1 --auto --right-of LVDS1, mode "default"
+    bindsym x exec --no-startup-id xrandr --output VGA1 --auto --off, mode "default"
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+# Declare here the shortcut to bring the display selection menu
+bindsym $mod+x mode "$mode_display"
