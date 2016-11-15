@@ -29,11 +29,11 @@ font pango:DejaVu Sans Mono 8
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-# do not warp mouse when switching workspace
-mouse_warping none
-
 # no window borders at screen edges
 hide_edge_borders both
+
+# tabbing as default for windows, as it is the one I use most
+workspace_layout tabbed
 
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
@@ -161,6 +161,7 @@ bar {
     position bottom
     status_command /home/max/bin/i3bar-wrapper
     font pango:DejaVu Sans Mono 8
+    tray_output LVDS1
 #	verbose true
         colors {
           background #303030
@@ -230,7 +231,7 @@ bindsym $mod+m exec /home/max/bin/currentlyplayed
 # Set the shortcuts and what they do
 set $mode_display Ext Screen (v) VGA ON, (x) VGA OFF
 mode "$mode_display" {
-    bindsym v exec --no-startup-id xrandr --output VGA1 --auto --right-of LVDS1, mode "default"
+    bindsym v exec --no-startup-id xrandr --output VGA1 --right-of LVDS1 --auto, mode "default"
     bindsym x exec --no-startup-id xrandr --output VGA1 --auto --off, mode "default"
 
     # back to normal: Enter or Escape
@@ -239,3 +240,4 @@ mode "$mode_display" {
 }
 # Declare here the shortcut to bring the display selection menu
 bindsym $mod+x mode "$mode_display"
+# Set tray to laptop screen always
