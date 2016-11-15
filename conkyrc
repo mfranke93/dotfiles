@@ -35,10 +35,11 @@ cpu_avg_samples 2
 # JSON for i3bar
 TEXT
 [
+{ "full_text": "${exec /home/max/bin/uptime_days}d ", "color":  ${if_match ${exec /home/max/bin/uptime_days} < 1}"\#4C7899"${else} ${if_match ${exec /home/max/bin/uptime_days} < 7} "\#17FF3E"${else} ${if_match ${exec /home/max/bin/uptime_days} <= 31}"\#FFDD17"${else}"\#FF173E"${endif}${endif}${endif}  },
 #{ "full_text" : "RAM ${memperc}%" , "color" : ${if_match ${memperc}<90}"\#4C7899"${else}"\#4C7899"${endif} },
 #{ "full_text" : "" , "color" : "\#4C7899" },
 #{ "full_text" : " $gw_iface on ${addr ${eval $gw_iface} } " , "color" : "\#4C7899" },
-{ "full_text" : "${exec cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor} @ ${freq}MHz " , "color" : ${if_match ${freq}<=800}"\#4C7899"${else}${if_match ${freq} <= 1200}"\#17FF3E"${else}${if_match ${freq}<=2000}"\#FFDD17"${else}"\#FF173E"${endif}${endif}${endif} },
+{ "full_text" : " ${exec cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor} @ ${freq}MHz " , "color" : ${if_match ${freq}<=1200}"\#4C7899"${else}${if_match ${freq} <= 1500}"\#17FF3E"${else}${if_match ${freq}<=2000}"\#FFDD17"${else}"\#FF173E"${endif}${endif}${endif} },
 { "full_text" : "${acpitemp}°C " , "color" : ${if_match ${acpitemp}<60}"\#4C7899"${else}${if_match ${acpitemp}<80}"\#FFDD17"${else}"\#FF173E"${endif}${endif} },
 #{ "full_text" : "$processes /$running_processes " , "color" : "\#4C7899" },
 { "full_text" : " MEM ${memperc}% " , "color" : "\#4C7899" },
