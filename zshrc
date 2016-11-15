@@ -297,3 +297,5 @@ gl()
     # better git log
     git log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(cyan)<%an>%Creset' --abbrev-commit --all
 }
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
