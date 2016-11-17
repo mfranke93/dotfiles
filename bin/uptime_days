@@ -1,10 +1,10 @@
 #!/bin/zsh
 
-if [ "$(uptime -p)" = "up" ]
+s=`units "$(uptime -p | sed 's/^up//g' | sed 's/,/+/g')" "days" -1 -o '%.3f'`
+if [ "$?" = "1" ]
 then
-    # directly after boot, uptime only returns "up"
-    # this messes with the one-liner below
     echo 0.000
 else
-    units "$(uptime -p | sed 's/^up//g' | sed 's/,/+/g')" "days" -1 -o '%.3f' | awk '{print $2}'
+    echo $s | awk '{print $2}'
 fi
+

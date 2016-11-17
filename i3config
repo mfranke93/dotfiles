@@ -41,6 +41,9 @@ bindsym $mod+Return exec i3-sensible-terminal
 # kill focused window
 bindsym $mod+Shift+q kill
 
+# start emacs in new window
+bindsym $mod+z exec emacsclient -nc
+
 # start dmenu (a program launcher)
 bindsym $mod+Shift+d exec dmenu_run
 # There also is the (new) i3-dmenu-desktop which only displays applications
@@ -181,6 +184,7 @@ exec --no-startup-id pasystray
 exec --no-startup-id unclutter -idle 5.0 -root
 exec --no-startup-id cbatticon
 exec --no-startup-id dunst
+exec --no-startup-id emacs --daemon
 
 bindsym $mod+c exec dwb 
 

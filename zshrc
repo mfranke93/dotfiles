@@ -288,6 +288,10 @@ vol()
     esac
 }
 
+# emacs
+alias ec=emacsclient
+alias ecx=emacsclient -c
+
 [[ -n "$DISPLAY" && "$TERM" = "xterm" ]] && export TERM=xterm-256color
 
 eval $(thefuck --alias)
