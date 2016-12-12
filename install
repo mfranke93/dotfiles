@@ -31,3 +31,4 @@ install-file xinitrc ~/.xinitrc
 install-file Xresources ~/.Xresources
 install-file zshenv ~/.zshenv
 install-file zshrc ~/.zshrc
+install-file lxde-rc.xml ~/.config/openbox/lxde-rc.xml
