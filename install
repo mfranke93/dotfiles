@@ -32,3 +32,4 @@ install-file Xresources ~/.Xresources
 install-file zshenv ~/.zshenv
 install-file zshrc ~/.zshrc
 install-file bin/usb ~/bin/usb
+install-file lxde-rc.xml ~/.config/openbox/lxde-rc.xml
