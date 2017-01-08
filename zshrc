@@ -299,3 +299,5 @@ gl()
 }
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+export EDITOR=$(which vim)
