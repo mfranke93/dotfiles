@@ -42,11 +42,11 @@ focus_follows_mouse no
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
 
+# start a GVIM session
+bindsym $mod+z exec gvim
+
 # kill focused window
 bindsym $mod+Shift+q kill
-
-# start emacs in new window
-bindsym $mod+z exec /usr/local/bin/ec
 
 # start dmenu (a program launcher)
 bindsym $mod+Shift+d exec dmenu_run
@@ -188,7 +188,6 @@ exec --no-startup-id pasystray
 exec --no-startup-id unclutter -idle 5.0 -root
 exec --no-startup-id cbatticon
 exec --no-startup-id dunst
-exec --no-startup-id emacs --daemon
 
 # browser and email
 bindsym $mod+c exec dwb 
