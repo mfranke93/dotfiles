@@ -22,7 +22,7 @@
 	whitespace = trailing-space,space-before-tab
 	autocrlf = input
 	excludesfile = ~/.gitignore
-	editor = gvim
+	editor = vim
 [branch]
 	autosetupmerge = true
 	pager = less -r
