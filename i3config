@@ -245,11 +245,10 @@ bindsym $mod+m exec /home/max/bin/currentlyplayed
 
 ## Manual management of external displays
 # Set the shortcuts and what they do
-set $mode_display Ext Screen (v) VGA ON, (x) VGA OFF, (o) ONLY VGA
+set $mode_display Ext Screen (v) VGA ON, (x) VGA OFF
 mode "$mode_display" {
-    bindsym v exec --no-startup-id xrandr --output VGA1 --right-of LVDS1 --auto --output LVDS1, mode "default"
+    bindsym v exec --no-startup-id xrandr --output VGA1 --right-of LVDS1 --auto, mode "default"
     bindsym x exec --no-startup-id xrandr --output VGA1 --auto --off --output LVDS1, mode "default"
-    bindsym o exec --no-startup-id xrandr --output VGA1 --auto --output LVDS1 --off, mode "default"
 
     # back to normal: Enter or Escape
     bindsym Return mode "default"
