@@ -42,11 +42,11 @@ focus_follows_mouse no
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
 
+# start a GVIM session
+bindsym $mod+z exec gvim
+
 # kill focused window
 bindsym $mod+Shift+q kill
-
-# start emacs in new window
-bindsym $mod+z exec /usr/local/bin/ec
 
 # start dmenu (a program launcher)
 bindsym $mod+Shift+d exec dmenu_run
@@ -188,11 +188,13 @@ exec --no-startup-id pasystray
 exec --no-startup-id unclutter -idle 5.0 -root
 exec --no-startup-id cbatticon
 exec --no-startup-id dunst
-exec --no-startup-id emacs --daemon
 
 # browser and email
 bindsym $mod+c exec dwb 
 bindsym $mod+b exec thunderbird
+
+# file manager
+bindsym $mod+n exec uxterm -e ranger
 
 ######################
 # Screen brightness controls
@@ -245,7 +247,7 @@ bindsym $mod+m exec /home/max/bin/currentlyplayed
 set $mode_display Ext Screen (v) VGA ON, (x) VGA OFF
 mode "$mode_display" {
     bindsym v exec --no-startup-id xrandr --output VGA1 --right-of LVDS1 --auto, mode "default"
-    bindsym x exec --no-startup-id xrandr --output VGA1 --auto --off, mode "default"
+    bindsym x exec --no-startup-id xrandr --output VGA1 --auto --off --output LVDS1, mode "default"
 
     # back to normal: Enter or Escape
     bindsym Return mode "default"

@@ -52,9 +52,6 @@ set cpoptions=ces$
 " set the GUI options the way I like
 set guioptions=acg
 
-" Setting this below makes it show that error messages don't disappear after one second on startup.
-"set debug=msg
-
 " This is the timeout used while waiting for user input on a multi-keyed macro
 " or while just sitting and waiting for another key to be pressed measured
 " in milliseconds.
@@ -68,17 +65,9 @@ set timeoutlen=500
 " Keep some stuff in the history
 set history=100
 
-" These commands open folds
-"set foldopen=block,insert,jump,mark,percent,quickfix,search,tag,undo
-"set foldmethod=syntax
-"set foldlevelstart=20
-
 " When the page starts to scroll, keep the cursor 8 lines from the top and 8
 " lines from the bottom
 set scrolloff=8
-
-" Allow the cursor to go in to "invalid" places
-"set virtualedit=all
 
 " Disable encryption (:X)
 set key=
@@ -92,9 +81,6 @@ set complete=.,w,b,t
 
 " When completing by tag, show the whole tag, not just the function name
 set showfulltag
-
-" Set the textwidth to be 80 chars
-"set colorcolumn=120
 
 " get rid of the silly characters in separators
 set fillchars = ""
@@ -218,10 +204,6 @@ let &t_SI = "\<Esc>[6 q"
 "let &t_SR = "\<Esc>[4 q" " this one is not recognized, but we don't need it for replace that badly
 let &t_EI = "\<Esc>[2 q"
 
-" foldmethod: markers
-set foldmethod=marker
-
-
 " No spaces for tabs in Makefiles
 autocmd FileType make setlocal noexpandtab
 
@@ -254,6 +236,7 @@ endfunction
 command! -bang -nargs=* -complete=file Rack call Rack(<q-args>)
 
 " save folds on exit, load on enter, do not make dependent on cwd
+" TODO disable for commitmsg
 au BufWinLeave ?* mkview
 au BufWinEnter ?* silent loadview
 set viewoptions-=options
