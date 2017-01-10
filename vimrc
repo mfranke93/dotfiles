@@ -207,6 +207,11 @@ let &t_EI = "\<Esc>[2 q"
 " No spaces for tabs in Makefiles
 autocmd FileType make setlocal noexpandtab
 
+" Use file name ending .gv for graphviz files
+augroup GraphvizFiletype
+  au! BufRead,BufNewFile,BufEnter *.gv set filetype=dot
+augroup END
+
 " disable ins key in insert mode
 inoremap [2~ <NOP>
 

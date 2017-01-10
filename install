@@ -10,7 +10,7 @@ install-file()
 }
 
 mkdir -p ~/.vim
-ln -s vim_after ~/.vim/after
+ln -s $(pwd)/vim_ftplugin ~/.vim/ftplugin
 
 install-file Xresources ~/.Xresources
 install-file bin/currentlyplayed ~/bin/currentlyplayed
