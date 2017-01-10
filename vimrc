@@ -244,3 +244,4 @@ set viewoptions-=options
 set mouse=a
 
 filetype plugin indent on
+

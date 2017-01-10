@@ -9,6 +9,9 @@ install-file()
     ln -s $(pwd)/$1 $2
 }
 
+mkdir -p ~/.vim
+ln -s vim_after ~/.vim/after
+
 install-file Xresources ~/.Xresources
 install-file bin/currentlyplayed ~/bin/currentlyplayed
 install-file bin/i3bar-wrapper ~/bin/i3bar-wrapper
