@@ -34,10 +34,10 @@
     <!-- with Smart placement on a multi-monitor system, try to place new windows
        on: 'Any' - any monitor, 'Mouse' - where the mouse is, 'Active' - where
        the active window is -->
-    <primaryMonitor>1</primaryMonitor>
+    <primaryMonitor>2</primaryMonitor>
   </placement>
   <theme>
-    <name>Nightmare-02</name>
+    <name>Bear2</name>
     <titleLayout>NDLIMC</titleLayout>
     <!--
       available characters are NDSLIMC, each can occur at most once.
@@ -351,7 +351,7 @@ and back in -->
     <!-- Launch Terminal when C-A-T is pressed -->
     <keybind key="C-A-T">
       <action name="Execute">
-        <command>x-terminal-emulator</command>
+        <command>xterm</command>
       </action>
     </keybind>
   </keyboard>
