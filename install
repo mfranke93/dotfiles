@@ -9,8 +9,9 @@ install-file()
     ln -s $(pwd)/$1 $2
 }
 
-mkdir -p ~/.vim
-ln -s $(pwd)/vim_ftplugin ~/.vim/ftplugin
+
+mkdir -p ~/.vim/colors
+ln -s $(pwd)/third_party/vim-monokai/colors/monokai.vim ~/.vim/colors/monokai.vim
 
 install-file Xresources ~/.Xresources
 install-file bin/currentlyplayed ~/bin/currentlyplayed
