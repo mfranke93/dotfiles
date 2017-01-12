@@ -19,6 +19,7 @@ install-file Xresources ~/.Xresources
 install-file bin/currentlyplayed ~/bin/currentlyplayed
 install-file bin/i3bar-wrapper ~/bin/i3bar-wrapper
 install-file bin/i3exit ~/bin/i3exit
+install-file bin/git-remotify ~/bin/git-remotify
 install-file bin/mpvctl ~/bin/mpvctl
 install-file bin/uptime_days ~/bin/uptime_days
 install-file conkyrc ~/.conkybarrc
