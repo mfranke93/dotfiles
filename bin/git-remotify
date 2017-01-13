@@ -1,0 +1,9 @@
+#!/bin/bash
+#
+# Push to upstream for current local only branch.
+#
+
+# branch name
+branchname=$(git branch | grep "\\*" | awk '{print $2}')
+
+git push --set-upstream origin ${branchname}

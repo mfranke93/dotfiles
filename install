@@ -9,13 +9,17 @@ install-file()
     ln -s $(pwd)/$1 $2
 }
 
-mkdir -p ~/.vim
-ln -s $(pwd)/vim_ftplugin ~/.vim/ftplugin
+mkdir -p ~/.vim/ftplugin
+ln -s $(pwd)/vim_ftplugin/dot.vim ~/.vim/ftplugin/dot.vim
+
+mkdir -p ~/.vim/colors
+ln -s $(pwd)/third_party/vim-monokai/colors/monokai.vim ~/.vim/colors/monokai.vim
 
 install-file Xresources ~/.Xresources
 install-file bin/currentlyplayed ~/bin/currentlyplayed
 install-file bin/i3bar-wrapper ~/bin/i3bar-wrapper
 install-file bin/i3exit ~/bin/i3exit
+install-file bin/git-remotify ~/bin/git-remotify
 install-file bin/mpvctl ~/bin/mpvctl
 install-file bin/uptime_days ~/bin/uptime_days
 install-file conkyrc ~/.conkybarrc
