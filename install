@@ -15,7 +15,11 @@ ln -sf $(pwd)/vim_ftplugin/dot.vim ~/.vim/ftplugin/dot.vim
 mkdir -p ~/.vim/colors
 ln -sf $(pwd)/third_party/vim-monokai/colors/monokai.vim ~/.vim/colors/monokai.vim
 
-ln -sf $(pwd)/rangerconf ~/.config/ranger
+mkdir -p ~/.config/ranger
+for f in `ls rangerconf`
+do
+    ln -sf $(pwd)/rangerconf/$f ~/.config/ranger/
+done
 
 install-file Xresources ~/.Xresources
 install-file bin/currentlyplayed ~/bin/currentlyplayed
