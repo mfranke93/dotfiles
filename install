@@ -15,6 +15,8 @@ ln -s $(pwd)/vim_ftplugin/dot.vim ~/.vim/ftplugin/dot.vim
 mkdir -p ~/.vim/colors
 ln -s $(pwd)/third_party/vim-monokai/colors/monokai.vim ~/.vim/colors/monokai.vim
 
+ln -sf $(pwd)/rangerconf ~/.config/ranger
+
 install-file Xresources ~/.Xresources
 install-file bin/currentlyplayed ~/bin/currentlyplayed
 install-file bin/i3bar-wrapper ~/bin/i3bar-wrapper
