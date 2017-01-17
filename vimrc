@@ -186,6 +186,14 @@ else
 endif
 :nohls
 
+"-----------------------------------------------------------------------------
+" Install plugins
+"-----------------------------------------------------------------------------
+call plug#begin()
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+call plug#end()
+
 " Own stuff
 "-----------------------------------------------------------------------------
 " save and make by ,m
@@ -231,25 +239,20 @@ autocmd FileType tex inoremap <buffer> {{ \\left\\{  \\right\\}Bhi
 " use LaTeX flavor
 let g:tex_flavor = "latex"
 
-if executable("ag")  
-    let g:ackprg="ag --nocolor --nogroup --column"
-endif
-
-function! Rack(args)
-    let l:gitDir = system("git rev-parse --show-toplevel")  
-    if l:gitDir =~ "Not a git repository"      
-        execute 'Ack ' . a:args
-        return  
-    endif  
-    execute 'Ack ' . a:args  .' ' . l:gitDir
-endfunction
-command! -bang -nargs=* -complete=file Rack call Rack(<q-args>)
-
 " save folds on exit, load on enter, do not make dependent on cwd
 " TODO disable for commitmsg
 au BufWinLeave ?* mkview
 au BufWinEnter ?* silent loadview
 set viewoptions-=options
+
+"-----------------------------------------------------------------------------
+" FZF.vim key bindings
+"-----------------------------------------------------------------------------
+" Use <C-X> to open result in new split, <C-V> for new vsplit
+nnoremap <leader>f :Files<cr>
+nnoremap <leader>b :Buffers<cr>
+nnoremap <leader>t :Tags<cr>
+nnoremap <leader>a :Ag<cr>
 
 set mouse=a
 
