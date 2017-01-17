@@ -23,16 +23,15 @@ done
 
 install-file Xresources ~/.Xresources
 install-file bin/currentlyplayed ~/bin/currentlyplayed
+install-file bin/git-remotify ~/bin/git-remotify
 install-file bin/i3bar-wrapper ~/bin/i3bar-wrapper
 install-file bin/i3exit ~/bin/i3exit
-install-file bin/git-remotify ~/bin/git-remotify
 install-file bin/mpvctl ~/bin/mpvctl
 install-file bin/uptime_days ~/bin/uptime_days
 install-file conkyrc ~/.conkybarrc
 install-file dunstrc ~/.config/dunst/dunstrc
 install-file gitconfig ~/.gitconfig
 install-file gpg-agent.conf ~/.gnupg/gpg-agent.conf
-install-file gvimrc ~/.gvimrc
 install-file i3config ~/.config/i3/config
 install-file i3status.conf ~/.i3status.conf
 install-file liquidpromptrc ~/.config/liquidpromptrc
