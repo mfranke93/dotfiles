@@ -1,3 +1,6 @@
 [submodule "third_party/vim-monokai"]
 	path = third_party/vim-monokai
 	url = git@github.com:crusoexia/vim-monokai
+[submodule "third_party/vim-plug"]
+	path = third_party/vim-plug
+	url = git@github.com:junegunn/vim-plug.git
