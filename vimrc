@@ -237,14 +237,6 @@ inoremap [2~ <NOP>
 " disable the MENU key in insert mode. It does weird stuff
 inoremap [29~ <NOP>
 
-" create \left( \right), place cursor inbetween
-autocmd FileType tex inoremap <buffer> (( \\left(  \\right)Bhi
-autocmd FileType tex inoremap <buffer> [[ \\left[  \\right]Bhi
-autocmd FileType tex inoremap <buffer> {{ \\left\\{  \\right\\}Bhi
-
-" use LaTeX flavor
-let g:tex_flavor = "latex"
-
 " save folds on exit, load on enter, do not make dependent on cwd
 " TODO disable for commitmsg
 au BufWinLeave ?* mkview

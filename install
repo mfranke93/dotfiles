@@ -11,6 +11,7 @@ install-file()
 
 mkdir -p ~/.vim/ftplugin
 ln -sf $(pwd)/vim_ftplugin/dot.vim ~/.vim/ftplugin/dot.vim
+ln -sf $(pwd)/vim_ftplugin/tex.vim ~/.vim/ftplugin/tex.vim
 
 mkdir -p ~/.vim/colors
 ln -sf $(pwd)/third_party/vim-monokai/colors/monokai.vim ~/.vim/colors/monokai.vim
