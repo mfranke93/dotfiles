@@ -168,6 +168,12 @@ inoremap <S-C-Down> <NOP>
 inoremap <S-C-Left> <NOP>
 inoremap <S-C-Right> <NOP>
 
+" Move between windows (does not work in tmux)
+nnoremap <S-C-Up> :wincmd k<cr>
+nnoremap <S-C-Down> :wincmd j<cr>
+nnoremap <S-C-Right> :wincmd l<cr>
+nnoremap <S-C-Left> :wincmd h<cr>
+
 "-----------------------------------------------------------------------------
 " Set up the window colors and size
 "-----------------------------------------------------------------------------
