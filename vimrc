@@ -238,9 +238,22 @@ inoremap [2~ <NOP>
 inoremap [29~ <NOP>
 
 " save folds on exit, load on enter, do not make dependent on cwd
-" TODO disable for commitmsg
-au BufWinLeave ?* mkview
-au BufWinEnter ?* silent loadview
+function! MakeViewIfNotCommitmsg()
+    if &ft =~ 'GITCOMMIT'
+        return
+    endif
+    mkview
+endfunction
+
+function! LoadViewIfNotCommitmsg()
+    if &ft =~ 'GITCOMMIT'
+        return
+    endif
+    silent loadview
+endfunction
+
+au BufWinLeave ?* call MakeViewIfNotCommitmsg()
+au BufWinEnter ?* call LoadViewIfNotCommitmsg()
 set viewoptions-=options
 
 "-----------------------------------------------------------------------------
