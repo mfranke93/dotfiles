@@ -267,5 +267,18 @@ nnoremap <leader>a :Ag<cr>
 
 set mouse=a
 
+"-----------------------------------------------------------------------------
+" Status line colors
+"-----------------------------------------------------------------------------
+" first, enable status line always
+set laststatus=2
+
+" now set it up to change the status line based on mode
+if version >= 700
+  au InsertEnter * hi StatusLine ctermfg=0 ctermbg=5 gui=bold guifg=Black guibg=Green
+  au InsertLeave * hi StatusLine ctermfg=0 ctermbg=2 gui=bold guifg=White guibg=Black
+  au BufWinEnter * hi StatusLine ctermfg=0 ctermbg=2 gui=bold guifg=White guibg=Black
+endif
+
 filetype plugin indent on
 
