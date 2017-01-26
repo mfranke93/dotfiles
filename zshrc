@@ -29,38 +29,12 @@ WORDCHARS="${WORDCHARS:s#.#}"
 ##############################################################
 #key binding stuff to get the right keys to work
 # key bindings
-bindkey -e
-bindkey "\e[1~" beginning-of-line
-bindkey "\e[4~" end-of-line
-bindkey "\e[5~" beginning-of-history
-bindkey "\e[6~" end-of-history
-bindkey "\e[3~" delete-char
-bindkey "\e[2~" overwrite-mode
-bindkey "\e[5C" forward-word
-bindkey "\eOc" emacs-forward-word
-bindkey "\e[5D" backward-word
-bindkey "\eOd" emacs-backward-word
-bindkey "\ee[C" forward-word
-bindkey "\ee[D" backward-word
-#Ctrl-left/right
-bindkey '\e[1;5C' forward-word # ctrl right
-bindkey '\e[1;5D' backward-word # ctrl left o
-#alt-left/right
-bindkey "\e[1;3C" forward-word
-bindkey "\e[1;3D" backward-word
-#bindkey "^H" backward-delete-word
-# for rxvt
-bindkey "\e[8~" end-of-line
-bindkey "\e[7~" beginning-of-line
-# for non RH/Debian xterm, cant hurt for RH/DEbian xterm
-bindkey "\eOH" beginning-of-line
-bindkey "\eOF" end-of-line
-# for freebsd console
-bindkey "\e[H" beginning-of-line
-bindkey "\e[F" end-of-line
-# completion in the middle of a line
-bindkey '^i' expand-or-complete-prefix
+bindkey -v
 
+# ESC-v to edit command
+autoload edit-command-line; zle -N edit-command-line
+bindkey -M vicmd v edit-command-line
+#
 # search history with pattern
 bindkey "^R" history-incremental-pattern-search-backward
 bindkey "^S" history-incremental-pattern-search-forward
@@ -75,6 +49,16 @@ bindkey "^[[B" down-line-or-beginning-search # Do
 
 autoload -Uz compinit
 compinit
+
+# show normal or insert mode
+function zle-line-init zle-keymap-select {
+    VIM_PROMPT="%{$fg_bold[yellow]%} [% NORMAL]%  %{$reset_color%}"
+    RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/}$EPS1"
+    zle reset-prompt
+}
+zle -N zle-line-init
+zle -N zle-keymap-select
+export KEYTIMEOUT=1
 
 # Use gpg completion for gpg2.
 # But still the keys from gpg are completed.

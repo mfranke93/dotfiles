@@ -2,7 +2,7 @@ Xcursor.theme:    Vanilla-DMZ-AA
 
 xterm*faceName: Source Code Pro
 xterm*faceSize: 10
-xterm*metaSendsEscape: true
+xterm*metaSendsEscape: false
 
 xterm.inputMethod: ibus
 xterm.preeditType: OverTheSpot
