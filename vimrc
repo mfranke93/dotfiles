@@ -186,7 +186,7 @@ endif
 
 if has("gui_running")
     colorscheme monokai
-    set guifont=Source\ Code\ Pro\ 10
+    set guifont=Source\ Code\ Pro\ 8
 else
     colorscheme default
 endif
