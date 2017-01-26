@@ -1,15 +1,15 @@
 Xcursor.theme:    Vanilla-DMZ-AA
 
 xterm*faceName: Source Code Pro
-xterm*faceSize: 8
+xterm*faceSize: 10
 xterm*metaSendsEscape: true
 
 xterm.inputMethod: ibus
 xterm.preeditType: OverTheSpot
 
-Xft.antialias: 1
-Xft.hinting: true
-Xft.hintstyle: hintslight
-Xft.dpi: 112
-Xft.rgba: rgb
-Xft.icdfilter: icddefault
+!Xft.antialias: 1
+!Xft.hinting: true
+!Xft.hintstyle: hintslight
+!Xft.dpi: 112
+!Xft.rgba: rgb
+!Xft.icdfilter: icddefault
