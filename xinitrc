@@ -1,3 +1,3 @@
 xrdb ~/.Xresources
 setxkbmap gb -option caps:none,compose:caps
-exec i3
+if hostname | grep "^amaterasu$"; then exec i3; fi
