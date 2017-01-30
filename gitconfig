@@ -30,7 +30,6 @@
 	keepBackup = false
 	prompt = false
 [commit]
-	gpgsign = true
 [alias]
 	gtags = !.git/hooks/gtags
 	co = checkout
