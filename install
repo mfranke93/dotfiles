@@ -28,6 +28,7 @@ ln -sf $(pwd)/third_party/vim-plug/plug.vim ~/.vim/autoload/
 
 install-file Xresources ~/.Xresources
 install-file bin/currentlyplayed ~/bin/currentlyplayed
+install-file bin/systemstatus.py ~/bin/systemstatus.py
 install-file bin/git-remotify ~/bin/git-remotify
 install-file bin/i3bar-wrapper ~/bin/i3bar-wrapper
 install-file bin/i3exit ~/bin/i3exit
