@@ -100,14 +100,34 @@ def part_mem():
     s = "Mem: %s, Swap: %s"%(memperc, swapperc)
     return format_json_part(s, col)
 
-def part_diskspace_fs():
-    pass
+def part_diskspace_fs(fsname):
+    out = subprocess.check_output(["df", fsname]).decode()
+    m = re.search('/dev/sda\\w*\\s+\\d+\\s+\\d+\\s+\\d+\\s+(\\d+%).*', out)
+    if m:
+        fs_occ = m.group(1)
+        fs_num = int(fs_occ.replace("%", ""))
+        urg = fs_num//10
+    else:
+        fs_occ = "??%"
+        urg = 10
+    return format_json_part("%s %s"%(fsname, fs_occ), colormap(urg))
 
-def part_diskspace_home():
-    pass
+def part_internet_status(adapter, show_symbol):
+    out = subprocess.check_output(["ip", "addr", "show", adapter]).decode()
+    ipv4 = False
+    ipv6 = False
+    up = False
 
-def part_internet_status():
-    pass
+    if re.search('.* UP .*', out):
+        up = True
+    if re.search('.* inet .* scope global .*', out):
+        ipv4 = True
+    if re.search('.* inet6 .* scope global .*', out):
+        ipv6 = True
+
+    s = "%s%s%s"%(show_symbol, "4" if ipv4 else " ", "6" if ipv6 else " ")
+    col = colormap(4) if up else "#333333"
+    return format_json_part(s, col)
 
 def part_battery_timeleft():
     symbol_ac = "⚡"
@@ -164,8 +184,12 @@ def mainloop_once():
     print("[")
     print("%s,"%part_uptime())
     print("%s,"%part_mem())
+    print("%s,"%part_diskspace_fs('/'))
+    print("%s,"%part_diskspace_fs('/home'))
     print("%s,"%part_cpustatus())
     print("%s,"%part_cputemp())
+    print("%s,"%part_internet_status("enp0s25", "E"))
+    print("%s,"%part_internet_status("wlp3s0", "W"))
     print("%s,"%part_battery_timeleft())
     print(part_time())
     print("],")
