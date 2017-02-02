@@ -45,36 +45,52 @@ def part_uptime():
     # ugh
     out = subprocess.check_output(["uptime", "-p"]).decode()
     s = out.strip().replace("up ", "")
-    s2 = s.replace(" days", "d").replace(" day", "d").replace(" hours", "h").replace(" hour", "h").replace(" minutes", "m").replace(" minute", "m")
+    s2 = s.replace(" days", "d").replace(" day", "d").replace(" hours", "h").replace(" hour", "h").replace(" minutes", "m").replace(" minute", "m").replace(",","")
     s3 = "%s"%s2
 
-    # TODO: make other color if abovee values
-    return format_json_part(s3.replace(",",""), colormap(0))
+    minutes=0
+    vec = s3.split()
+    for r in vec:
+        if r[-1] == 'd':
+            minutes += 60 * 24 * int(r[:-1])
+        elif r[-1] == 'h':
+            minutes += 60 * int(r[:-1])
+        elif r[-1] == 'm':
+            minutes += int(r[:-1])
 
-def part_cpustatus():
-    # TODO
-    return "{\"full_text\": \"\"}"
+    if minutes < 60:         c = 0
+    elif minutes <   6 * 60: c = 1
+    elif minutes <  12 * 60: c = 2
+    elif minutes <  24 * 60: c = 3
+    elif minutes <  48 * 60: c = 4
+    elif minutes < 3 * 24 * 60: c = 5
+    elif minutes < 4 * 24 * 60: c = 6
+    elif minutes < 5 * 24 * 60: c = 7
+    elif minutes < 6 * 24 * 60: c = 8
+    elif minutes < 7 * 24 * 60: c = 9
+    else: c = 6
+
+    return format_json_part(s3, colormap(c))
 
 def part_cputemp():
-    # TODO: use sensors -u 
-    basepath = "/sys/class/thermal"
-    # get fan status?
-    fs = []
-    for i in range(5):
-        with open(basepath + "/cooling_device%d/cur_state"%i) as f:
-            fs.append(f.readline().strip().replace("\\n", ""))
+    out = subprocess.check_output(["sensors", "-u"]).decode()
+    m = re.search('  temp1_input: (\\d+)\..*', out)
+    if m:
+        cputemp = int(m.group(1))
+        cputempstr = "%d°C"%cputemp
+    else:
+        cputemp = 105
+        cputempstr = "??°C"
 
-    fans = " ".join(fs)
+    m = re.search('  fan1_input: (\\d+)\..*', out)
+    if m:
+        fanrpm = m.group(1) + "RPM"
+    else:
+        fanrpm = "??RPM"
 
-    # get cpu temps
-    ct = []
-    for i in range(2):
-        with open(basepath + "/thermal_zone%d/temp"%i) as f:
-            ct.append(f.readline().strip().replace("\\n", ""))
+    urg = max(0, min(10, int(10*float(cputemp-37)/(105.0-37.0))))
 
-    cpu = " ".join(["%.1f°C"%(float(c)/1000.0) for c in ct])
-
-    return format_json_part("%s, %s"%(fans, cpu), "#4444FF")
+    return format_json_part("%s, %s"%(cputempstr, fanrpm), colormap(urg))
 
 def part_mem():
     out = subprocess.check_output(["free", "-m"]).decode()
@@ -202,4 +218,4 @@ if __name__=='__main__':
     while True:
         mainloop_once()
         sys.stdout.flush()
-        time.sleep(1.0)
+        time.sleep(5.0)
