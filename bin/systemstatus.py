@@ -202,7 +202,6 @@ def mainloop_once():
     print("%s,"%part_mem())
     print("%s,"%part_diskspace_fs('/'))
     print("%s,"%part_diskspace_fs('/home'))
-    print("%s,"%part_cpustatus())
     print("%s,"%part_cputemp())
     print("%s,"%part_internet_status("enp0s25", "E"))
     print("%s,"%part_internet_status("wlp3s0", "W"))
