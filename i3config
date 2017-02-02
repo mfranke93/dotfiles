@@ -166,8 +166,8 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
     position bottom
-    status_command /home/max/bin/i3bar-wrapper
-    font pango:DejaVu Sans Mono 8
+    status_command exec /home/max/bin/systemstatus.py
+    font pango:Source Code Pro 10
     tray_output LVDS1
 #	verbose true
         colors {
