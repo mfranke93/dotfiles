@@ -84,7 +84,9 @@ def part_cputemp():
 
     m = re.search('  fan1_input: (\\d+)\..*', out)
     if m:
-        fanrpm = m.group(1) + "RPM"
+        fanrpm = int(m.group(1))
+        if fanrpm > 6000: fanrpm = 0
+        fanrpm = "%dRPM"%fanrpm
     else:
         fanrpm = "??RPM"
 
