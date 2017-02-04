@@ -195,6 +195,25 @@ def part_battery_timeleft():
     s = "%s%s %s%s"%(ac_connected, chr_state, bat_perc, time_to_empty)
     return format_json_part(s, colormap(bperc_num))
 
+def part_volume():
+    '''
+    Get volume and mute status
+    '''
+    out = subprocess.check_output(['amixer', 'sget', 'Master,0']).decode()
+    m = re.search('  Front Left: Playback \\d+ \[(\\d+%)\] \[(.*)\]', out)
+    if m:
+        outvol = m.group(1)
+        outenabled = m.group(2)
+        outcol = 10 if outenabled=='off' else 0
+    else:
+        outvol = '??%'
+        outcol = 10
+        outenabled = 'off'
+
+    icon = "♫" if outenabled=="on" else "∅"
+
+    return format_json_part(icon + " " + outvol, colormap(outcol))
+
 def mainloop_once():
     '''
     Execute the mainloop once.
@@ -208,6 +227,7 @@ def mainloop_once():
     print("%s,"%part_internet_status("enp0s25", "E"))
     print("%s,"%part_internet_status("wlp3s0", "W"))
     print("%s,"%part_battery_timeleft())
+    print("%s,"%part_volume())
     print(part_time())
     print("],")
     
