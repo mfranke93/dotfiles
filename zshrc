@@ -220,9 +220,6 @@ elif [[ -f /etc/DIR_COLORS ]] ; then
     eval $(dircolors -b /etc/DIR_COLORS)
 fi
 
-if [[ -f ~/.git_prompt.zsh ]]; then
-    source ~/.git_prompt.zsh
-fi
 if [[ -f ~/.liquidprompt/liquidprompt ]]; then
     source ~/.liquidprompt/liquidprompt.plugin.zsh
 fi
@@ -234,29 +231,12 @@ fi
 
 export PATH=$PATH:~/bin
 
-# drop ssh connections
-reset-ssh-mux()
-{
-    rm -Rfv ~/.cache/ssh/mux/*
-}
-
-# twitch streams
-twitch()
-{
-    if [[ -z $2 ]]; then
-        quality=high
-    else
-        quality=$2
-    fi
-    livestreamer --hls-segment-threads 3 twitch.tv/$1 $quality --player "vlc --file-caching 5000 --network-caching 5000"
-}
-
 # set volume
 vol()
 {
     if [[ -z $1 ]]; then
         echo "Usage: $0 cmd"
-        exit 1
+        return 1
     fi
 
     case $1 in
