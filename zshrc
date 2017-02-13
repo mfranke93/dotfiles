@@ -274,11 +274,8 @@ vol()
 
 [[ -n "$DISPLAY" && "$TERM" = "xterm" ]] && export TERM=xterm-256color
 
-gl()
-{
-    # better git log
-    git log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(cyan)<%an>%Creset' --abbrev-commit --all
-}
+# better git log
+alias gl="tig --all"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
