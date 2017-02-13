@@ -40,7 +40,7 @@ focus_follows_mouse no
 #mouse_warping no
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec urxvt
 
 # start a GVIM session
 bindsym $mod+z exec gvim
@@ -194,7 +194,7 @@ bindsym $mod+c exec dwb
 bindsym $mod+b exec thunderbird
 
 # file manager
-bindsym $mod+n exec uxterm -e ranger
+bindsym $mod+n exec urxvt -e ranger
 
 ######################
 # Screen brightness controls
