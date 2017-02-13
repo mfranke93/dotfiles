@@ -166,8 +166,8 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
     position bottom
-    status_command /home/max/bin/i3bar-wrapper
-    font pango:DejaVu Sans Mono 8
+    status_command exec /home/max/bin/systemstatus.py
+    font pango:Source Code Pro 10
     tray_output LVDS1
 #	verbose true
         colors {
@@ -238,7 +238,7 @@ mode "$mode_system" {
 bindsym $mod+Print mode "$mode_system"
 
 # set wallpaper
-exec --no-startup-id feh --bg-scale /home/max/Pictures/wallpaper
+#exec --no-startup-id feh --bg-scale /home/max/Pictures/wallpaper
 
 bindsym $mod+m exec /home/max/bin/currentlyplayed
 
@@ -260,3 +260,6 @@ bindsym $mod+x mode "$mode_display"
 # make pdfpc open presentation window on second monitor (if desktop 2 is on second monitor)
 assign [title="pdfpc - presentation *"] 2
 assign [title="pdfpc - presenter *"] 1
+
+# G
+exec --no-startup-id feh --bg-tile mpv-shot0001.jpg
