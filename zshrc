@@ -256,6 +256,7 @@ vol()
 
 # better git log
 alias gl="tig --all"
+alias gd="git diff"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
