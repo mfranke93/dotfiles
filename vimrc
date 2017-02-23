@@ -273,11 +273,9 @@ set laststatus=2
 
 " now set it up to change the status line based on mode
 if version >= 700
-    if has("gui_running")
-        au InsertEnter * hi StatusLine term=reverse ctermfg=0 ctermbg=5 gui=bold guifg=Black guibg=Green
-        au InsertLeave * hi StatusLine term=reverse ctermfg=0 ctermbg=2 gui=bold guifg=White guibg=Black
-        au BufWinEnter * hi StatusLine term=reverse ctermfg=0 ctermbg=2 gui=bold guifg=White guibg=Black
-    endif
+    au InsertEnter * hi StatusLine term=reverse ctermfg=46 ctermbg=0 gui=bold guifg=Black guibg=LimeGreen
+    au InsertLeave * hi StatusLine term=reverse ctermfg=0 ctermbg=14 gui=bold guifg=White guibg=Black
+    au BufWinEnter * hi StatusLine term=reverse ctermfg=0 ctermbg=14 gui=bold guifg=White guibg=Black
 endif
 
 filetype plugin indent on
