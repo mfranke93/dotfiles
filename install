@@ -26,6 +26,7 @@ done
 mkdir -p ~/.vim/autoload
 ln -sf $(pwd)/third_party/vim-plug/plug.vim ~/.vim/autoload/
 
+install-file liquidpromptrc ~/.config/liquidpromptrc
 install-file Xresources ~/.Xresources
 install-file bin/currentlyplayed ~/bin/currentlyplayed
 install-file bin/systemstatus.py ~/bin/systemstatus.py

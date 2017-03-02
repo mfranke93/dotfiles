@@ -13,14 +13,6 @@
 #  are allowed; b or bl selects black.
 #
 
-#source /usr/share/zsh-antigen/antigen.zsh
-
-## use oh-my-zsh as standard repo
-#antigen bundle command-not-found
-
-## apply antigen plugins
-#antigen apply
-
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
@@ -221,7 +213,22 @@ elif [[ -f /etc/DIR_COLORS ]] ; then
 fi
 
 if [[ -f ~/.liquidprompt/liquidprompt ]]; then
-    source ~/.liquidprompt/liquidprompt.plugin.zsh
+    # only in interactive sessions, not script or scp
+    if [[ $- = *i* ]] 
+    then
+        source ~/.liquidprompt/liquidprompt.plugin.zsh
+        # checks if not in tmux session and if not, counts sessions
+        available_tmux_session_count()
+        {
+            if [[ -z "$TMUX" ]]
+            then
+                echo -n `tmux list-sessions | wc -l | tr -d "\n"`
+                echo -n "t "
+            fi
+        }
+        
+        LP_PS1_PREFIX="%F{038}$(available_tmux_session_count)%f"
+    fi
 fi
 
 # aliases
