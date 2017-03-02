@@ -214,20 +214,60 @@ fi
 
 if [[ -f ~/.liquidprompt/liquidprompt ]]; then
     # only in interactive sessions, not script or scp
-    if [[ $- = *i* ]] 
+    if [[ $- = *i* ]]
     then
-        source ~/.liquidprompt/liquidprompt.plugin.zsh
-        # checks if not in tmux session and if not, counts sessions
-        available_tmux_session_count()
-        {
-            if [[ -z "$TMUX" ]]
-            then
-                echo -n `tmux list-sessions | wc -l | tr -d "\n"`
-                echo -n "t "
-            fi
-        }
+        source ~/.liquidprompt/liquidprompt
         
-        LP_PS1_PREFIX="%F{038}$(available_tmux_session_count)%f"
+        # From liquidprompt: override function to add attached sessions
+        ################
+        # Related jobs #
+        ################
+
+        # Display the count of each if non-zero:
+        # - detached screens sessions and/or tmux sessions running on the host
+        # - attached running jobs (started with $ myjob &)
+        # - attached stopped jobs (suspended with Ctrl-Z)
+        _lp_jobcount_color()
+        {
+            (( LP_ENABLE_JOBS )) || return
+
+            local ret=""
+            local -i r s
+
+            # Count attached sessions
+            if (( _LP_ENABLE_DETACHED_SESSIONS )); then
+                local -i attached=0
+                (( _LP_ENABLE_SCREEN )) && attached=$(screen -ls 2> /dev/null | \grep -cv '[Dd]etach[^)]*)$')
+                (( _LP_ENABLE_TMUX )) && attached+=$(tmux list-sessions 2> /dev/null | \grep -c 'attached')
+                (( attached > 0 )) && ret+="%F{074}${attached}a%f"
+            fi
+
+            # Count detached sessions
+            if (( _LP_ENABLE_DETACHED_SESSIONS )); then
+                local -i detached=0
+                (( _LP_ENABLE_SCREEN )) && detached=$(screen -ls 2> /dev/null | \grep -c '[Dd]etach[^)]*)$')
+                (( _LP_ENABLE_TMUX )) && detached+=$(tmux list-sessions 2> /dev/null | \grep -cv 'attached')
+                if (( detached > 0 ))
+                then
+                    [[ -n "$ret" ]] && ret+='/'
+                    (( detached > 0 )) && ret+="${LP_COLOR_JOB_D}${detached}d${NO_COL}"
+                fi
+            fi
+
+            # Count running jobs
+            if (( r = $(jobs -r | wc -l) )); then
+                [[ -n "$ret" ]] && ret+='/'
+                ret+="${LP_COLOR_JOB_R}${r}&${NO_COL}"
+            fi
+
+            # Count stopped jobs
+            if (( s = $(jobs -s | wc -l) )); then
+                [[ -n "$ret" ]] && ret+='/'
+                ret+="${LP_COLOR_JOB_Z}${s}z${NO_COL}"
+            fi
+
+            echo -nE "$ret"
+        }
     fi
 fi
 
