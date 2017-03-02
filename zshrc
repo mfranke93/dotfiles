@@ -239,6 +239,7 @@ if [[ -f ~/.liquidprompt/liquidprompt ]]; then
                 local -i attached=0
                 (( _LP_ENABLE_SCREEN )) && attached=$(screen -ls 2> /dev/null | \grep -cv '[Dd]etach[^)]*)$')
                 (( _LP_ENABLE_TMUX )) && attached+=$(tmux list-sessions 2> /dev/null | \grep -c 'attached')
+                [[ -n "$TMUX" ]] && let attached-=1  # ignore current tmux session
                 (( attached > 0 )) && ret+="%F{074}${attached}a%f"
             fi
 
