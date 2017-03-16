@@ -24,8 +24,6 @@ bind -n C-left prev
 bind -n C-right next
 
 # From: http://www.hamvocke.com/blog/a-guide-to-customizing-your-tmux-conf/
-# don't rename windows automatically
-set-option -g allow-rename off
 
 ######################
 ### DESIGN CHANGES ###
@@ -125,3 +123,7 @@ set -g message-fg colour232
 set -g message-bg colour166
 
 # }
+
+# don't rename windows automatically
+set-option -g allow-rename off
+set-window-option -g automatic-rename off
