@@ -189,7 +189,7 @@ exec --no-startup-id unclutter -idle 5.0 -root
 exec --no-startup-id dunst
 
 # browser and email
-bindsym $mod+c exec dwb 
+bindsym $mod+c exec qutebrowser 
 bindsym $mod+b exec thunderbird
 
 # file manager
