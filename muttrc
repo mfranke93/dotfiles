@@ -1,0 +1,29 @@
+# read passwort from pgp encrypted file
+source "gpg -dq $HOME/.my-pwds.gpg |"
+
+set imap_user = "sniff@mumintroll.org"
+set folder = "imaps://imap.one.com:993"
+set smtp_url = "smtp://sniff@mumintroll.org@send.one.com:587/"
+set realname = "Max Franke"
+set from = "sniff@mumintroll.org"
+set trash = "+INBOX/Trash"
+set spoolfile = "+INBOX"
+set record = "$HOME/Mail/sent"
+set mbox = "+INBOX/Saved"
+set ssl_starttls = yes
+set ssl_force_tls = yes
+set imap_pass = $my_pass
+
+# do not wait to enter manually
+unset imap_passive
+
+# poll subscribed mailboxes
+set imap_check_subscribed
+set mail_check = 60
+set timeout = 10
+
+# keep cache of headers
+set header_cache = "~/.mutt-hcache"
+
+# display download progress every 5K
+set net_inc = 5
