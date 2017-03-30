@@ -190,7 +190,7 @@ exec --no-startup-id dunst
 
 # browser and email
 bindsym $mod+c exec qutebrowser 
-bindsym $mod+b exec thunderbird
+bindsym $mod+b exec urxvt -e mutt
 
 # file manager
 bindsym $mod+n exec urxvt -e ranger
