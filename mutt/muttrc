@@ -15,3 +15,6 @@ source $HOME/.mutt/05-keyboard.muttrc
 
 # address book interface
 source $HOME/.mutt/06-addressbook.muttrc
+
+# sidebar
+source $HOME/.mutt/07-sidebar.muttrc
