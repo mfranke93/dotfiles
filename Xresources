@@ -1,37 +1,7 @@
 Xcursor.theme:    Vanilla-DMZ-AA
-
-xterm*faceName: Source Code Pro
-xterm*faceSize: 10
-xterm*metaSendsEscape: false
-
-xterm.inputMethod: ibus
-xterm.preeditType: OverTheSpot
-
-!Theme Nine
-xterm*background: rgb:1a/1a/1a
-xterm*foreground: rgb:d6/d6/d6
-xterm*color0:     rgb:00/00/00
-xterm*color1:     rgb:9e/18/28
-xterm*color2:     rgb:00/88/00
-xterm*color3:     rgb:96/8a/38
-xterm*color4:     rgb:41/41/71
-xterm*color5:     rgb:96/3c/59
-xterm*color6:     rgb:41/81/79
-xterm*color7:     rgb:be/be/be
-xterm*color8:     rgb:66/66/66
-xterm*color9:     rgb:cf/61/71
-xterm*color10:     rgb:7c/bc/8c
-xterm*color11:     rgb:ff/f7/96
-xterm*color12:     rgb:41/86/be
-xterm*color13:     rgb:cf/9e/be
-xterm*color14:     rgb:71/be/be
-xterm*color15:    rgb:ff/ff/ff
-
-xterm*cursorColor: #d6d6d6
-
 ! urxvt
-urxvt.font: xft:Source Code Pro:size=10
-urxvt.letterSpace: -1
+urxvt.font: -xos4-terminus-*-*-*-12-*
+!urxvt.letterSpace: -1
 urxvt*metaSendsEscape: false
 urxvt.scrollBar: false
 urxvt.title: rxvt-unicode-256color
@@ -39,31 +9,26 @@ urxvt.title: rxvt-unicode-256color
 urxvt.inputMethod: ibus
 urxvt.preeditType: OverTheSpot
 
+URxvt*urlLauncher:/usr/bin/qutebrowser
+
 !Theme Nine
-urxvt*background: rgb:1a/1a/1a
-urxvt*foreground: rgb:d6/d6/d6
-urxvt*color0:     rgb:00/00/00
-urxvt*color1:     rgb:9e/18/28
-urxvt*color2:     rgb:00/88/00
-urxvt*color3:     rgb:96/8a/38
-urxvt*color4:     rgb:41/41/71
-urxvt*color5:     rgb:96/3c/59
-urxvt*color6:     rgb:41/81/79
-urxvt*color7:     rgb:be/be/be
-urxvt*color8:     rgb:66/66/66
-urxvt*color9:     rgb:cf/61/71
-urxvt*color10:     rgb:7c/bc/8c
-urxvt*color11:     rgb:ff/f7/96
-urxvt*color12:     rgb:41/86/be
-urxvt*color13:     rgb:cf/9e/be
-urxvt*color14:     rgb:71/be/be
-urxvt*color15:    rgb:ff/ff/ff
+urxvt*background: rgb:ff/ff/ff
+urxvt*foreground: rgb:00/00/00
+urxvt*color0:     rgb:7f/7f/7f
+urxvt*color1:     rgb:cd/00/00
+urxvt*color2:     rgb:00/8b/00
+urxvt*color3:     rgb:ee/ee/00
+urxvt*color4:     rgb:00/00/cd
+urxvt*color5:     rgb:cd/00/cd
+urxvt*color6:     rgb:00/ee/ee
+urxvt*color7:     rgb:fa/eb/d7
+urxvt*color8:     rgb:e5/e5/e5
+urxvt*color9:     rgb:80/00/00
+urxvt*color10:    rgb:00/50/20
+urxvt*color11:    rgb:99/55/00
+urxvt*color12:    rgb:00/40/80
+urxvt*color13:    rgb:44/33/00
+urxvt*color14:    rgb:30/60/80
+urxvt*color15:    rgb:ff/ff/ff    rgb:ff/ff/ff
+urxvt*cursorColor: #404040
 
-urxvt*cursorColor: #d6d6d6
-
-!Xft.antialias: 1
-!Xft.hinting: true
-!Xft.hintstyle: hintslight
-!Xft.dpi: 112
-!Xft.rgba: rgb
-!Xft.icdfilter: icddefault
