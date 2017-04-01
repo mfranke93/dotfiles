@@ -114,6 +114,10 @@ set undodir=~/.vim/undo//,/tmp
 set undolevels=1000
 set undoreload=10000
 
+" mode lines
+set modeline
+set modelines=5
+
 " System default for mappings is now the "," character
 let mapleader = ","
 let maplocalleader = "\\"
