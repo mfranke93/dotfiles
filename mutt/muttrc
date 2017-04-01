@@ -1,0 +1,11 @@
+# general
+source $HOME/.mutt/01-imap-mumintroll.muttrc
+
+# pgp
+source $HOME/.mutt/02-pgp.muttrc
+
+# colors
+source $HOME/.mutt/03-colors.muttrc
+
+# macros
+source $HOME/.mutt/04-macros.muttrc
