@@ -9,3 +9,6 @@ source $HOME/.mutt/03-colors.muttrc
 
 # macros
 source $HOME/.mutt/04-macros.muttrc
+
+# keyboard bindings
+source $HOME/.mutt/05-keyboard.muttrc
