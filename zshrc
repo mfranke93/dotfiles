@@ -309,3 +309,4 @@ alias gd="git diff"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 export EDITOR=$(which vim)
+export GPG_TTY=$(tty)
