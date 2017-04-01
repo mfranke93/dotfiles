@@ -184,9 +184,9 @@ elseif $TERM == "screen-256color"
   set t_Co=256
 endif
 
-colorscheme monokai
+colorscheme default
 if has("gui_running")
-    set guifont=Source\ Code\ Pro\ 10
+    "set guifont=Terminus\ 10
 endif
 :nohls
 
