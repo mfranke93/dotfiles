@@ -12,3 +12,6 @@ source $HOME/.mutt/04-macros.muttrc
 
 # keyboard bindings
 source $HOME/.mutt/05-keyboard.muttrc
+
+# address book interface
+source $HOME/.mutt/06-addressbook.muttrc
