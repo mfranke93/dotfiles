@@ -1,6 +1,7 @@
 [user]
 	name = Max Franke
 	email = max@mumintroll.org
+	signingkey = C4349885
 [credential]
 	helper = cache
 [push]
