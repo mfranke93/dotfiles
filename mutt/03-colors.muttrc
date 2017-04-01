@@ -1,2 +1,19 @@
 # vim: ft=muttrc
 
+color normal black white
+color signature blue white
+color hdrdefault blue white
+color quoted blue white
+color attachment red white
+color prompt black brightmagenta
+color message black brightred
+color error black brightred 
+color indicator white red
+color status white blue
+color tree black white
+color markers white red
+color search black white
+color tilde black brightmagenta
+color index white blue ~F
+color index white red "~N|~O"
+
