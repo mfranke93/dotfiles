@@ -190,10 +190,10 @@ exec --no-startup-id dunst
 
 # browser and email
 bindsym $mod+c exec qutebrowser 
-bindsym $mod+b exec urxvt -e mutt
+bindsym $mod+b exec urxvt -title mutt -e mutt
 
 # file manager
-bindsym $mod+n exec urxvt -e ranger
+bindsym $mod+n exec urxvt -title ranger -e ranger
 
 ######################
 # Screen brightness controls
