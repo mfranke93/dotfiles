@@ -1,7 +1,7 @@
 # vim:ft=muttrc
 
 # read password from pgp encrypted file
-source "GPG_TTY=$(tty) gpg --decrypt --quiet $HOME/.my-pwds.gpg |"
+source "echo \"set my_pass=$(pass sniff@mumintroll.org)\" |"
 
 set imap_user = "sniff@mumintroll.org"
 set folder = "imaps://imap.one.com:993"
