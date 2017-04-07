@@ -1,3 +1,4 @@
+# vim: ft=muttrc
 # general
 source $HOME/.mutt/01-imap-mumintroll.muttrc
 
