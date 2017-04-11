@@ -309,3 +309,6 @@ alias gd="git diff"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 export EDITOR=$(which vim)
+
+# no idea why it isn't working otherwise
+alias git='GPG_TTY=$(tty) git'
