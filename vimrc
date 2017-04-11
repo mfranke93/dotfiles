@@ -221,9 +221,19 @@ set laststatus=2
 set showcmd
 
 " set cursor shapes in uxterm
-let &t_SI = "\<Esc>[6 q"
-"let &t_SR = "\<Esc>[4 q" " this one is not recognized, but we don't need it for replace that badly
-let &t_EI = "\<Esc>[2 q"
+if exists('$TMUX')
+    let &t_SI = "\ePtmux;\e\e[6 q\e\\"
+    let &t_EI = "\ePtmux;\e\e[2 q\e\\"
+else
+    let &t_SI = "\e[6 q"
+    let &t_EI = "\e[2 q"
+endif
+
+" reset cursor on start
+augroup ResetCursor
+    au!
+    autocmd VimEnter * silent !echo -ne "\e[2 q"
+augroup END
 
 " No spaces for tabs in Makefiles
 autocmd FileType make setlocal noexpandtab
