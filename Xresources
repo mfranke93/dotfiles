@@ -21,7 +21,7 @@ urxvt*color3:     rgb:ee/ee/00
 urxvt*color4:     rgb:00/00/cd
 urxvt*color5:     rgb:cd/00/cd
 urxvt*color6:     rgb:00/ee/ee
-urxvt*color7:     rgb:fa/fa/fa
+urxvt*color7:     rgb:aa/aa/aa
 urxvt*color8:     rgb:e5/e5/e5
 urxvt*color9:     rgb:80/00/00
 urxvt*color10:    rgb:00/50/20
@@ -29,6 +29,6 @@ urxvt*color11:    rgb:99/55/00
 urxvt*color12:    rgb:00/40/80
 urxvt*color13:    rgb:44/33/00
 urxvt*color14:    rgb:30/60/80
-urxvt*color15:    rgb:ff/ff/ff
+urxvt*color15:    rgb:bc/bc/bc
 urxvt*cursorColor: #404040
 
