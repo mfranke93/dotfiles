@@ -3,31 +3,44 @@
 # read password from pgp encrypted file
 source "echo \"set my_pass=$(pass sniff@mumintroll.org)\" |"
 
-set imap_user = "sniff@mumintroll.org"
-set folder = "imaps://imap.one.com:993"
 set smtp_url = "smtp://sniff@mumintroll.org@send.one.com:587/"
 set realname = "Max Franke"
-set from = "sniff@mumintroll.org"
-set trash = "+INBOX/Trash"
-set spoolfile = "+INBOX"
-set record = "=INBOX/Sent"
-set mbox = "=INBOX/Saved"
-set postponed = "=INBOX/Drafts"
+set from = "Max Franke <sniff@mumintroll.org>"
 set ssl_starttls = yes
 set ssl_force_tls = yes
-set imap_pass = $my_pass
 set smtp_pass = $my_pass
+
+# using offlineimap
+set mbox_type   = Maildir
+
+set spoolfile      = "~/mail/mumintroll/INBOX"
+set folder      = "~/mail/mumintroll"
+set record="+INBOX.Sent"
+set postponed="+INBOX.Drafts"
+set mbox        = "+INBOX.Saved"
 
 # do not wait to enter manually
 unset imap_passive
 
 # poll subscribed mailboxes
 set imap_check_subscribed
-set mail_check = 60
+set mail_check = 0
 set timeout = 10
+
+set use_from
+set envelope_from 
 
 # keep cache of headers
 set header_cache = "~/.mutt-hcache"
 
 # display download progress every 5K
 set net_inc = 5
+
+mailboxes ! + `\
+for file in ~/mail/mumintroll/*; do \
+  box=$(basename "$file"); \
+  if [ ! "$box" = '.' -a ! "$box" = '..' -a ! "$box" = '.customflags' \
+      -a ! "$box" = '.subscriptions' ]; then \
+    echo -n "\"+$box\" "; \
+  fi; \
+done`

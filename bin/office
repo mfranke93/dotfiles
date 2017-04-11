@@ -17,24 +17,8 @@ then
     tmux send-keys -t OFFICE:0 'mutt' C-m
     tmux rename-window -t OFFICE:0 mutt
 
-    # split up window 1
-    tmux split-window -h -p 35 -t OFFICE:1.0
-    tmux split-window -v -p 80 -t OFFICE:1.1
-
     # start calendar in window 1, pane 0
-    tmux send-keys -t OFFICE:1.0 'calcurse -q' C-m
-
-    # start clock in window 1, pane 1
-    tmux clock-mode -t OFFICE:1.1
-
-    # start top in window 1, pane 2
-    tmux send-keys -t OFFICE:1.2 'top' C-m
-    # turn off forest mode
-    sleep 1
-    tmux send-keys -t OFFICE:1.2 V
-
-    # select calcurse in window 1
-    tmux select-pane -t OFFICE:1.0
+    tmux send-keys -t OFFICE:1 'khal interactive' C-m
 
     # go to window 0:mutt
     tmux select-window -t OFFICE:0
