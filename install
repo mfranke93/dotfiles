@@ -26,12 +26,14 @@ done
 mkdir -p ~/.vim/autoload
 ln -sf $(pwd)/third_party/vim-plug/plug.vim ~/.vim/autoload/
 
+ln -sf $(pwd)/mutt ~/.mutt
+
 install-file liquidpromptrc ~/.config/liquidpromptrc
-install-file mutt ~/.mutt
 install-file bin/office ~/bin/office
 install-file mailcap ~/.mailcap
 install-file offlineimap/offlineimaprc ~/.offlineimaprc
 install-file offlineimap/offlineimap.py ~/.offlineimaprc
+install-file khalconfig ~/.config/khal/config
 install-file Xresources ~/.Xresources
 install-file bin/currentlyplayed ~/bin/currentlyplayed
 install-file bin/systemstatus.py ~/bin/systemstatus.py
