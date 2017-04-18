@@ -19,3 +19,6 @@ source $HOME/.mutt/06-addressbook.muttrc
 
 # sidebar
 source $HOME/.mutt/07-sidebar.muttrc
+
+# autoview html in links
+auto_view text/html
