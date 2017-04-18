@@ -26,7 +26,10 @@ done
 mkdir -p ~/.vim/autoload
 ln -sf $(pwd)/third_party/vim-plug/plug.vim ~/.vim/autoload/
 
-ln -sf $(pwd)/mutt ~/.mutt
+ln -sfT $(pwd)/mutt/ ~/.mutt
+
+gpg -d vdirsyncerconfig.gpg > vdirsyncerconfig
+install-file vdirsyncerconfig ~/.vdirsyncer/config
 
 install-file liquidpromptrc ~/.config/liquidpromptrc
 install-file bin/office ~/bin/office
