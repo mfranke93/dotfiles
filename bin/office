@@ -13,15 +13,23 @@ then
     # new windows
     tmux new-window -n calendar
 
-    # start mutt in window 0
-    tmux send-keys -t OFFICE:0 'mutt' C-m
+    # split
+    tmux split-window -v -p 10 -t OFFICE:0
+
+    tmux split-window -v -p 10 -t OFFICE:1
+
+    # start mutt in window 0, pane 0, and offlineimap in pane 1
+    tmux send-keys -t OFFICE:0.0 'mutt' C-m
+    tmux send-keys -t OFFICE:0.1 'offlineimap -u basic' C-m
     tmux rename-window -t OFFICE:0 mutt
 
     # start calendar in window 1, pane 0
-    tmux send-keys -t OFFICE:1 'khal interactive' C-m
+    tmux send-keys -t OFFICE:1.0 'khal interactive' C-m
+    tmux send-keys -t OFFICE:1.1 'vdirsyncer sync' C-m
 
     # go to window 0:mutt
     tmux select-window -t OFFICE:0
+    tmux select-pane -t OFFICE:0.0
 fi
 
 tmux attach -t OFFICE
