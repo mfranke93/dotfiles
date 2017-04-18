@@ -10,15 +10,27 @@ color attachment color1 color15
 color prompt color0 color13
 color message color0 color9
 color error color0 color9
-color indicator color13 color24
+color indicator color0 color152
 color status color15 color4
 color tree color0 color15
-color markers color1 color226
+color markers color1 color15
 color search color0 color15
 color tilde color0 color13
 color index color128 color15 ~F
 color index color1 color226 "~N|~O"
 color bold color0 color15
-set arrow_cursor
+#set arrow_cursor
 
+#    Mailbox is open
+color sidebar_indicator color159 color63
+#    Mailbox is highlighted
+color sidebar_highlight color6 color147
+#    Mailbox is the spoolfile (receives incoming mail)
+color sidebar_spoolfile color4 color225
+#  Mailbox contains new mail
 color sidebar_new color15 color1
+#  Mailbox contains flagged mail
+color sidebar_flagged color9 color15
+#     Mailbox does not match above
+color sidebar_ordinary color0 color15
+
