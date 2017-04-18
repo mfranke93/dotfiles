@@ -11,8 +11,6 @@ set-window-option -g xterm-keys on
 #set-window-option -g utf8 on
 
 =======
-# make tmux display things in 256 colors
-set -g default-terminal "xterm-256color"
 
 #urxvt tab like window switching (-n: no prior escape seq)
 bind -n S-left select-pane -L
