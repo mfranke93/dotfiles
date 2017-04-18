@@ -1,0 +1,28 @@
+[general]
+ui = ttyui
+accounts = mumintroll
+pythonfile = ~/.offlineimap.py
+
+[Account mumintroll]
+localrepository = mumintroll-local
+remoterepository = mumintroll-remote
+# refresh every 30s
+autorefresh = 0.5
+
+[Repository mumintroll-local]
+type = Maildir
+localfolders = ~/mail/mumintroll
+
+[Repository mumintroll-remote]
+type = IMAP
+remoteuser = sniff@mumintroll.org
+remotehost = imap.one.com
+remotepasseval = get_pass()
+ssl = yes
+realdelete = no
+maxconnections = 3
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+# keep alive for 60s
+keepalive = 60
+# hold connection open
+holdconnectionopen = yes
