@@ -15,13 +15,13 @@ URxvt*urlLauncher:/usr/bin/qutebrowser
 URxvt*color7: #666666
 
 ! darker light green (white background)
-URxvt*color10: #008800
+URxvt*color2: #008800
+URxvt*color10: #226622
 
 ! darker yellows
 URxvt*color3: #888800
 URxvt*color11: #666600
 
 ! darker cyan
-URxvt*color2: #008888
 URxvt*color6: #004488
 URxvt*color14: #006666
