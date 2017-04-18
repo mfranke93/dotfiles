@@ -35,7 +35,7 @@ install-file liquidpromptrc ~/.config/liquidpromptrc
 install-file bin/office ~/bin/office
 install-file mailcap ~/.mailcap
 install-file offlineimap/offlineimaprc ~/.offlineimaprc
-install-file offlineimap/offlineimap.py ~/.offlineimaprc
+install-file offlineimap/offlineimap.py ~/.offlineimap.py
 install-file khalconfig ~/.config/khal/config
 install-file Xresources ~/.Xresources
 install-file bin/currentlyplayed ~/bin/currentlyplayed
