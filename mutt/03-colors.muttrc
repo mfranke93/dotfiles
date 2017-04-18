@@ -1,19 +1,24 @@
 # vim: ft=muttrc
+#
+# format: color <artifact> <fg> <bg>
 
-color normal black white
-color signature blue white
-color hdrdefault blue white
-color quoted blue white
-color attachment red white
-color prompt black brightmagenta
-color message black brightred
-color error black brightred 
-color indicator white red
-color status white blue
-color tree black white
-color markers white red
-color search black white
-color tilde black brightmagenta
-color index white blue ~F
-color index white red "~N|~O"
+color normal color0 color15
+color signature color4 color15
+color hdrdefault color4 color15
+color quoted color4 color15
+color attachment color1 color15
+color prompt color0 color13
+color message color0 color9
+color error color0 color9
+color indicator color13 color24
+color status color15 color4
+color tree color0 color15
+color markers color1 color226
+color search color0 color15
+color tilde color0 color13
+color index color128 color15 ~F
+color index color1 color226 "~N|~O"
+color bold color0 color15
+set arrow_cursor
 
+color sidebar_new color15 color1
