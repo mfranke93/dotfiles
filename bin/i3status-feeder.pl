@@ -229,11 +229,11 @@ sub power {
     
     # calculate time left and power
     my $power_now = $power_current / 1000000.0;
-    my $hours_left = $bat_energy / $power_current;
 
     my $power_str = "";
     my $time_str = "";
     if ($bat_status eq "Discharging") {
+        my $hours_left = $bat_energy / $power_current;
         $power_str = sprintf ", %.1fW", $power_now;
         $time_str  = sprintf ", %.1fh", $hours_left;
     }
