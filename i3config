@@ -166,8 +166,8 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
     position bottom
-    #status_command exec /home/max/bin/systemstatus.py
-    status_command exec /home/max/feeder
+    status_command exec /home/max/bin/i3status-feeder.pl
+
     font pango:Source Code Pro 10
     tray_output LVDS1
 #	verbose true

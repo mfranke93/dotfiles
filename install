@@ -33,6 +33,7 @@ install-file vdirsyncerconfig ~/.vdirsyncer/config
 
 install-file liquidpromptrc ~/.config/liquidpromptrc
 install-file bin/office ~/bin/office
+install-file bin/i3status-feeder.pl ~/bin/i3status-feeder.pl
 install-file mailcap ~/.mailcap
 install-file offlineimap/offlineimaprc ~/.offlineimaprc
 install-file offlineimap/offlineimap.py ~/.offlineimap.py
