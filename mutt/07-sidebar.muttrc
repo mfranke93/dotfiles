@@ -57,7 +57,7 @@ set sidebar_format = '%B%?F? [%F]?%* %?N?%N/?%S'
 #       new      - number of new messages
 #       path     - mailbox path
 #       unsorted - do not sort the mailboxes
-set sidebar_sort_method = 'unsorted'
+set sidebar_sort_method = 'path'
 
 # --------------------------------------------------------------------------
 # FUNCTIONS - shown with an example mapping
