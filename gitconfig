@@ -45,3 +45,6 @@
 	cmd = vim -R -f -d -c \"wincmd J\" \"$MERGED\" \"$LOCAL\" \"$BASE\" \"$REMOTE\" -c \"set noro\"
 [github]
 	user = mfranke93
+[commit]
+	verbose = true
+	gpgsign = true
