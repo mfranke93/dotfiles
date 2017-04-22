@@ -251,14 +251,14 @@ inoremap [29~ <NOP>
 
 " save folds on exit, load on enter, do not make dependent on cwd
 function! MakeViewIfNotCommitmsg()
-    if &ft =~ 'GITCOMMIT'
+    if &ft =~ 'GITCOMMIT' || &ft =~ 'qf'
         return
     endif
     mkview
 endfunction
 
 function! LoadViewIfNotCommitmsg()
-    if &ft =~ 'GITCOMMIT'
+    if &ft =~ 'GITCOMMIT' || &ft =~ 'qf'
         return
     endif
     silent loadview

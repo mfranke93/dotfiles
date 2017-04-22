@@ -46,7 +46,7 @@ sub color {
     if ($idx>100) { $idx = 100; }
     if ($idx<0) {$idx = 0; }
 
-    return @colors[$idx];
+    return $colors[$idx];
 };
 
 sub uptime {
@@ -54,13 +54,13 @@ sub uptime {
     my $secs;
     open my $fh, '<', '/proc/uptime';
     while ( <$fh> ) {
-        s/(\d+\.\d+) .*/\1/;
+        s/(\d+\.\d+) .*/$1/;
         $secs = $_;
         last;
     }
     
-    # get severity of uptime: 1 year is BAD
-    my $severity = log($secs)/log(365.24*24*3600) * 100;
+    # get severity of uptime: 1 month is BAD
+    my $severity = log($secs)/log(31*24*3600) * 100;
     my $json_color = color $severity;
 
     # format uptime in xw xd xh xm format
@@ -180,7 +180,7 @@ sub inet_iface {
     my $str = $short.$ipv4.$ipv6;
     my $color = color 0;
     if ($ipv4 + $ipv6 == 10) {
-        $color = color 70;
+        $color = color 30;
     }
 
     return ($str, $color);
@@ -256,7 +256,7 @@ sub power {
         $power_symbol = "⚡";
     }
 
-    my $color = color $bat_percent;
+    my $color = color (100-$bat_percent);
     my $str = sprintf "%s%s %d%%%s%s", $power_symbol, $battery_symbol, $bat_percent, $power_str, $time_str;
 
     return ($str, $color);
@@ -269,7 +269,7 @@ sub temperature {
     open my $fh, '<', '/sys/class/thermal/thermal_zone0/temp';
     while (<$fh>) {
         chomp;
-        s/(\d\d\d)$/.\1/g;
+        s/(\d\d\d)$/.$1/g;
         $temp = $_;
         last;
     }
@@ -339,35 +339,35 @@ while ()
     printf "\t\t\t{ \"full_text\": \"%s\", \"color\": \"#%s\" },\n", $json_text, $json_color;
 
     # uptime
-    my ($json_text, $json_color) = uptime;
+    ($json_text, $json_color) = uptime;
     printf "\t\t\t{ \"full_text\": \"%s\", \"color\": \"#%s\" },\n", $json_text, $json_color;
 
     # memory and swap
-    my ($json_text, $json_color) = memory;
+    ($json_text, $json_color) = memory;
     printf "\t\t\t{ \"full_text\": \"%s\", \"color\": \"#%s\" },\n", $json_text, $json_color;
 
     # / and /home disk usage
-    my ($json_text, $json_color) = diskusage '/';
+    ($json_text, $json_color) = diskusage '/';
     printf "\t\t\t{ \"full_text\": \"%s\", \"color\": \"#%s\" },\n", $json_text, $json_color;
-    my ($json_text, $json_color) = diskusage '/home';
+    ($json_text, $json_color) = diskusage '/home';
     printf "\t\t\t{ \"full_text\": \"%s\", \"color\": \"#%s\" },\n", $json_text, $json_color;
 
     # network interfaces
-    my ($json_text, $json_color) = inet_iface 'wlp3s0', 'W';
+    ($json_text, $json_color) = inet_iface 'wlp3s0', 'W';
     printf "\t\t\t{ \"full_text\": \"%s\", \"color\": \"#%s\" },\n", $json_text, $json_color;
-    my ($json_text, $json_color) = inet_iface 'enp0s25', 'E';
-    printf "\t\t\t{ \"full_text\": \"%s\", \"color\": \"#%s\" },\n", $json_text, $json_color;
-
-    my ($json_text, $json_color) = power;
+    ($json_text, $json_color) = inet_iface 'enp0s25', 'E';
     printf "\t\t\t{ \"full_text\": \"%s\", \"color\": \"#%s\" },\n", $json_text, $json_color;
 
-    my ($json_text, $json_color) = temperature;
+    ($json_text, $json_color) = power;
     printf "\t\t\t{ \"full_text\": \"%s\", \"color\": \"#%s\" },\n", $json_text, $json_color;
 
-    my ($json_text, $json_color) = volume;
+    ($json_text, $json_color) = temperature;
     printf "\t\t\t{ \"full_text\": \"%s\", \"color\": \"#%s\" },\n", $json_text, $json_color;
 
-    my ($json_text, $json_color) = datetime;
+    ($json_text, $json_color) = volume;
+    printf "\t\t\t{ \"full_text\": \"%s\", \"color\": \"#%s\" },\n", $json_text, $json_color;
+
+    ($json_text, $json_color) = datetime;
     printf "\t\t\t{ \"full_text\": \"%s\", \"color\": \"#%s\" }\n", $json_text, $json_color;
 
     print "\t],\n";
