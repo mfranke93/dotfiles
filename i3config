@@ -45,6 +45,9 @@ bindsym $mod+Return exec urxvt
 # start a GVIM session
 bindsym $mod+z exec gvim
 
+# start network connection manager/editor
+bindsym XF86WLAN exec urxvt --title "Network connections" -e "nmtui"
+
 # kill focused window
 bindsym $mod+Shift+q kill
 
@@ -183,8 +186,6 @@ bar {
 }
 
 exec --no-startup-id /usr/lib/polkit-1/polkit-agent-helper-1
-
-exec --no-startup-id nm-applet
 exec --no-startup-id unclutter -idle 5.0 -root
 exec --no-startup-id dunst
 
