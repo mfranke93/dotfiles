@@ -51,7 +51,6 @@ install-file dunstrc ~/.config/dunst/dunstrc
 install-file gitconfig ~/.gitconfig
 install-file gpg-agent.conf ~/.gnupg/gpg-agent.conf
 install-file i3config ~/.config/i3/config
-install-file i3status.conf ~/.i3status.conf
 install-file liquidpromptrc ~/.config/liquidpromptrc
 install-file lxde-rc.xml ~/.config/openbox/lxde-rc.xml
 install-file mpv_config ~/.mpv/config
