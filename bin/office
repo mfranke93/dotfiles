@@ -15,12 +15,13 @@ then
 
     # split
     tmux split-window -v -p 10 -t OFFICE:0
-
     tmux split-window -v -p 10 -t OFFICE:1
+    tmux split-window -h -p 50 -t OFFICE:0.1
 
     # start mutt in window 0, pane 0, and offlineimap in pane 1
     tmux send-keys -t OFFICE:0.0 'mutt' C-m
     tmux send-keys -t OFFICE:0.1 'offlineimap -u basic' C-m
+    tmux send-keys -t OFFICE:0.2 'offlineimap -o -a st104538' C-m
     tmux rename-window -t OFFICE:0 mail
 
     # start calendar in window 1, pane 0
