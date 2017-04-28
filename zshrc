@@ -312,3 +312,4 @@ export EDITOR=$(which vim)
 
 # no idea why it isn't working otherwise
 alias git='GPG_TTY=$(tty) git'
+export PASSWORD_STORE_X_SELECTION=primary

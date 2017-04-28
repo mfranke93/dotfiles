@@ -4,5 +4,5 @@
 macro index,pager \\u "<enter-command>set pipe_decode = yes<enter><pipe-message>urlview<enter><enter-command>set pipe_decode = no<enter>" "view URLs"
 
 # move message to spam and sync
-macro index S ":set confirmappend=no delete=yes\n<tag-prefix><save-message>=INBOX.Spam\n<sync-mailbox>:set confirmappend=yes delete=ask-yes\n"
+macro index S ":set confirmappend=no delete=yes\n<tag-prefix><save-message>+mumintroll/INBOX.Spam\n<sync-mailbox>:set confirmappend=yes delete=ask-yes\n"
 

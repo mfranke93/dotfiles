@@ -7,15 +7,6 @@ use Imager::Color;
 # turn of buffering
 STDOUT->autoflush(1);
 
-# TODO: convert to HSV
-# colors to interpolate from:
-#   0   blue    2036ff
-#   15  cyan    209cc1
-#   30  green   20c153
-#   50          39c120
-#   70  yellow  ccd81a
-#   85  orange  d8861a
-#   100 red     d8231a
 my @colors;
 my $r,my $g,my $b;
 for(my $i = 0; $i <= 100; ++$i) {
@@ -93,7 +84,7 @@ sub uptime {
 
 # get memory and swap usage
 sub memory {
-    my ($memtotal, $memavailable, $swaptotal, $swapfree);
+    my ($memtotal, $memavailable, $memcached, $swaptotal, $swapfree);
     open my $fh, '<', '/proc/meminfo';
     while (<$fh>) {
         if (/^MemTotal/) {
@@ -112,11 +103,16 @@ sub memory {
             s/[^\d]//g;
             $swapfree = $_;
         }
+        elsif (/^Cached/) {
+            s/[^\d]//g;
+            $memcached = $_;
+        }
     }
     my $memperc = ($memtotal - $memavailable)/$memtotal * 100.0;
     my $swapperc = ($swaptotal - $swapfree)/$swaptotal * 100.0;
+    my $cachedperc = $memcached / $memtotal * 100.0;
 
-    my $str = sprintf "Mem: %.0f%%, Swap: %.0f%%", $memperc, $swapperc;
+    my $str = sprintf "Mem: %2.0f%%  (%2.0f%%), Swap: %2.0f%%", $memperc, $cachedperc, $swapperc;
     my $color = color $memperc;
 
     return ($str, $color);
@@ -141,7 +137,7 @@ sub diskusage {
     chomp $output;
     $output =~ s/%//g;
 
-    my $str = sprintf "%s: %d%%", $disk, $output;
+    my $str = sprintf "%s: %3d%%", $disk, $output;
     my $color = color $output;
     return ($str, $color);
 }
@@ -234,8 +230,8 @@ sub power {
     my $time_str = "";
     if ($bat_status eq "Discharging") {
         my $hours_left = $bat_energy / $power_current;
-        $power_str = sprintf ", %.1fW", $power_now;
-        $time_str  = sprintf ", %.1fh", $hours_left;
+        $power_str = sprintf ", %4.1fW", $power_now;
+        $time_str  = sprintf ", %3.1fh", $hours_left;
     }
 
     # symbols and stuff
@@ -257,7 +253,7 @@ sub power {
     }
 
     my $color = color (100-$bat_percent);
-    my $str = sprintf "%s%s %d%%%s%s", $power_symbol, $battery_symbol, $bat_percent, $power_str, $time_str;
+    my $str = sprintf "%s%s %3d%%%s%s", $power_symbol, $battery_symbol, $bat_percent, $power_str, $time_str;
 
     return ($str, $color);
 }
@@ -275,7 +271,7 @@ sub temperature {
     }
 
     my $ratio = ($temp - 30) / (85 - 30) * 100;
-    my $str = sprintf "%.0f°C", $temp;
+    my $str = sprintf "%2.0f°C", $temp;
     my $color = color $ratio;
 
     return ($str, $color);
@@ -306,7 +302,7 @@ sub volume {
         $status = "∅";
     }
 
-    my $str = sprintf "%s %d%%", $status, $vol;
+    my $str = sprintf "%s %3d%%", $status, $vol;
     my $color = color $vol;
     if ($muted) {
         $color = "888888";
@@ -340,7 +336,7 @@ while ()
 
     # uptime
     ($json_text, $json_color) = uptime;
-    printf "\t\t\t{ \"full_text\": \"%s\", \"color\": \"#%s\" },\n", $json_text, $json_color;
+    printf "\t\t\t{ \"full_text\": \"%s\", \"color\": \"#%s\", \"min_width\": \"22h 14m\", \"align\": \"right\" },\n", $json_text, $json_color;
 
     # memory and swap
     ($json_text, $json_color) = memory;

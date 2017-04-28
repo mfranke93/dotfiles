@@ -13,11 +13,11 @@ set smtp_pass = $my_pass
 # using offlineimap
 set mbox_type   = Maildir
 
-set spoolfile      = "~/mail/mumintroll/INBOX"
-set folder      = "~/mail/mumintroll"
-set record="+INBOX.Sent"
-set postponed="+INBOX.Drafts"
-set mbox        = "+INBOX.Saved"
+set spoolfile   = "~/mail/mumintroll/INBOX"
+set folder      = "~/mail/"
+set record      = "+mumintroll/INBOX.Sent"
+set postponed   = "+mumintroll/INBOX.Drafts"
+set mbox        = "+mumintroll/INBOX.Saved"
 
 # do not wait to enter manually
 unset imap_passive
@@ -36,11 +36,9 @@ set header_cache = "~/.mutt-hcache"
 # display download progress every 5K
 set net_inc = 5
 
-mailboxes ! + `\
-for file in ~/mail/mumintroll/*; do \
-  box=$(basename "$file"); \
-  if [ ! "$box" = '.' -a ! "$box" = '..' -a ! "$box" = '.customflags' \
-      -a ! "$box" = '.subscriptions' ]; then \
-    echo -n "\"+$box\" "; \
-  fi; \
-done`
+# mailboxes
+source ~/.muttrc.mailboxes
+
+# add link to PGP key in header
+my_hdr X-PGP-Key: http://keys.gnupg.net/pks/lookup?search=0xc4349885&op=vindex
+
