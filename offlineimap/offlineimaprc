@@ -20,7 +20,6 @@ remotehost = imap.one.com
 remotepasseval = get_pass()
 ssl = yes
 realdelete = no
-maxconnections = 3
 sslcacertfile = /etc/ssl/certs/ca-certificates.crt
 # keep alive for 60s
 keepalive = 60
@@ -43,7 +42,6 @@ remotehost = imap.uni-stuttgart.de
 remotepasseval = get_pass("st104538@stud.uni-stuttgart.de")
 ssl = yes
 realdelete = no
-maxconnections = 3
 sslcacertfile = /etc/ssl/certs/ca-certificates.crt
 # keep alive for 60s
 keepalive = 60
@@ -58,4 +56,4 @@ header = "mailboxes "
 peritem = "+%(accountname)s/%(foldername)s"
 sep = " "
 footer = "\n"
-#incremental = no
+incremental = no

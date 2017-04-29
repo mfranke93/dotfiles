@@ -229,9 +229,11 @@ sub power {
     my $power_str = "";
     my $time_str = "";
     if ($bat_status eq "Discharging") {
-        my $hours_left = $bat_energy / $power_current;
-        $power_str = sprintf ", %4.1fW", $power_now;
-        $time_str  = sprintf ", %3.1fh", $hours_left;
+        if ($power_current) {
+            my $hours_left = $bat_energy / $power_current;
+            $power_str = sprintf ", %4.1fW", $power_now;
+            $time_str  = sprintf ", %3.1fh", $hours_left;
+        }
     }
 
     # symbols and stuff
