@@ -12,11 +12,13 @@ then
 
     # new windows
     tmux new-window -n calendar
+    tmux new-window -n tasks
 
     # split
     tmux split-window -v -p 10 -t OFFICE:0
     tmux split-window -v -p 10 -t OFFICE:1
     tmux split-window -h -p 50 -t OFFICE:0.1
+    tmux split-window -h -p 50 -t OFFICE:2
 
     # start mutt in window 0, pane 0, and offlineimap in pane 1
     tmux send-keys -t OFFICE:0.0 'mutt' C-m
@@ -27,6 +29,11 @@ then
     # start calendar in window 1, pane 0
     tmux send-keys -t OFFICE:1.0 'khal interactive' C-m
     tmux send-keys -t OFFICE:1.1 'vdirsyncer sync' C-m
+
+    # execute task in window 2, pane 0
+    tmux send-keys -t OFFICE:2.0 'task shell' C-m
+    tmux send-keys -t OFFICE:2.1 'while true; do clear; task next; inotifywait -qq -e modify .task/*.data; done' C-m
+    tmux select-pane -t OFFICE:2.0
 
     # go to window 0:mutt
     tmux select-window -t OFFICE:0
