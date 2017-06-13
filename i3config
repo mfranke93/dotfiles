@@ -238,7 +238,7 @@ mode "$mode_system" {
 bindsym $mod+Print mode "$mode_system"
 
 # set wallpaper
-exec --no-startup-id feh --bg-tile /home/max/Pictures/wallpaper
+exec --no-startup-id feh --bg-center /home/max/Pictures/wallpaper
 
 bindsym $mod+m exec /home/max/bin/currentlyplayed
 
