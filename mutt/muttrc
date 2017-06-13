@@ -22,3 +22,7 @@ source $HOME/.mutt/07-sidebar.muttrc
 
 # autoview html in links
 auto_view text/html
+
+# save-hooks
+source $HOME/.mutt/99-savehooks.muttrc
+

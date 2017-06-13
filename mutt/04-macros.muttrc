@@ -1,6 +1,8 @@
 # vim: ft=muttrc
 
 # macro to start urlview for the current message to open contained urls
+#  https://neomutt.org/guide/configuration.html#bind-warnings
+bind pager \\ noop
 macro index,pager \\u "<enter-command>set pipe_decode = yes<enter><pipe-message>urlview<enter><enter-command>set pipe_decode = no<enter>" "view URLs"
 
 # move message to spam and sync
