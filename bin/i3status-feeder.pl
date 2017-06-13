@@ -2,34 +2,35 @@
 
 use strict;
 use IO::Handle;
-use Imager::Color;
+#use Imager::Color;
 
 # turn of buffering
 STDOUT->autoflush(1);
 
 my @colors;
-my $r,my $g,my $b;
-for(my $i = 0; $i <= 100; ++$i) {
-    my $hue;
-    if ($i < 30) {
-        $hue = 220 - 100 * $i / 30;
-    }
-    else {
-        $hue = 120 - 120 * ($i - 30)/70;
-    }
-
-
-    my $hsv = Imager::Color->new(
-        hsv => [ $hue, 0.55, 1.0 ]
-    );
-    my @rgb = $hsv->rgba;
-
-    my $r = $rgb[0];
-    my $g = $rgb[1];
-    my $b = $rgb[2];
-
-    $colors[$i] = sprintf "%02X%02X%02X", $r, $g, $b;
-}
+@colors = ( "72A1FF", "72A9FF", "72B1FF", "72B8FF", "72C0FF", "72C8FF", "72D0FF", "72D8FF", "72DFFF", "72E7FF", "72EFFF", "72F7FF", "72FFFF", "72FFF7", "72FFEF", "72FFE7", "72FFDF", "72FFD8", "72FFD0", "72FFC8", "72FFC0", "72FFB8", "72FFB1", "72FFA9", "72FFA1", "72FF99", "72FF91", "72FF8A", "72FF82", "72FF7A", "72FF72", "76FF72", "7AFF72", "7EFF72", "82FF72", "86FF72", "8AFF72", "8EFF72", "92FF72", "96FF72", "9AFF72", "9EFF72", "A2FF72", "A6FF72", "AAFF72", "AEFF72", "B2FF72", "B6FF72", "BAFF72", "BEFF72", "C2FF72", "C6FF72", "CAFF72", "CEFF72", "D2FF72", "D6FF72", "DAFF72", "DEFF72", "E2FF72", "E6FF72", "EAFF72", "EEFF72", "F2FF72", "F6FF72", "FAFF72", "FFFF72", "FFFA72", "FFF672", "FFF272", "FFEE72", "FFEA72", "FFE672", "FFE272", "FFDE72", "FFDA72", "FFD672", "FFD272", "FFCE72", "FFCA72", "FFC672", "FFC272", "FFBE72", "FFBA72", "FFB672", "FFB272", "FFAE72", "FFAA72", "FFA672", "FFA272", "FF9E72", "FF9A72", "FF9672", "FF9272", "FF8E72", "FF8A72", "FF8672", "FF8272", "FF7E72", "FF7A72", "FF7672", "FF7272");
+#my $r,my $g,my $b;
+#for(my $i = 0; $i <= 100; ++$i) {
+#    my $hue;
+#    if ($i < 30) {
+#        $hue = 220 - 100 * $i / 30;
+#    }
+#    else {
+#        $hue = 120 - 120 * ($i - 30)/70;
+#    }
+#
+#
+#    my $hsv = Imager::Color->new(
+#        hsv => [ $hue, 0.55, 1.0 ]
+#    );
+#    my @rgb = $hsv->rgba;
+#
+#    my $r = $rgb[0];
+#    my $g = $rgb[1];
+#    my $b = $rgb[2];
+#
+#    $colors[$i] = sprintf "%02X%02X%02X", $r, $g, $b;
+#}
 
 # get color from severity
 sub color {
@@ -324,6 +325,51 @@ sub datetime {
     return ($datetime, $color);
 }
 
+# tasks (due today and overdue)
+sub tasks {
+    my $overdue = `task +OVERDUE count`;
+    my $today   = `task +TODAY -OVERDUE count`;
+    my $tomorrow= `task +TOMORROW count`;
+
+    # task gives Sunday to Saturday weeks always, so calculate own week
+    my $week    = `task due.before:Monday due.after:"tomorrow+24h" +DUE count`;
+    # make color red if overdue
+    my $color1 = color 100;
+    my $color2 = color 95;
+    my $color3 = color 70;
+    my $color4 = color 30;
+
+    # print overdue
+    print "\t\t\t";
+    print '{ "full_text": "';
+    print "◀"x$overdue;
+    print '", "color": "'.$color1.'", "separator": false, "separator_block_width": 0 },';
+    print "\n";
+
+    # print due today
+    print "\t\t\t";
+    print '{ "full_text": "';
+    print "◆"x$today;
+    print '", "color": "'.$color2.'", "separator": false, "separator_block_width": 0 },';
+    print "\n";
+
+    # print due tomorrow
+    print "\t\t\t";
+    print '{ "full_text": "';
+    print "▶"x$tomorrow;
+    print '", "color": "'.$color3.'", "separator": false, "separator_block_width": 0 },';
+    print "\n";
+
+    # print due rest of week
+    print "\t\t\t";
+    print '{ "full_text": "';
+    print "▷"x$week;
+    print " ";
+    print '", "color": "'.$color4.'" },';
+    print "\n";
+}
+
+
 # print start JSON header
 print "{ \"version\": 1 }\n";
 print "[ [],\n";
@@ -332,9 +378,12 @@ while ()
 {
     print "\t[\n";
 
+    # tasks
+    tasks;
+
     # new emails
     my ($json_text, $json_color) = newmail;
-    printf "\t\t\t{ \"full_text\": \"%s\", \"color\": \"#%s\" },\n", $json_text, $json_color;
+    printf "\t\t\t{ \"full_text\": \"%s\", \"color\": \"#%s\", \"separator\": true },\n", $json_text, $json_color;
 
     # uptime
     ($json_text, $json_color) = uptime;
