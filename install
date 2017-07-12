@@ -6,27 +6,28 @@ install-file()
         mv $2 $2.bak
     fi
     mkdir -p `dirname $2`
-    ln -s $(pwd)/$1 $2
+    ln -sv $(pwd)/$1 $2
 }
 
-mkdir -p ~/.vim/ftplugin
-ln -sf $(pwd)/vim_ftplugin/dot.vim ~/.vim/ftplugin/dot.vim
-ln -sf $(pwd)/vim_ftplugin/tex.vim ~/.vim/ftplugin/tex.vim
-ln -sf $(pwd)/vim_ftplugin/html.vim ~/.vim/ftplugin/html.vim
+mkdir -pv ~/.vim/ftplugin
+ln -sfv $(pwd)/vim_ftplugin/dot.vim ~/.vim/ftplugin/dot.vim
+ln -sfv $(pwd)/vim_ftplugin/tex.vim ~/.vim/ftplugin/tex.vim
+ln -sfv $(pwd)/vim_ftplugin/html.vim ~/.vim/ftplugin/html.vim
 
-mkdir -p ~/.vim/colors
-ln -sf $(pwd)/third_party/vim-monokai/colors/monokai.vim ~/.vim/colors/monokai.vim
+mkdir -pv ~/.vim/colors
+ln -sfv $(pwd)/third_party/vim-monokai/colors/monokai.vim ~/.vim/colors/monokai.vim
 
-mkdir -p ~/.config/ranger
+mkdir -pv ~/.config/ranger
 for f in `ls rangerconf`
 do
-    ln -sf $(pwd)/rangerconf/$f ~/.config/ranger/
+    ln -sfv $(pwd)/rangerconf/$f ~/.config/ranger/
 done
 
-mkdir -p ~/.vim/autoload
-ln -sf $(pwd)/third_party/vim-plug/plug.vim ~/.vim/autoload/
+mkdir -pv ~/.vim/autoload
+ln -sfv $(pwd)/third_party/vim-plug/plug.vim ~/.vim/autoload/
 
-ln -sfT $(pwd)/mutt/ ~/.mutt
+ln -sfvT $(pwd)/mutt/ ~/.mutt
+ln -sfvT $(pwd)/polybar/ ~/.config/polybar
 
 gpg -d vdirsyncerconfig.gpg > vdirsyncerconfig
 install-file vdirsyncerconfig ~/.vdirsyncer/config

@@ -1,0 +1,24 @@
+#!/bin/zsh
+
+i=0
+case $1 in
+overdue)
+    i=$(task +OVERDUE count)
+    ;;
+today)
+    i=$(task +TODAY -OVERDUE count)
+    ;;
+tomorrow)
+    i=$(task +TOMORROW count)
+    ;;
+week)
+    i=$(task due.before=monday due.after:"tomorrow+24h" +DUE count)
+    ;;
+important)
+    i=$(task "urg >= 20" count)
+    ;;
+esac
+
+echo -n $i
+[ $i -gt 0 ]
+exit $?

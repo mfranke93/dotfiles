@@ -1,0 +1,14 @@
+#!/bin/zsh
+
+newmailnumber=`find ~/mail -type f | grep '/INBOX[^\/]*/new/' | wc -l`
+
+case $1 in
+new)
+    [ $newmailnumber -gt 0 ]
+    exit $?
+    ;;
+count)
+    echo -n $newmailnumber
+    ;;
+esac
+

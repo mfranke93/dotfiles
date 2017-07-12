@@ -1,0 +1,4 @@
+#!/bin/zsh
+
+datetime=$(LANG=ja_JP.utf8 date +"%a %b%d日 %r")
+echo -n ${datetime/??秒/}
