@@ -1,6 +1,6 @@
-text/html;       links %s; nametemplate=%s.html
-text/html;       links -dump %s; nametemplate=%s.html; copiousoutput
+text/html;       elinks %s; nametemplate=%s.html
+text/html;       elinks -dump %s; nametemplate=%s.html; copiousoutput
 image/jpeg;      feh --scale-down %s; nametemplate=%s.jpg
-image/png;       feh --scale-down %s; nametemplate=%s.jpg
-image/gif;       feh --scale-down %s; nametemplate=%s.jpg
+image/png;       feh --scale-down %s; nametemplate=%s.png
+image/gif;       feh --scale-down %s; nametemplate=%s.gif
 application/pdf; zathura %s; nametemplate=%s.pdf
