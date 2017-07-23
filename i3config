@@ -108,29 +108,41 @@ bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
+# set workspace names
+set $w1 1:browser
+set $w2 2:office
+set $w3 3:programming
+set $w4 4:ws4
+set $w5 5:ws5
+set $w6 6:ws6
+set $w7 7:ws7
+set $w8 8:ws8
+set $w9 9:ws9
+set $w10 10:multimedia
+
 # switch to workspace
-bindsym $mod+1 workspace number 1
-bindsym $mod+2 workspace number 2
-bindsym $mod+3 workspace number 3
-bindsym $mod+4 workspace number 4
-bindsym $mod+5 workspace number 5
-bindsym $mod+6 workspace number 6
-bindsym $mod+7 workspace number 7
-bindsym $mod+8 workspace number 8
-bindsym $mod+9 workspace number 9
-bindsym $mod+0 workspace number 10
+bindsym $mod+1 workspace $w1
+bindsym $mod+2 workspace $w2
+bindsym $mod+3 workspace $w3
+bindsym $mod+4 workspace $w4
+bindsym $mod+5 workspace $w5
+bindsym $mod+6 workspace $w6
+bindsym $mod+7 workspace $w7
+bindsym $mod+8 workspace $w8
+bindsym $mod+9 workspace $w9
+bindsym $mod+0 workspace $w10
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace number 1
-bindsym $mod+Shift+2 move container to workspace number 2
-bindsym $mod+Shift+3 move container to workspace number 3
-bindsym $mod+Shift+4 move container to workspace number 4
-bindsym $mod+Shift+5 move container to workspace number 5
-bindsym $mod+Shift+6 move container to workspace number 6
-bindsym $mod+Shift+7 move container to workspace number 7
-bindsym $mod+Shift+8 move container to workspace number 8
-bindsym $mod+Shift+9 move container to workspace number 9
-bindsym $mod+Shift+0 move container to workspace number 10
+bindsym $mod+Shift+1 move container to workspace $w1
+bindsym $mod+Shift+2 move container to workspace $w2
+bindsym $mod+Shift+3 move container to workspace $w3
+bindsym $mod+Shift+4 move container to workspace $w4
+bindsym $mod+Shift+5 move container to workspace $w5
+bindsym $mod+Shift+6 move container to workspace $w6
+bindsym $mod+Shift+7 move container to workspace $w7
+bindsym $mod+Shift+8 move container to workspace $w8
+bindsym $mod+Shift+9 move container to workspace $w9
+bindsym $mod+Shift+0 move container to workspace $w10
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -175,6 +187,9 @@ bindsym $mod+b exec urxvt -title mutt -e mutt
 
 # file manager
 bindsym $mod+n exec urxvt -title ranger -e ranger
+
+# media player
+bindsym $mod+p exec urxvt -title Music -e ncmpcpp
 
 ######################
 # Screen brightness controls
@@ -238,8 +253,17 @@ bindsym $mod+x mode "$mode_display"
 # Set tray to laptop screen always
 
 # make pdfpc open presentation window on second monitor (if desktop 2 is on second monitor)
-assign [title="pdfpc - presentation *"] 2
-assign [title="pdfpc - presenter *"] 1
+assign [title="pdfpc - presentation *"] $w2
+assign [title="pdfpc - presenter *"] $w1
+
+# assign other windows
+assign [title="Office applications" class="URxvt"] $w2
+assign [class="qutebrowser"] $w1
+assign [class="URxvt" title="Music"] $w10
+assign [class="URxvt" title="ncmpcpp*"] $w10
+assign [class="Spotify"] $w10
+assign [class="Google-chrome"] $w10
+
 
 # start polybar 
 exec --no-startup-id polybar -c /home/max/.config/polybar/config default
