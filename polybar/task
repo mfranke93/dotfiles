@@ -15,7 +15,7 @@ week)
     i=$(task due.before=monday due.after:"tomorrow+24h" +DUE count)
     ;;
 important)
-    i=$(task "urg >= 15 +DUE or +OVERDUE" count)
+    i=$(task "urg >= 15 (+DUE or +OVERDUE)" count)
     ;;
 esac
 
