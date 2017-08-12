@@ -9,22 +9,17 @@ install-file()
     ln -sv $(pwd)/$1 $2
 }
 
-mkdir -pv ~/.vim/ftplugin
-ln -sfv $(pwd)/vim_ftplugin/dot.vim ~/.vim/ftplugin/dot.vim
-ln -sfv $(pwd)/vim_ftplugin/tex.vim ~/.vim/ftplugin/tex.vim
-ln -sfv $(pwd)/vim_ftplugin/html.vim ~/.vim/ftplugin/html.vim
-
-mkdir -pv ~/.vim/colors
-ln -sfv $(pwd)/third_party/vim-monokai/colors/monokai.vim ~/.vim/colors/monokai.vim
+# neovim
+ln -sfvT $(pwd)/nvim ~/.config/nvim
+mkdir -pv nvim/{colors,autoload}
+ln -sf $(pwd)/third_party/vim-monokai/colors/monokai.vim nvim/colors
+ln -sf $(pwd)/third_party/vim-plug/plug.vim nvim/autoload
 
 mkdir -pv ~/.config/ranger
 for f in `ls rangerconf`
 do
     ln -sfv $(pwd)/rangerconf/$f ~/.config/ranger/
 done
-
-mkdir -pv ~/.vim/autoload
-ln -sfv $(pwd)/third_party/vim-plug/plug.vim ~/.vim/autoload/
 
 ln -sfvT $(pwd)/mutt/ ~/.mutt
 ln -sfvT $(pwd)/polybar/ ~/.config/polybar
@@ -44,13 +39,11 @@ install-file gpg-agent.conf ~/.gnupg/gpg-agent.conf
 install-file i3config ~/.config/i3/config
 install-file khalconfig ~/.config/khal/config
 install-file liquidpromptrc ~/.config/liquidpromptrc
-install-file liquidpromptrc ~/.config/liquidpromptrc
 install-file mailcap ~/.mailcap
 install-file mpv_config ~/.mpv/config
 install-file offlineimap/offlineimap.py ~/.offlineimap.py
 install-file offlineimap/offlineimaprc ~/.offlineimaprc
 install-file tmuxconf ~/.tmux.conf
-install-file vimrc ~/.vimrc
 install-file xinitrc ~/.xinitrc
 install-file Xresources ~/.Xresources
 install-file zshenv ~/.zshenv

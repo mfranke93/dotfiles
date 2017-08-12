@@ -23,7 +23,7 @@
 	whitespace = trailing-space,space-before-tab
 	autocrlf = input
 	excludesfile = ~/.gitignore
-	editor = vim
+	editor = nvim
 [branch]
 	autosetupmerge = true
 	pager = less -r
@@ -40,9 +40,9 @@
 [log]
 	date = local
 [difftool "vimdiff"]
-	cmd = vim -R -f -d -c \"wincmd l\" -c 'cd \"$GIT_PREFIX\"' \"$LOCAL\" \"$REMOTE\"
+	cmd = nvim -R -f -d -c \"wincmd l\" -c 'cd \"$GIT_PREFIX\"' \"$LOCAL\" \"$REMOTE\"
 [mergetool "vimdiff"]
-	cmd = vim -R -f -d -c \"wincmd J\" \"$MERGED\" \"$LOCAL\" \"$BASE\" \"$REMOTE\" -c \"set noro\"
+	cmd = nvim -R -f -d -c \"wincmd J\" \"$MERGED\" \"$LOCAL\" \"$BASE\" \"$REMOTE\" -c \"set noro\"
 [github]
 	user = mfranke93
 [commit]

@@ -129,13 +129,13 @@ fi
 eval `dircolors ~/.dir_colors`
 
 #aliases
-alias g='gvim --remote-silent'
+alias g='nvim-qt --remote-silent'
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
-alias vi=$(which vim)
+alias vi=$(which nvim)
 alias -g ...='../..'
 alias -g ....='../../..'
 alias -g .....='../../../..'
@@ -308,7 +308,7 @@ alias gd="git diff"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-export EDITOR=$(which vim)
+export EDITOR=$(which nvim)
 
 # no idea why it isn't working otherwise
 alias git='GPG_TTY=$(tty) git'

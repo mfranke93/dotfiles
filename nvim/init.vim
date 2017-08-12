@@ -69,9 +69,6 @@ set history=100
 " lines from the bottom
 set scrolloff=8
 
-" Disable encryption (:X)
-set key=
-
 " Make the command-line completion better
 set wildmenu
 set wildmode=list,full
@@ -189,9 +186,6 @@ elseif $TERM == "screen-256color"
 endif
 
 colorscheme default
-if has("gui_running")
-    "set guifont=Terminus\ 10
-endif
 :nohls
 
 "-----------------------------------------------------------------------------
@@ -221,21 +215,6 @@ set statusline=%F%m%r%h%w\ [%l/%L,\ %v]\ [%p%%]\ %=[TYPE=%Y]\ [FMT=%{&ff}]\ %{\"
 set laststatus=2
 set showcmd
 
-" set cursor shapes in uxterm
-if exists('$TMUX')
-    let &t_SI = "\ePtmux;\e\e[6 q\e\\"
-    let &t_EI = "\ePtmux;\e\e[2 q\e\\"
-else
-    let &t_SI = "\e[6 q"
-    let &t_EI = "\e[2 q"
-endif
-
-" reset cursor on start
-augroup ResetCursor
-    au!
-    autocmd VimEnter * silent !echo -ne "\e[2 q"
-augroup END
-
 " No spaces for tabs in Makefiles
 autocmd FileType make setlocal noexpandtab
 
@@ -255,7 +234,7 @@ function! MakeViewIfNotCommitmsg()
     if &ft =~ 'GITCOMMIT' || &ft =~ 'qf'
         return
     endif
-    mkview
+    silent mkview
 endfunction
 
 function! LoadViewIfNotCommitmsg()
