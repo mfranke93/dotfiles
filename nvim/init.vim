@@ -1,6 +1,4 @@
 " vimrc from http://derekwyatt.org/2009/08/20/the-absolute-bare-minimum/
-" Forget being compatible with good ol' vi
-set nocompatible
 
 " Get that filetype stuff happening
 filetype on
@@ -47,7 +45,7 @@ set backspace=2
 
 " Make the 'cw' and like commands put a $ at the end instead of just deleting
 " the text and replacing it
-set cpoptions=ces$
+set cpoptions=$
 
 " set the GUI options the way I like
 set guioptions=acg
@@ -60,7 +58,7 @@ set guioptions=acg
 "      "," key and the "d" key.  If the "d" key isn't pressed before the
 "      timeout expires, one of two things happens: The "," command is executed
 "      if there is one (which there isn't) or the command aborts.
-set timeoutlen=500
+set timeoutlen=200
 
 " Keep some stuff in the history
 set history=100
@@ -133,7 +131,7 @@ vnoremap <Tab> >gv
 vnoremap <S-Tab> <gv
 
 " Syntax coloring lines that are too long just slows down the world
-set synmaxcol=2048
+set synmaxcol=256
 
 " Disable arrow keys to get rid of the habit of using them.
 noremap <Up> <NOP>
@@ -253,6 +251,8 @@ if version >= 700
     au InsertEnter * hi StatusLine term=reverse ctermfg=46 ctermbg=0 gui=bold guifg=Black guibg=LimeGreen
     au InsertLeave * hi StatusLine term=reverse ctermfg=232 ctermbg=44 gui=bold guifg=White guibg=Black
     au BufWinEnter * hi StatusLine term=reverse ctermfg=232 ctermbg=44 gui=bold guifg=White guibg=Black
+    au BufNewFile  * hi StatusLine term=reverse ctermfg=232 ctermbg=44 gui=bold guifg=White guibg=Black
+    au BufReadPost * hi StatusLine term=reverse ctermfg=232 ctermbg=44 gui=bold guifg=White guibg=Black
 endif
 
 filetype plugin indent on
