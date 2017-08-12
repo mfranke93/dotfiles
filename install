@@ -43,6 +43,7 @@ install-file mailcap ~/.mailcap
 install-file mpv_config ~/.mpv/config
 install-file offlineimap/offlineimap.py ~/.offlineimap.py
 install-file offlineimap/offlineimaprc ~/.offlineimaprc
+install-file taskrc ~/.taskrc
 install-file tmuxconf ~/.tmux.conf
 install-file xinitrc ~/.xinitrc
 install-file Xresources ~/.Xresources

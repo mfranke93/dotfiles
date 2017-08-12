@@ -11,17 +11,23 @@ urxvt.preeditType: OverTheSpot
 
 URxvt*urlLauncher:/usr/bin/qutebrowser
 
-! darker grey for vim visual mode
-URxvt*color7: #aaaaaa
-
-! darker light green (white background)
-URxvt*color2: #008800
-URxvt*color10: #226622
-
-! darker yellows
-URxvt*color3: #888800
-URxvt*color11: #666600
-
-! darker cyan
-URxvt*color6: #004488
-URxvt*color14: #006666
+! foreground color
+urxvt*foreground:#F6F5EE
+urxvt*background:#1D1D19
+urxvt*highlight:#61B8D0
+urxvt*color0:#1C1D19
+urxvt*color1:#D01B24
+urxvt*color2:#A7D32C
+urxvt*color3:#D8CF67
+urxvt*color4:#61B8D0
+urxvt*color5:#695ABB
+urxvt*color6:#D53864
+urxvt*color7:#FEFFFE
+urxvt*color8:#1C1D19
+urxvt*color9:#D12A24
+urxvt*color10:#A7D32C
+urxvt*color11:#D8CF67
+urxvt*color12:#61B8D0
+urxvt*color13:#695ABB
+urxvt*color14:#D53864
+urxvt*color15:#FEFFFE

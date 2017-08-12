@@ -185,7 +185,7 @@ elseif $TERM == "screen-256color"
   set t_Co=256
 endif
 
-colorscheme default
+colorscheme monokai
 :nohls
 
 "-----------------------------------------------------------------------------
@@ -229,23 +229,6 @@ inoremap [2~ <NOP>
 " disable the MENU key in insert mode. It does weird stuff
 inoremap [29~ <NOP>
 
-" save folds on exit, load on enter, do not make dependent on cwd
-function! MakeViewIfNotCommitmsg()
-    if &ft =~ 'GITCOMMIT' || &ft =~ 'qf'
-        return
-    endif
-    silent mkview
-endfunction
-
-function! LoadViewIfNotCommitmsg()
-    if &ft =~ 'GITCOMMIT' || &ft =~ 'qf'
-        return
-    endif
-    silent loadview
-endfunction
-
-au BufWinLeave ?* call MakeViewIfNotCommitmsg()
-au BufWinEnter ?* call LoadViewIfNotCommitmsg()
 set viewoptions-=options
 
 "-----------------------------------------------------------------------------
