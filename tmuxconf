@@ -10,6 +10,9 @@ set-window-option -g xterm-keys on
 #set -g utf8
 #set-window-option -g utf8 on
 
+# do not delay escape press: messes with vim/nvim
+set -s escape-time 0
+
 =======
 
 #urxvt tab like window switching (-n: no prior escape seq)

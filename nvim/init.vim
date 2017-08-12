@@ -60,6 +60,9 @@ set guioptions=acg
 "      if there is one (which there isn't) or the command aborts.
 set timeoutlen=200
 
+" do not wait after <ESC>
+set ttimeoutlen=0
+
 " Keep some stuff in the history
 set history=100
 
