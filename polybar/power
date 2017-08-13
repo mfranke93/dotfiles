@@ -1,0 +1,38 @@
+#!/bin/zsh
+
+ac=$(cat /sys/class/power_supply/AC/online)
+capa=$(cat /sys/class/power_supply/BAT0/capacity)
+
+#
+# check power levels
+# 0: 0-15%
+# 1: 16-35%
+# 2: 35-65%
+# 3: 66-85%
+# 4: 86-100%
+underline=""
+if [ "$capa" -lt "16" ]
+then
+    sym=""
+    underline="%{u#f00}"
+elif [ "$capa" -lt "36" ]
+then
+    sym=""
+    underline="%{u#dd0}"
+elif [ "$capa" -lt "66" ]
+then
+    sym=""
+elif [ "$capa" -lt "86" ] 
+then
+    sym=""
+else
+    sym=""
+fi
+
+# change to charging symbol if necessary, do not disturb coloring of bottom
+if [ $ac -eq 1 ]
+then
+    sym=""
+fi
+
+echo "${underline}%{F#555}${sym} %{F#dfdfdf}${capa}%"

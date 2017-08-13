@@ -7,6 +7,7 @@
 ;
 ;=====================================================
 
+; COLOR CONFIGURATION
 [colors]
 ;background = ${xrdb:color0:#222}
 background = #222
@@ -17,6 +18,24 @@ foreground-alt = #555
 primary = #ffb52a
 secondary = #e60053
 alert = #bd2c40
+; colors for underlines
+; mpd
+mpd-color = #00c0f0
+; fs
+fs-color1 = #6178e1
+fs-color2 = #41b1ff
+; temp, cpu, ...
+sys-color1 = #40ffdd
+sys-color2 = #40d0d0
+sys-color3 = #40b0c0
+sys-color4 = #4090b0
+; volume
+vol-color = #d020c8
+; date
+date-color = #2020e0
+; mail
+mail-color = #f0f040
+
 
 [bar/default]
 monitor = ${env:MONITOR:LVDS1}
@@ -26,143 +45,85 @@ height = 24
 ;offset-y = 1%
 radius = 0.0
 fixed-center = false
-
 background = ${colors.background}
 foreground = ${colors.foreground}
-
 line-size = 3
 line-color = #f00
-
 border-size = 0
 border-color = #00000000
-
 padding-left = 0
-padding-right = 2
-
-module-margin-left = 1
-module-margin-right = 2
-
+padding-right = 0
+module-margin-left = 0
+module-margin-right = 1
 font-0 = noto:pixelsize=10;1
 font-1 = siji:pixelsize=10;1
 font-2 = fontawesome:size=12;1
 font-3 = fixed:pixelsize=10;1
 font-4 = unifont:fontformat=truetype:size=8:antialias=false;0
-
 modules-left = i3 
 modules-center = mpd
-modules-right = mail task_important task_overdue task_today task_tomorrow task_week filesystem_root filesystem_home volume memory cpu wlan eth battery temperature date
-
+modules-right = mail gap task gap filesystem_root filesystem_home gap cpu temperature memory power gap net gap volume gap date 
 tray-position = right
 tray-padding = 2
-;tray-transparent = true
-;tray-background = #0063ff
-
-;wm-restack = bspwm
-;wm-restack = i3
-
-;override-redirect = true
-
-;scroll-up = bspwm-desknext
-;scroll-down = bspwm-deskprev
-
 scroll-up = i3wm-wsnext
 scroll-down = i3wm-wsprev
 
-[module/xwindow]
-type = internal/xwindow
-label = %title:0:30:...%
-
-[module/xkeyboard]
-type = internal/xkeyboard
-blacklist-0 = num lock
-
-format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
-format-prefix-underline = ${colors.secondary}
-
-label-layout = %layout%
-label-layout-underline = ${colors.secondary}
-
-label-indicator-padding = 2
-label-indicator-margin = 1
-label-indicator-background = ${colors.secondary}
-label-indicator-underline = ${colors.secondary}
+; ======================================
+; MODULES
+; ======================================
+[module/gap]
+type = custom/script
+exec = "echo '    '"
+exec-if = "/bin/true"
+format = <label>
+module-margin-right = 10
+padding-right = 10
 
 [module/filesystem_root]
 type = internal/fs
 interval = 25
-
 mount-0 = /
-
 format-mounted-prefix = " "
 label-mounted = %percentage_used%%
 format-mounted-prefix-foreground = ${colors.foreground-alt}
-format-mounted-underline = #6178e1
+format-mounted-underline = ${colors.fs-color1}
 
 [module/filesystem_home]
 type = internal/fs
 interval = 25
-
 mount-0 = /home
-
 format-mounted-prefix = " "
 label-mounted = %percentage_used%%
 format-mounted-prefix-foreground = ${colors.foreground-alt}
-format-mounted-underline = #e3af71
-
-[module/bspwm]
-type = internal/bspwm
-
-label-focused = %index%
-label-focused-background = ${colors.background-alt}
-label-focused-underline= ${colors.primary}
-label-focused-padding = 2
-
-label-occupied = %index%
-label-occupied-padding = 2
-
-label-urgent = %index%!
-label-urgent-background = ${colors.alert}
-label-urgent-padding = 2
-
-label-empty = %index%
-label-empty-foreground = ${colors.foreground-alt}
-label-empty-padding = 2
+format-mounted-underline = ${colors.fs-color2}
 
 [module/i3]
 type = internal/i3
 format = <label-state> <label-mode>
 index-sort = true
 wrapping-scroll = false
-
 ; Only show workspaces on the same output as the bar
 ;pin-workspaces = true
-
 label-mode-padding = 2
 label-mode-foreground = #000
 label-mode-background = ${colors.primary}
-
 ; focused = Active workspace on focused monitor
 label-focused = %icon%
-label-focused-background = ${module/bspwm.label-focused-background}
-label-focused-underline = ${module/bspwm.label-focused-underline}
-label-focused-padding = ${module/bspwm.label-focused-padding}
-
+label-focused-background = ${colors.background-alt}
+label-focused-underline= ${colors.primary}
+label-focused-padding = 2
 ; unfocused = Inactive workspace on any monitor
 label-unfocused = %icon%
-label-unfocused-padding = ${module/bspwm.label-occupied-padding}
-
+label-unfocused-padding = 2
 ; visible = Active workspace on unfocused monitor
 label-visible = %icon%
 label-visible-background = ${self.label-focused-background}
 label-visible-underline = ${self.label-focused-underline}
 label-visible-padding = ${self.label-focused-padding}
-
 ; urgent = Workspace with urgency hint set
 label-urgent = %icon%
-label-urgent-background = ${module/bspwm.label-urgent-background}
-label-urgent-padding = ${module/bspwm.label-urgent-padding}
-
+label-urgent-background = ${colors.alert}
+label-urgent-padding = 2
 ; workspace icons
 ws-icon-0 = multimedia; 
 ws-icon-1 = browser; 
@@ -177,38 +138,17 @@ ws-icon-9 = ws9;9
 fuzzy-match = true
 
 [module/mpd]
-type = internal/mpd
-format-online = <label-song>  <icon-prev> <icon-stop> <toggle> <icon-next>
-format-online-underline = #4e3fdd
-
-icon-prev = 
-icon-stop = 
-icon-play = 
-icon-pause = 
-icon-next = 
-
-label-song-maxlen = 40
-label-song-ellipsis = true
-
-[module/xbacklight]
-type = internal/xbacklight
-
-format = <label> 
-format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #9f78e1
-
-[module/backlight-acpi]
-inherit = module/xbacklight
-type = internal/backlight
-card = intel_backlight
+type = custom/script
+interval = 0.3
+format = <label>
+exec = "/home/max/.config/polybar/mpd"
 
 [module/cpu]
 type = internal/cpu
 interval = 2
 format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #f90000
+format-underline = ${colors.sys-color1}
 label = %percentage%%
 
 [module/memory]
@@ -216,141 +156,43 @@ type = internal/memory
 interval = 2
 format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #4bffdc
+format-underline = ${colors.sys-color3}
 label = %percentage_used%%
-
-[module/wlan]
-type = internal/network
-interface = wlp3s0
-interval = 3.0
-
-format-connected = <ramp-signal> <label-connected>
-format-connected-underline = #9f78e1
-label-connected = %essid%
-
-format-disconnected =
-;format-disconnected = <label-disconnected>
-;format-disconnected-underline = ${self.format-connected-underline}
-;label-disconnected = %ifname% disconnected
-;label-disconnected-foreground = ${colors.foreground-alt}
-
-ramp-signal-0 = 
-ramp-signal-1 = 
-ramp-signal-2 = 
-ramp-signal-3 = 
-ramp-signal-4 = 
-ramp-signal-foreground = ${colors.foreground-alt}
-
-[module/eth]
-type = internal/network
-interface = enp0s25
-interval = 3.0
-
-format-connected-underline = #55aa55
-format-connected-prefix = " "
-format-connected-prefix-foreground = ${colors.foreground-alt}
-label-connected = %local_ip%
-
-format-disconnected =
-;format-disconnected = <label-disconnected>
-;format-disconnected-underline = ${self.format-connected-underline}
-;label-disconnected = %ifname% disconnected
-;label-disconnected-foreground = ${colors.foreground-alt}
 
 [module/date]
 type = custom/script
 interval = 5
-
 format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #0a6cf5
+format-underline = ${colors.date-color}
 exec = /home/max/.config/polybar/time
 
 [module/volume]
 type = internal/volume
-
 format-volume = <label-volume> 
 format-volume-prefix = " "
 format-volume-prefix-foreground = ${colors.foreground-alt}
 label-volume-foreground = ${root.foreground}
-format-volume-underline = #55aa55
-
+format-volume-underline = ${colors.vol-color}
 format-muted-prefix = " "
 format-muted-foreground = ${colors.foreground-alt}
 format-muted-underline = #888888
-
-[module/battery]
-type = internal/battery
-battery = BAT0
-adapter = AC
-full-at = 98
-
-format-charging = <animation-charging> <label-charging>
-format-charging-underline = #ffb52a
-
-format-discharging = <ramp-capacity> <label-discharging>
-format-discharging-underline = ${self.format-charging-underline}
-
-format-full-prefix = " "
-format-full-prefix-foreground = ${colors.foreground-alt}
-format-full-underline = ${self.format-charging-underline}
-
-ramp-capacity-0 = 
-ramp-capacity-1 = 
-ramp-capacity-2 = 
-ramp-capacity-foreground = ${colors.foreground-alt}
-
-animation-charging-0 = 
-animation-charging-1 = 
-animation-charging-2 = 
-animation-charging-foreground = ${colors.foreground-alt}
-animation-charging-framerate = 1000
 
 [module/temperature]
 type = internal/temperature
 thermal-zone = 0
 warn-temperature = 80
-
 format = <ramp> <label>
-format-underline = #f50a4d
+format-underline = ${colors.sys-color2}
 format-warn = <ramp> <label-warn>
-format-warn-underline = ${self.format-underline}
-
+format-warn-underline = #ff4040}
 label = %temperature%
 label-warn = %temperature%
 label-warn-foreground = ${colors.secondary}
-
 ramp-0 =  
 ramp-1 = 
 ramp-2 = 
 ramp-foreground = ${colors.foreground-alt}
-
-[module/powermenu]
-type = custom/menu
-
-format-spacing = 1
-
-label-open = 
-label-open-foreground = ${colors.secondary}
-label-close =  cancel
-label-close-foreground = ${colors.secondary}
-label-separator = |
-label-separator-foreground = ${colors.foreground-alt}
-
-menu-0-0 = reboot
-menu-0-0-exec = menu-open-1
-menu-0-1 = power off
-menu-0-1-exec = menu-open-2
-
-menu-1-0 = cancel
-menu-1-0-exec = menu-open-0
-menu-1-1 = reboot
-menu-1-1-exec = sudo reboot
-
-menu-2-0 = power off
-menu-2-0-exec = sudo poweroff
-menu-2-1 = cancel
-menu-2-1-exec = menu-open-0
 
 [module/mail]
 type = custom/script
@@ -360,57 +202,26 @@ format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
 exec-if = "/home/max/.config/polybar/mail new"
 exec = "/home/max/.config/polybar/mail count"
-format-underline = #d49a34
+format-underline = ${colors.mail-color}
 
-[module/task_overdue]
+[module/task]
 type = custom/script
 interval = 5
 format = <label>
-format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
-exec-if = "/home/max/.config/polybar/task overdue"
-exec = "/home/max/.config/polybar/task overdue"
-format-underline = #ff0000
+exec = "/home/max/.config/polybar/task"
 
-[module/task_today]
+[module/net]
 type = custom/script
 interval = 5
 format = <label>
-format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
-exec-if = "/home/max/.config/polybar/task today"
-exec = "/home/max/.config/polybar/task today"
-format-underline = #ffff00
+exec = "/home/max/.config/polybar/net"
 
-[module/task_tomorrow]
+[module/power]
 type = custom/script
 interval = 5
 format = <label>
-format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
-exec-if = "/home/max/.config/polybar/task tomorrow"
-exec = "/home/max/.config/polybar/task tomorrow"
-format-underline = #a8ff00
-
-[module/task_week]
-type = custom/script
-interval = 5
-format = <label>
-format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
-exec-if = "/home/max/.config/polybar/task week"
-exec = "/home/max/.config/polybar/task week"
-format-underline = #00ff00
-
-[module/task_important]
-type = custom/script
-interval = 5
-format = <label>
-format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
-exec-if = "/home/max/.config/polybar/task important"
-exec = "/home/max/.config/polybar/task important"
-format-underline = #ff4000
+exec = "/home/max/.config/polybar/power"
+format-underline = ${colors.sys-color4}
 
 [settings]
 screenchange-reload = true
