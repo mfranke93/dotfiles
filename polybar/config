@@ -84,7 +84,7 @@ type = internal/fs
 interval = 25
 mount-0 = /
 format-mounted-prefix = " "
-label-mounted = %percentage_used%%
+label-mounted = "%percentage_used%% "
 format-mounted-prefix-foreground = ${colors.foreground-alt}
 format-mounted-underline = ${colors.fs-color1}
 
@@ -93,7 +93,7 @@ type = internal/fs
 interval = 25
 mount-0 = /home
 format-mounted-prefix = " "
-label-mounted = %percentage_used%%
+label-mounted = "%percentage_used%% "
 format-mounted-prefix-foreground = ${colors.foreground-alt}
 format-mounted-underline = ${colors.fs-color2}
 
@@ -149,7 +149,7 @@ interval = 2
 format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
 format-underline = ${colors.sys-color1}
-label = %percentage%%
+label = "%percentage%% "
 
 [module/memory]
 type = internal/memory
@@ -157,7 +157,7 @@ interval = 2
 format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
 format-underline = ${colors.sys-color3}
-label = %percentage_used%%
+label = "%percentage_used%% "
 
 [module/date]
 type = custom/script
@@ -186,8 +186,8 @@ format = <ramp> <label>
 format-underline = ${colors.sys-color2}
 format-warn = <ramp> <label-warn>
 format-warn-underline = #ff4040}
-label = %temperature%
-label-warn = %temperature%
+label = "%temperature% "
+label-warn = "%temperature% "
 label-warn-foreground = ${colors.secondary}
 ramp-0 =  
 ramp-1 = 
