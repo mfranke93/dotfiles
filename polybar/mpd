@@ -1,14 +1,14 @@
 #!/bin/zsh
 
 # check if mpc is running and playlist not empty
-if ( mpc 2&>1 > /dev/null )
+if ( mpc 2>&1 > /dev/null )
 then
     out=$(mpc)
-    if ( echo $out | grep -e "^\[paused\]\|\[playing\]" 2&>1 > /dev/null )
+    if ( echo $out | grep -e "^\[paused\]\|\[playing\]" 2>&1 > /dev/null )
     then
         currentsong=$(mpc current | /home/max/.config/polybar/shorten.pl )
         
-        if (echo $out | grep "^\[playing\]" 2&>1 > /dev/null )
+        if (echo $out | grep "^\[playing\]" 2>&1 > /dev/null )
         then
             playpause=""
             fgcolor="#dfdfdf"
@@ -20,19 +20,19 @@ then
         fi
 
         flags=""
-        if (echo $out | grep "repeat: on" 2&>1 > /dev/null )
+        if (echo $out | grep "repeat: on" 2>&1 > /dev/null )
         then
             flags="${flags} "
         fi
-        if (echo $out | grep "random: on" 2&>1 > /dev/null )
+        if (echo $out | grep "random: on" 2>&1 > /dev/null )
         then
             flags="${flags} "
         fi
-        if (echo $out | grep "single: on" 2&>1 > /dev/null )
+        if (echo $out | grep "single: on" 2>&1 > /dev/null )
         then
             flags="${flags} "
         fi
-        if (echo $out | grep "consume: on" 2&>1 > /dev/null )
+        if (echo $out | grep "consume: on" 2>&1 > /dev/null )
         then
             flags="${flags} "
         fi
