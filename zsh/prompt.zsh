@@ -29,9 +29,9 @@ done
 GIT_PROMPT_SYMBOL="%{$fg[blue]%}±"
 GIT_PROMPT_PREFIX="%{$fg[green]%} [%{$reset_color%}"
 GIT_PROMPT_SUFFIX="%{$fg[green]%}]%{$reset_color%}"
-GIT_PROMPT_AHEAD="%{$fg[red]%}ANUM%{$reset_color%}"
+GIT_PROMPT_AHEAD="%{$FG[196]%}ANUM%{$reset_color%}"
 GIT_PROMPT_BEHIND="%{$FG[045]%}BNUM%{$reset_color%}"
-GIT_PROMPT_UNTRACKED="%{$fg_bold[red]%}*%{$reset_color%}"
+GIT_PROMPT_UNTRACKED="%{$FG[196]%}*%{$reset_color%}"
 GIT_PROMPT_MODIFIED="%{$fg_bold[yellow]%}d%{$reset_color%}"
 GIT_PROMPT_STAGED="%{$fg_bold[green]%}s%{$reset_color%}"
 GIT_PROMPT_STASHED="%{$fg_bold[yellow]%}+%{$reset_color%}"
@@ -84,7 +84,7 @@ function parse_git_state() {
             commit_ahead="$(\git rev-list --count $remote_branch..HEAD 2>/dev/null)"
             commit_behind="$(\git rev-list --count HEAD..$remote_branch 2>/dev/null)"
             if [[ "$commit_ahead" -ne "0" && "$commit_behind" -ne "0" ]]; then
-                has_commit="%{$fg[red]%}+$commit_ahead%{$reset_color%}/%{$fg[cyan]%}-$commit_behind%{$reset_color%}"
+                has_commit="%{$FG[196]%}+$commit_ahead%{$reset_color%}/%{$fg[cyan]%}-$commit_behind%{$reset_color%}"
             elif [[ "$commit_ahead" -ne "0" ]]; then
                 has_commit="%{$fg[yellow]%}$commit_ahead%{$reset_color%}"
             elif [[ "$commit_behind" -ne "0" ]]; then
@@ -118,7 +118,7 @@ function parse_git_state() {
             d_lines=0
         fi
 
-        has_lines="%{$fg[green]%}+$i_lines%{$reset_color%}/%{$fg[red]%}-$d_lines%{$reset_color%}"
+        has_lines="%{$fg[green]%}+$i_lines%{$reset_color%}/%{$FG[196]%}-$d_lines%{$reset_color%}"
     fi
     
     # set color of branch name depending on local and remote state: red if uncommitted changes,
@@ -221,7 +221,7 @@ function current_jobs_tmux {
 function last_return_value {
     local retval="$?"
     if [[ "$retval" -gt "0" ]]; then
-        echo -nE "%{$fg_bold[red]%}$retval%{$reset_color%} "
+        echo -nE "%{$FG[196]%}$retval%{$reset_color%} "
     fi
 }
 
