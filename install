@@ -6,7 +6,7 @@ install-file()
         mv $2 $2.bak
     fi
     mkdir -p `dirname $2`
-    ln -sv $(pwd)/$1 $2
+    ln -sfv $(pwd)/$1 $2
 }
 
 # neovim
@@ -23,6 +23,8 @@ done
 
 ln -sfvT $(pwd)/mutt/ ~/.mutt
 ln -sfvT $(pwd)/polybar/ ~/.config/polybar
+
+ln -sfvT $(pwd)/zsh ~/.zsh
 
 gpg -d vdirsyncerconfig.gpg > vdirsyncerconfig
 install-file vdirsyncerconfig ~/.vdirsyncer/config
@@ -47,5 +49,4 @@ install-file taskrc ~/.taskrc
 install-file tmuxconf ~/.tmux.conf
 install-file xinitrc ~/.xinitrc
 install-file Xresources ~/.Xresources
-install-file zshenv ~/.zshenv
 install-file zshrc ~/.zshrc
