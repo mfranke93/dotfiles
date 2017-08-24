@@ -1,6 +1,7 @@
 if exists('g:GuiLoaded')
     Guifont xos4 Terminus:h8
-    colorscheme monokai
+    colorscheme gruvbox
+    set bg=dark
 endif
 
 " after changing color scheme

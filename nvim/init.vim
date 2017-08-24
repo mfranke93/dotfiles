@@ -196,6 +196,7 @@ call plug#begin()
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'vimwiki/vimwiki'
+Plug 'octol/vim-cpp-enhanced-highlight'
 call plug#end()
 
 " Own stuff
@@ -259,4 +260,16 @@ if version >= 700
 endif
 
 filetype plugin indent on
+
+" advanced cpp highlighting
+let g:cpp_class_scope_highlight = 1
+let g:cpp_member_variable_highlight = 1
+let g:cpp_class_decl_highlight = 1
+let g:cpp_experimental_template_highlight = 1
+
+" Doxygen syntax highlight in CPP comments
+augroup project
+    autocmd!
+    autocmd BufRead,BufNewFile *.hpp,*.cpp      set filetype=cpp.doxygen
+augroup END
 
