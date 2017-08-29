@@ -234,6 +234,33 @@ inoremap [29~ <NOP>
 set viewoptions-=options
 
 "-----------------------------------------------------------------------------
+" Function to make current instance remote-send:able server for neovim-remote
+"-----------------------------------------------------------------------------
+function MakeServer()
+    if exists("v:servername")
+        call system("ln -sf " . v:servername . " /tmp/nvimsocket")
+        let g:current_instance_is_server = 1
+        echo "Current nvim instance now used /tmp/nvimsocket"
+    else
+        echoerr "Variable v:servername was not set, could not start listening on /tmp/nvimsocket"
+    endif
+endfunction
+
+function ClearServer()
+    if exists("g:current_instance_is_server")
+        call system("rm /tmp/nvimsocket")
+        unlet g:current_instance_is_server
+    endif
+endfunction
+
+augroup IfIsServerClearInvalidSymlinkOnLeave
+    autocmd!
+    autocmd VimLeave * call ClearServer()
+augroup END
+
+command Server :call MakeServer()
+
+"-----------------------------------------------------------------------------
 " FZF.vim key bindings
 "-----------------------------------------------------------------------------
 " Use <C-X> to open result in new split, <C-V> for new vsplit
