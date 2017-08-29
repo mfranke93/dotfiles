@@ -25,3 +25,27 @@ for line in {0..17}; do
     echo;
 done
 }
+
+# -------------------------------------------------------------------
+# set volume
+# -------------------------------------------------------------------
+vol()
+{
+    if [[ -z $1 ]]; then
+        echo "Usage: $0 mute|unmute|<volume-percent>"
+        return 1
+    fi
+
+    case $1 in
+        mute)
+            pactl set-sink-mute 0 toggle
+            ;;
+        unmute)
+            pactl set-sink-mute 0 toggle
+            ;;
+        *)
+            pactl set-sink-volume 0 "$1%"
+            ;;
+    esac
+}
+
