@@ -4,13 +4,21 @@ alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
-alias vi=$(which nvim)
 alias -g ...='../..'
 alias -g ....='../../..'
 alias -g .....='../../../..'
 alias ll='ls -lh'
 alias sl='ls -lh'
 alias la='ls -lah'
+
+# EDITOR
+if which nvim 2>&1 > /dev/null
+then
+    alias vi=nvim
+elif which nvim 2>&1 > /dev/null
+then
+    alias vi=vim
+fi
 
 # git
 alias gl="tig --all"
