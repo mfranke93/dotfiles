@@ -1,1 +1,0 @@
-/home/max/.dotfiles/zsh/third_party/vim-plug/plug.vim
