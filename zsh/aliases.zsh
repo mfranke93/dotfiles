@@ -15,7 +15,7 @@ alias la='ls -lah'
 if which nvim 2>&1 > /dev/null
 then
     alias vi=nvim
-elif which nvim 2>&1 > /dev/null
+elif which vim 2>&1 > /dev/null
 then
     alias vi=vim
 fi
