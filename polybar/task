@@ -2,12 +2,12 @@
 
 # COUNT TASKS, ORDERED BY THEIR URGENCY/DUE DATE
 
-overdue=$(task "(+OVERDUE and urg < 15)" count)
-today=$(task "(+TODAY and -OVERDUE and urg < 15)" count)
-tomorrow=$(task "(+TOMORROW and urg < 15)" count)
-week=$(task "(due.before=monday and due.after:tomorrow+24h and +DUE and urg < 15)" count)
-important=$(task "urg >= 15 (+DUE or +OVERDUE)" count)
-someday=$(task "(+PENDING and due='' and urg < 15)" count)
+overdue=$(task "(+OVERDUE and urg < 15)" count 2>/dev/null)
+today=$(task "(+TODAY and -OVERDUE and urg < 15)" count 2>/dev/null)
+tomorrow=$(task "(+TOMORROW and urg < 15)" count 2>/dev/null)
+week=$(task "(due.before=monday and due.after:tomorrow+24h and +DUE and urg < 15)" count 2>/dev/null)
+important=$(task "urg >= 15 (+DUE or +OVERDUE)" count 2>/dev/null)
+someday=$(task "(+PENDING and due='' and urg < 15)" count 2>/dev/null)
 
 col_urgent="#f02020"
 col_overdue="#f08020"
