@@ -10,3 +10,4 @@ source ~/.zsh/history.zsh
 source ~/.zsh/zsh_hooks.zsh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source ~/.zsh/zsh-syntax-highlighting.zsh
