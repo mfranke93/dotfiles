@@ -26,6 +26,7 @@ ln -sfvT $(pwd)/polybar/ ~/.config/polybar
 
 ln -sfvT $(pwd)/zsh ~/.zsh
 ln -sfvT $(pwd)/third_party/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ~/.zsh/zsh-syntax-highlighting.zsh
+ln -sfvT $(pwd)/third_party/z/z.sh ~/.zsh/z.sh
 
 gpg -d vdirsyncerconfig.gpg > vdirsyncerconfig
 install-file vdirsyncerconfig ~/.vdirsyncer/config
