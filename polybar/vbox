@@ -1,0 +1,13 @@
+#!/bin/zsh
+
+local running=$(VBoxManage list runningvms | wc -l)
+if [[ "$running" -eq 0 ]]
+then
+    exit 1
+fi
+
+local col="#ffa020"
+local f="#999"
+local s=""
+
+echo "%{u${col}}%{F${f}} ${s} %{F#dfdfdf} ${running} "

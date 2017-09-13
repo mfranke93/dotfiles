@@ -62,7 +62,7 @@ font-3 = fixed:pixelsize=10;1
 font-4 = unifont:fontformat=truetype:size=8:antialias=false;0
 modules-left = i3 
 modules-center = mpd
-modules-right = mail gap task gap filesystem_root filesystem_home gap cpu temperature memory power gap net gap volume gap date 
+modules-right = mail gap vbox gap task gap filesystem_root filesystem_home gap cpu temperature memory power gap net gap volume gap date 
 tray-position = right
 tray-padding = 2
 scroll-up = i3wm-wsnext
@@ -215,6 +215,13 @@ type = custom/script
 interval = 5
 format = <label>
 exec = "/home/max/.config/polybar/net"
+
+[module/vbox]
+type = custom/script
+interval = 5
+format = <label>
+exec = "/home/max/.config/polybar/vbox"
+exec-if = "/home/max/.config/polybar/vbox"
 
 [module/power]
 type = custom/script
