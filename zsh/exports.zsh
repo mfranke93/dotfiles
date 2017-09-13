@@ -25,6 +25,6 @@ fi
 # pass: copy to primary
 export PASSWORD_STORE_X_SELECTION=primary
 
-export LESS='--ignore-case --raw-control-chars --quit-if-one-screen'
+export LESS='--ignore-case --raw-control-chars --quit-if-one-screen --no-init'
 export PAGER='less'
 
