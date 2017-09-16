@@ -2,9 +2,6 @@
 
 install-file()
 {
-    if [ -f $2 ]; then
-        mv $2 $2.bak
-    fi
     mkdir -p `dirname $2`
     ln -sfv $(pwd)/$1 $2
 }
@@ -47,6 +44,7 @@ install-file mailcap ~/.mailcap
 install-file mpv_config ~/.mpv/config
 install-file offlineimap/offlineimap.py ~/.offlineimap.py
 install-file offlineimap/offlineimaprc ~/.offlineimaprc
+install-file qutebrowser.conf ~/.config/qutebrowser/qutebrowser.conf
 install-file taskrc ~/.taskrc
 install-file tmuxconf ~/.tmux.conf
 install-file xinitrc ~/.xinitrc
