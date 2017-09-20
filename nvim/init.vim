@@ -233,10 +233,14 @@ inoremap [29~ <NOP>
 
 set viewoptions-=options
 
+if exists('&inccommand')
+    set inccommand=nosplit
+endif
+
 "-----------------------------------------------------------------------------
 " Function to make current instance remote-send:able server for neovim-remote
 "-----------------------------------------------------------------------------
-function MakeServer()
+function! MakeServer()
     if exists("v:servername")
         call system("ln -sf " . v:servername . " /tmp/nvimsocket")
         let g:current_instance_is_server = 1
@@ -246,7 +250,7 @@ function MakeServer()
     endif
 endfunction
 
-function ClearServer()
+function! ClearServer()
     if exists("g:current_instance_is_server")
         call system("rm /tmp/nvimsocket")
         unlet g:current_instance_is_server
