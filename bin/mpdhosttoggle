@@ -1,0 +1,3 @@
+#!/bin/zsh
+
+ex "+%g/^[^#]/s/^/##/g | %s/^\#//g | wq" ${HOME}/.config/mpd/mpdhost

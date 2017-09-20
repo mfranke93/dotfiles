@@ -28,10 +28,13 @@ ln -sfvT $(pwd)/third_party/z/z.sh ~/.zsh/z.sh
 gpg -d vdirsyncerconfig.gpg > vdirsyncerconfig
 install-file vdirsyncerconfig ~/.vdirsyncer/config
 
+install-file Xresources ~/.Xresources
 install-file bin/currentlyplayed ~/bin/currentlyplayed
 install-file bin/git-remotify ~/bin/git-remotify
 install-file bin/i3exit ~/bin/i3exit
 install-file bin/i3status-feeder.pl ~/bin/i3status-feeder.pl
+install-file bin/mpcctl ~/bin/mpcctl
+install-file bin/mpdhosttoggle ~/bin/mpdhosttoggle
 install-file bin/mpvctl ~/bin/mpvctl
 install-file bin/office ~/bin/office
 install-file dunstrc ~/.config/dunst/dunstrc
@@ -48,5 +51,4 @@ install-file qutebrowser.conf ~/.config/qutebrowser/qutebrowser.conf
 install-file taskrc ~/.taskrc
 install-file tmuxconf ~/.tmux.conf
 install-file xinitrc ~/.xinitrc
-install-file Xresources ~/.Xresources
 install-file zshrc ~/.zshrc
