@@ -5,10 +5,10 @@ source ${HOME}/.config/mpd/mpdhost
 # check if mpc is running and playlist not empty
 if ( mpc 2>&1 > /dev/null )
 then
-    out=$(mpc)
+    out=$(mpc 2>/dev/null)
     if ( echo $out | grep -e "^\[paused\]\|\[playing\]" 2>&1 > /dev/null )
     then
-        currentsong=$(mpc current | /home/max/.config/polybar/shorten.pl )
+        currentsong=$(mpc current 2>/dev/null | /home/max/.config/polybar/shorten.pl )
         
         if (echo $out | grep "^\[playing\]" 2>&1 > /dev/null )
         then
