@@ -45,8 +45,13 @@ function parse_git_branch() {
 }
 
 function hostname_colored() {
-    local cksum="$(hostname | cksum)"
-    echo -n "%{$(tput setaf $(( 1 + ${cksum%%[ 	]*} % 6 )) )%}"
+    if [ -f ~/.host-color ]
+    then
+        echo -nE "%{$FG[$(cat ~/.host-color)]%}"
+    else
+        local cksum="$(hostname | cksum)"
+        echo -n "%{$(tput setaf $(( 1 + ${cksum%%[ 	]*} % 6 )) )%}"
+    fi
     echo -n `hostname -s`
     echo -n "%{$reset_color%}"
 }
