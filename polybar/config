@@ -55,9 +55,9 @@ padding-left = 0
 padding-right = 0
 module-margin-left = 0
 module-margin-right = 0
-font-0 = noto:pixelsize=10;1
+font-0 = xos4 terminus:pixelsize=10;1
 font-1 = siji:pixelsize=10;1
-font-2 = fontawesome:size=12;1
+font-2 = fontawesome:size=10;1
 font-3 = fixed:pixelsize=10;1
 font-4 = unifont:fontformat=truetype:size=8:antialias=false;0
 modules-left = i3 
@@ -111,10 +111,10 @@ label-mode-background = ${colors.primary}
 label-focused = %icon%
 label-focused-background = ${colors.background-alt}
 label-focused-underline= ${colors.primary}
-label-focused-padding = 2
+label-focused-padding = 1
 ; unfocused = Inactive workspace on any monitor
 label-unfocused = %icon%
-label-unfocused-padding = 2
+label-unfocused-padding = 1
 ; visible = Active workspace on unfocused monitor
 label-visible = %icon%
 label-visible-background = ${self.label-focused-background}
@@ -123,18 +123,18 @@ label-visible-padding = ${self.label-focused-padding}
 ; urgent = Workspace with urgency hint set
 label-urgent = %icon%
 label-urgent-background = ${colors.alert}
-label-urgent-padding = 2
+label-urgent-padding = 1
 ; workspace icons
 ws-icon-0 = multimedia; 
 ws-icon-1 = browser; 
 ws-icon-2 = office; 
-ws-icon-3 = programming;
-ws-icon-4 = ws4;4
-ws-icon-5 = ws5;5
-ws-icon-6 = ws6;6
-ws-icon-7 = ws7;7
-ws-icon-8 = ws8;8
-ws-icon-9 = ws9;9
+ws-icon-3 = programming;
+ws-icon-4 = ws4;
+ws-icon-5 = ws5;
+ws-icon-6 = ws6;
+ws-icon-7 = ws7;
+ws-icon-8 = ws8;
+ws-icon-9 = ws9;
 fuzzy-match = true
 
 [module/mpd]
