@@ -6,49 +6,112 @@ install-file()
     ln -sfv $(pwd)/$1 $2
 }
 
-# neovim
-ln -sfvT $(pwd)/nvim ~/.config/nvim
-mkdir -pv nvim/{colors,autoload}
-ln -sf $(pwd)/third_party/vim-monokai/colors/monokai.vim nvim/colors
-ln -sf $(pwd)/third_party/vim-plug/plug.vim nvim/autoload
+install-directory()
+{
+    ln -sfvT $(pwd)/$1 $2
+}
 
-mkdir -pv ~/.config/ranger
-for f in `ls rangerconf`
+install-target()
+{
+    echo -e "\033[32mInstalling target \033[34m$1\033[0m"
+    case $1 in
+        nvim)
+            # neovim
+            install-directory nvim ~/.config/nvim
+            mkdir -pv nvim/{colors,autoload}
+            ln -sf $(pwd)/third_party/vim-monokai/colors/monokai.vim nvim/colors
+            ln -sf $(pwd)/third_party/vim-plug/plug.vim nvim/autoload
+            ;;
+        mutt)
+            install-directory mutt/ ~/.mutt
+            install-file mailcap ~/.mailcap
+            install-file offlineimap/offlineimap.py ~/.offlineimap.py
+            install-file offlineimap/offlineimaprc ~/.offlineimaprc
+            ;;
+        git)
+            install-file bin/git-remotify ~/bin/git-remotify
+            install-file gitconfig ~/.gitconfig
+            ;;
+        mpd)
+            install-file bin/mpdhosttoggle ~/bin/mpdhosttoggle
+            install-file bin/mpcctl ~/bin/mpcctl
+            ;;
+        mpc)
+            install-file bin/currentlyplayed ~/bin/currentlyplayed
+            install-file bin/mpvctl ~/bin/mpvctl
+            install-file mpv_config ~/.mpv/config
+            ;;
+        zsh)
+            install-file zshrc ~/.zshrc
+            install-directory zsh ~/.zsh
+            install-directory third_party/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ~/.zsh/zsh-syntax-highlighting.zsh
+            install-directory third_party/z/z.sh ~/.zsh/z.sh
+            ;;
+        office)
+            gpg -d vdirsyncerconfig.gpg > vdirsyncerconfig
+            install-file vdirsyncerconfig ~/.vdirsyncer/config
+            install-file bin/office ~/bin/office
+            install-file khalconfig ~/.config/khal/config
+            install-file taskrc ~/.taskrc
+            ;;
+        i3)
+            install-directory polybar/ ~/.config/polybar
+            install-file bin/i3exit ~/bin/i3exit
+            install-file bin/i3status-feeder.pl ~/bin/i3status-feeder.pl
+            install-file i3config ~/.config/i3/config
+            ;;
+        tmux)
+            install-file tmuxconf ~/.tmux.conf
+            ;;
+        misc)
+            install-file Xresources ~/.Xresources
+            install-file dunstrc ~/.config/dunst/dunstrc
+            install-file gpg-agent.conf ~/.gnupg/gpg-agent.conf
+            install-file qutebrowser.conf ~/.config/qutebrowser/qutebrowser.conf
+            install-file xinitrc ~/.xinitrc
+            ;;
+        ranger)
+            mkdir -pv ~/.config/ranger
+            for f in `ls rangerconf`
+            do
+                ln -sfv $(pwd)/rangerconf/$f ~/.config/ranger/
+            done
+            ;;
+        *)
+            echo "No such target: $1"
+            ;;
+    esac
+    echo
+}
+
+ALLTARGETS="git i3 misc mpc mpd mutt nvim office ranger tmux zsh"
+# if no args: install full
+if [ $# -eq 0 ]
+then
+    targets=$ALLTARGETS
+    echo -e "Usage: $0 [target-names ...]\n   or  $0 all to install all targets\n\nPossible targets:"
+    for target in $targets
+    do
+        echo -e "\t$target"
+    done
+    exit 1
+else
+    if [ "$1" = "all" ]
+    then
+        targets=$ALLTARGETS
+    else
+        targets=$@
+    fi
+fi
+
+for target in $targets
 do
-    ln -sfv $(pwd)/rangerconf/$f ~/.config/ranger/
+    install-target $target
 done
 
-ln -sfvT $(pwd)/mutt/ ~/.mutt
-ln -sfvT $(pwd)/polybar/ ~/.config/polybar
+exit
 
-ln -sfvT $(pwd)/zsh ~/.zsh
-ln -sfvT $(pwd)/third_party/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ~/.zsh/zsh-syntax-highlighting.zsh
-ln -sfvT $(pwd)/third_party/z/z.sh ~/.zsh/z.sh
 
-gpg -d vdirsyncerconfig.gpg > vdirsyncerconfig
-install-file vdirsyncerconfig ~/.vdirsyncer/config
 
-install-file Xresources ~/.Xresources
-install-file bin/currentlyplayed ~/bin/currentlyplayed
-install-file bin/git-remotify ~/bin/git-remotify
-install-file bin/i3exit ~/bin/i3exit
-install-file bin/i3status-feeder.pl ~/bin/i3status-feeder.pl
-install-file bin/mpcctl ~/bin/mpcctl
-install-file bin/mpdhosttoggle ~/bin/mpdhosttoggle
-install-file bin/mpvctl ~/bin/mpvctl
-install-file bin/office ~/bin/office
-install-file dunstrc ~/.config/dunst/dunstrc
-install-file gitconfig ~/.gitconfig
-install-file gpg-agent.conf ~/.gnupg/gpg-agent.conf
-install-file i3config ~/.config/i3/config
-install-file khalconfig ~/.config/khal/config
-install-file liquidpromptrc ~/.config/liquidpromptrc
-install-file mailcap ~/.mailcap
-install-file mpv_config ~/.mpv/config
-install-file offlineimap/offlineimap.py ~/.offlineimap.py
-install-file offlineimap/offlineimaprc ~/.offlineimaprc
-install-file qutebrowser.conf ~/.config/qutebrowser/qutebrowser.conf
-install-file taskrc ~/.taskrc
-install-file tmuxconf ~/.tmux.conf
-install-file xinitrc ~/.xinitrc
-install-file zshrc ~/.zshrc
+
+
