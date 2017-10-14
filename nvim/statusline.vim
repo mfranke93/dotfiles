@@ -35,6 +35,7 @@ hi NormalModeHighlight ctermfg=232 ctermbg=082 guifg=#222222 guibg=#33ff33
 hi InsertModeHighlight ctermfg=232 ctermbg=208 guifg=#222222 guibg=#ffa000
 hi VisualModeHighlight ctermfg=232 ctermbg=038 guifg=#222222 guibg=#4444fd
 hi OtherModeHighlight  ctermfg=232 ctermbg=247 guifg=#222222 guibg=#bbbbbb
+hi TerminalModeHighlight  ctermfg=232 ctermbg=196 guifg=#222222 guibg=#ff2000
 
 " link to User1
 hi! link User1 NONE
@@ -64,10 +65,12 @@ function! ModeColor()
     exe 'hi! link User1 NONE'
     if (mode() =~# '\v(n|no)')
         exe 'hi! link User1 NormalModeHighlight'
-  elseif (mode() ==# 'i')
+    elseif (mode() ==# 'i')
         exe 'hi! link User1 InsertModeHighlight'
-  elseif (mode() =~# '\v(v|V)' || g:currentmode[mode()] ==# 'V·Block' || get(g:currentmode, mode(), '') ==# 't') || mode() == ''
+    elseif (mode() =~# '\v(v|V)' || g:currentmode[mode()] ==# 'V·Block' || get(g:currentmode, mode(), '') ==# 't') || mode() == ''
         exe 'hi! link User1 VisualModeHighlight'
+    elseif (mode() == 't')
+        exe 'hi! link User1 TerminalModeHighlight'
     else
         exe 'hi! link User1 OtherModeHighlight'
     endif
