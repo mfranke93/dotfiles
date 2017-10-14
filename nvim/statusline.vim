@@ -1,27 +1,27 @@
 " mapping from mode() output to name
 let g:currentmode={
-    \ 'n'  : 'NORMAL ',
-    \ 'no' : 'N·Operator Pending ',
-    \ 'v'  : 'VISUAL ',
-    \ 'V'  : 'V·Line ',
-    \ '^V' : 'V·Block ',
-    \ '' : 'V·Block ',
-    \ 's'  : 'Select ',
-    \ 'S'  : 'S·Line ',
-    \ '^S' : 'S·Block ',
-    \ '' : 'S·Block ',
-    \ 'i'  : 'INSERT ',
-    \ 'R'  : 'REPLACE ',
-    \ 'Rv' : 'V·Replace ',
-    \ 'c'  : 'Command ',
-    \ 'cv' : 'Vim Ex ',
-    \ 'ce' : 'Ex ',
-    \ 'r'  : 'Prompt ',
-    \ 'rm' : 'More ',
-    \ 'r?' : 'Confirm ',
-    \ '!'  : 'Shell ',
-    \ 't'  : 'Terminal '
-    \}
+            \ 'n'  : 'NORMAL ',
+            \ 'no' : 'N·Operator Pending ',
+            \ 'v'  : 'VISUAL ',
+            \ 'V'  : 'V·Line ',
+            \ '^V' : 'V·Block ',
+            \ '' : 'V·Block ',
+            \ 's'  : 'Select ',
+            \ 'S'  : 'S·Line ',
+            \ '^S' : 'S·Block ',
+            \ '' : 'S·Block ',
+            \ 'i'  : 'INSERT ',
+            \ 'R'  : 'REPLACE ',
+            \ 'Rv' : 'V·Replace ',
+            \ 'c'  : 'Command ',
+            \ 'cv' : 'Vim Ex ',
+            \ 'ce' : 'Ex ',
+            \ 'r'  : 'Prompt ',
+            \ 'rm' : 'More ',
+            \ 'r?' : 'Confirm ',
+            \ '!'  : 'Shell ',
+            \ 't'  : 'Terminal '
+            \}
 
 " bar colors
 hi User3 guibg=#aaccff guifg=#222222 ctermfg=232 ctermbg=153
@@ -34,8 +34,8 @@ hi User7 guibg=#aaccff guifg=#dd0000 ctermfg=124 ctermbg=153
 hi NormalModeHighlight ctermfg=232 ctermbg=082 guifg=#222222 guibg=#33ff33
 hi InsertModeHighlight ctermfg=232 ctermbg=208 guifg=#222222 guibg=#ffa000
 hi VisualModeHighlight ctermfg=232 ctermbg=038 guifg=#222222 guibg=#4444fd
-hi OtherModeHighlight  ctermfg=232 ctermbg=247 guifg=#222222 guibg=#bbbbbb
-hi TerminalModeHighlight  ctermfg=232 ctermbg=196 guifg=#222222 guibg=#ff2000
+hi OtherModeHighlight  ctermfg=232 ctermbg=011 guifg=#222222 guibg=#aaaa44
+hi TerminalModeHighlight ctermfg=232 ctermbg=196 guifg=#222222 guibg=#ff2000
 
 " link to User1
 hi! link User1 NONE
