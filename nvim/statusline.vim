@@ -31,9 +31,9 @@ hi User5 guibg=#486aff guifg=#222222 ctermfg=232 ctermbg=069
 hi User7 guibg=#aaccff guifg=#dd0000 ctermfg=124 ctermbg=153
 
 " colors for modes
-hi NormalModeHighlight ctermfg=232 ctermbg=082 guifg=#222222 guibg=#33ff33
+hi NormalModeHighlight ctermfg=232 ctermbg=069 guifg=#222222 guibg=#486aff
 hi InsertModeHighlight ctermfg=232 ctermbg=208 guifg=#222222 guibg=#ffa000
-hi VisualModeHighlight ctermfg=232 ctermbg=038 guifg=#222222 guibg=#4444fd
+hi VisualModeHighlight ctermfg=232 ctermbg=082 guifg=#222222 guibg=#33ff33
 hi OtherModeHighlight  ctermfg=232 ctermbg=011 guifg=#222222 guibg=#aaaa44
 hi TerminalModeHighlight ctermfg=232 ctermbg=196 guifg=#222222 guibg=#ff2000
 
@@ -51,8 +51,8 @@ set noshowmode
 set statusline=
 set statusline +=%{ModeColor()}                                     " get color
 set statusline +=%1*\ %-8(%{toupper(g:currentmode[mode()])}%)       " mode
-set statusline +=%2*\ %l/%L\                                        " line number/lines
-set statusline +=%2*:\ %-v\                                         " column
+set statusline +=%4*\ %l/%L\                                        " line number/lines
+set statusline +=%2*\ %-v\                                         " column
 set statusline +=%3*\ %-20.40F\                                     " filename
 set statusline +=%3*%=                                              " space
 set statusline +=%7*%m%r%h%w%q%k%3*\                                " flags
