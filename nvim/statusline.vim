@@ -44,7 +44,6 @@ hi! link User1 NormalModeHighlight
 " last window always has status line
 set laststatus=2
 
-set noshowcmd
 set noshowmode
 
 " set statusline
@@ -52,8 +51,8 @@ set statusline=
 set statusline +=%{ModeColor()}                                     " get color
 set statusline +=%1*\ %-8(%{toupper(g:currentmode[mode()])}%)       " mode
 set statusline +=%4*\ %l/%L\                                        " line number/lines
-set statusline +=%2*\ %-v\                                         " column
-set statusline +=%3*\ %-20.40F\                                     " filename
+set statusline +=%2*\ %-v\                                          " column
+set statusline +=%3*\ %F\                                           " filename
 set statusline +=%3*%=                                              " space
 set statusline +=%7*%m%r%h%w%q%k%3*\                                " flags
 set statusline +=%2*\ %{&ft}\                                       " file type
