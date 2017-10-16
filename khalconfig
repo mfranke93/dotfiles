@@ -3,6 +3,10 @@
 path = ~/.calendars/max.franke.93@googlemail.com
 type = calendar
 
+[[Uni]]
+path = ~/.calendars/pireg274o60meve460m441gdk8@group.calendar.google.com
+type = calendar
+
 [locale]
 timeformat = %H:%M
 dateformat = %Y-%m-%d
