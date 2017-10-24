@@ -187,13 +187,15 @@ exec --no-startup-id dunst
 
 # browser and email
 bindsym $mod+c exec qutebrowser --backend webengine
-bindsym $mod+b exec urxvt -title mutt -e mutt
 
 # file manager
 bindsym $mod+n exec urxvt -title ranger -e ranger
 
 # media player
 bindsym $mod+p exec urxvt -title Music -e ncmpcpp
+
+# password to clipboard
+bindsym $mod+b exec /home/max/bin/getpass
 
 ######################
 # Screen brightness controls

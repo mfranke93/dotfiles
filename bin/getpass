@@ -1,0 +1,8 @@
+#!/bin/zsh
+
+cd ~/.password-store 
+local files=$(find . -type f -name "*.gpg" | sed 's:^\./::' | sed 's:\.gpg$::' )
+
+local selection=$(echo $files | dmenu -b -i -p "Select password" -fn "xos4 Terminus:size=8" -nb "#202020" -nf "#40a0e0" -sb "#202020" -sf "#40d0f0")
+
+urxvt -title "Fetching password..." -e zsh -c "pass -c $selection"

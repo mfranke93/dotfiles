@@ -59,6 +59,7 @@ install-target()
             install-file bin/i3exit ~/bin/i3exit
             install-file bin/i3status-feeder.pl ~/bin/i3status-feeder.pl
             install-file i3config ~/.config/i3/config
+            install-file bin/getpass ~/bin/getpass
             ;;
         tmux)
             install-file tmuxconf ~/.tmux.conf
