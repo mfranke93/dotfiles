@@ -89,7 +89,7 @@ set -g pane-active-border-fg colour039        # cyan
 # }
 # The statusbar {
 
-set -g status-position bottom
+set -g status-position top
 set -g status-bg colour069                    # weak blue
 set -g status-fg colour255                    # near white
 set -g status-attr dim
