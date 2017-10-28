@@ -1,8 +1,10 @@
 #!/bin/zsh
 
-cd ~/.password-store 
-local files=$(find . -type f -name "*.gpg" | sed 's:^\./::' | sed 's:\.gpg$::' )
-
-local selection=$(echo $files | dmenu -b -i -p "Select password: " -fn "xos4 Terminus:size=8" -nb "#202020" -nf "#40a0e0" -sb "#202020" -sf "#40d0f0")
-
-urxvt -title "Fetching password..." -e zsh -c "pass -c $selection; sleep 2"
+# create a terminal instance which calls passmenu
+# since the background-sleep part of which holds the password in the clipboard,
+# but deletes it after 45 seconds, is killed if the window is closed
+# immediately after, but we do not want the window to interfere with what we
+# are doing, we will just unmap it and sleep for 45 seconds. after that, all
+# resources will be freed again, but until then the window will not be visible
+# either.
+urxvt -title "getpass" -e zsh -c "passmenu; xdotool getwindowfocus windowunmap; sleep 45"

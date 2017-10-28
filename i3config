@@ -206,6 +206,7 @@ bindsym $mod+p exec urxvt -title Music -e ncmpcpp
 
 # password to clipboard
 bindsym $mod+b exec /home/max/bin/getpass
+for_window [ class="URxvt" title="getpass"] floating enable
 
 ######################
 # Screen brightness controls
