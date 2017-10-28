@@ -1,6 +1,6 @@
 #!/bin/sh
 lock() {
-  i3lock -i Pictures/lock -t
+  i3lock-fancy --greyscale --text "" -- scrot
 }
 
 case "$1" in
