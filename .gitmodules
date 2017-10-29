@@ -10,3 +10,9 @@
 [submodule "third_party/z"]
 	path = third_party/z
 	url = git@github.com:rupa/z.git
+[submodule "third_party/Apprentice"]
+	path = third_party/Apprentice
+	url = https://github.com/romainl/Apprentice
+[submodule "third_party/gruvbox"]
+	path = third_party/gruvbox
+	url = https://github.com/morhetz/gruvbox

@@ -120,7 +120,9 @@ elseif $TERM == "screen-256color"
   set t_Co=256
 endif
 
-colorscheme monokai
+colorscheme gruvbox
+" colorscheme apprentice
+set bg=dark
 
 " highlight current line
 set cursorline

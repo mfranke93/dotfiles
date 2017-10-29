@@ -19,8 +19,10 @@ install-target()
             # neovim
             install-directory nvim ~/.config/nvim
             mkdir -pv nvim/{colors,autoload}
-            ln -sf $(pwd)/third_party/vim-monokai/colors/monokai.vim nvim/colors
-            ln -sf $(pwd)/third_party/vim-plug/plug.vim nvim/autoload
+            ln -sfv $(pwd)/third_party/vim-monokai/colors/monokai.vim nvim/colors
+            ln -sfv $(pwd)/third_party/vim-plug/plug.vim nvim/autoload
+            ln -sfv $(pwd)/third_party/Apprentice/colors/apprentice.vim nvim/colors
+            ln -sfv $(pwd)/third_party/gruvbox/colors/gruvbox.vim nvim/colors
             ;;
         mutt)
             install-directory mutt/ ~/.mutt
