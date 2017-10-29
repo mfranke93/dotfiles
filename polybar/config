@@ -62,7 +62,7 @@ font-3 = fixed:pixelsize=10;1
 font-4 = unifont:fontformat=truetype:size=8:antialias=false;0
 modules-left = i3 
 modules-center = mpd
-modules-right = mail gap vbox gap task gap filesystem_root filesystem_home gap cpu temperature memory power gap net gap volume gap date 
+modules-right = vbox gap mail gap task gap filesystem_root filesystem_home gap cpu temperature memory power gap net gap volume gap date 
 tray-position = right
 tray-padding = 2
 scroll-up = i3wm-wsnext
@@ -198,11 +198,7 @@ ramp-foreground = ${colors.foreground-alt}
 type = custom/script
 interval = 10
 format = <label>
-format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
-exec-if = "/home/max/.config/polybar/mail new"
-exec = "/home/max/.config/polybar/mail count"
-format-underline = ${colors.mail-color}
+exec = "/home/max/.config/polybar/mail"
 
 [module/task]
 type = custom/script

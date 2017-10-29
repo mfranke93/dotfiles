@@ -1,14 +1,24 @@
 #!/bin/zsh
 
+mailnew=""
+mailflagged=""
+colflagged="#f0d044"
+colnew="#f0a044"
+f="#dfdfdf"
+f2="#555"
 newmailnumber=`find ~/mail -type f | grep '/INBOX[^\/]*/new/' | wc -l`
+flaggedmailnumber=`find ~/mail -type f | grep '/INBOX.*,[A-Z]*F[A-Z]*$' | wc -l`
 
-case $1 in
-new)
-    [ $newmailnumber -gt 0 ]
-    exit $?
-    ;;
-count)
-    echo -n $newmailnumber
-    ;;
-esac
+str=""
 
+if [[ $newmailnumber -gt 0 ]]
+then
+    str="%{F${f2}}%{u${colnew}} ${mailnew}%{F${f}} ${newmailnumber} "
+fi
+
+if [[ $flaggedmailnumber -gt 0 ]]
+then
+    str="${str}%{F${f2}}%{u${colflagged}} ${mailflagged}%{F${f}} ${flaggedmailnumber} "
+fi
+
+echo -n $str
