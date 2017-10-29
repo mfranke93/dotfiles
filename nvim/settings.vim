@@ -63,6 +63,10 @@ set showfulltag
 " get rid of the silly characters in separators
 set fillchars = ""
 
+" show trailing spaces
+set list
+set listchars=trail:•
+ 
 " Add ignorance of whitespace to diff
 set diffopt+=iwhite
 
@@ -120,9 +124,10 @@ elseif $TERM == "screen-256color"
   set t_Co=256
 endif
 
-colorscheme gruvbox
-" colorscheme apprentice
+" colorscheme gruvbox
+colorscheme apprentice
 set bg=dark
+nohls
 
 " highlight current line
 set cursorline

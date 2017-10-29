@@ -1,6 +1,6 @@
 #!/bin/zsh
 # vim: ft=zsh
-# 
+#
 # Launch a tmux session with office programs running: mutt, calcurse
 
 # only start new if does not yet exist
