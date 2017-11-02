@@ -82,6 +82,8 @@ bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
+bindsym $mod+BackSpace focus parent
+bindsym $mod+Shift+BackSpace focus parent
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
