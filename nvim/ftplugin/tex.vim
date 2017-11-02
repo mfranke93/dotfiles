@@ -11,7 +11,4 @@ inoremap <buffer> => \\Rightarrow
 inoremap <buffer> <- \\leftarrow 
 inoremap <buffer> <= \\Leftarrow 
 
-" use LaTeX flavor
-let g:tex_flavor = "latex"
-
 set timeoutlen=500
