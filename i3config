@@ -107,7 +107,7 @@ bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 bindsym $mod+BackSpace focus parent
-bindsym $mod+Shift+BackSpace focus parent
+bindsym $mod+Shift+BackSpace focus child
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
@@ -138,12 +138,6 @@ bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
-
-# focus the parent container
-bindsym $mod+BackSpace focus parent
-
-# focus the child container
-bindsym $mod+Shift+BackSpace focus child
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -245,7 +239,7 @@ assign [title="pdfpc - presentation *"] $w2
 assign [title="pdfpc - presenter *"] $w1
 
 # assign other windows
-assign [title="Office applications" class="termite"] $w2
+assign [title="Office applications" class="[Tt]ermite"] $w2
 assign [class="qutebrowser"] $w1
 assign [class="termite" title="Music"] $w10
 assign [class="termite" title="ncmpcpp*"] $w10
