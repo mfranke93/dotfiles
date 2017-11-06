@@ -58,10 +58,12 @@ install-target()
             ;;
         i3)
             install-directory polybar/ ~/.config/polybar
+            install-directory rofi/ ~/.config/rofi
             install-file bin/i3exit ~/bin/i3exit
             install-file bin/i3status-feeder.pl ~/bin/i3status-feeder.pl
             install-file i3config ~/.config/i3/config
             install-file bin/getpass ~/bin/getpass
+            install-file compton.conf ~/.compton.conf
             ;;
         tmux)
             install-file tmuxconf ~/.tmux.conf
@@ -70,8 +72,9 @@ install-target()
             install-file Xresources ~/.Xresources
             install-file dunstrc ~/.config/dunst/dunstrc
             install-file gpg-agent.conf ~/.gnupg/gpg-agent.conf
-            install-file qutebrowser.conf ~/.config/qutebrowser/qutebrowser.conf
+            install-file qutebrowserconfig.py ~/.config/qutebrowser/config.py
             install-file xinitrc ~/.xinitrc
+            install-file termiteconfig ~/.config/termite/config
             ;;
         ranger)
             mkdir -pv ~/.config/ranger

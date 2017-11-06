@@ -54,3 +54,9 @@ augroup project
     autocmd BufRead,BufNewFile *.hpp,*.cpp      set filetype=cpp.doxygen
 augroup END
 
+" set background to match terminal after vi is loaded
+augroup bgterm
+    autocmd!
+    autocmd VimEnter *                          hi Normal ctermbg=none
+augroup END
+

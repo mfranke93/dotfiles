@@ -64,3 +64,6 @@ inoremap [2~ <NOP>
 
 " disable the MENU key in insert mode. It does weird stuff
 inoremap [29~ <NOP>
+
+" <C-Space> for local expansion
+inoremap <C-Space> <C-X><C-P>
