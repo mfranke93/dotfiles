@@ -1,6 +1,7 @@
 [options]
 
 font = Fira Mono 9
+modify_other_keys = false
 
 [colors]
 
