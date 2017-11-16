@@ -65,7 +65,7 @@ set fillchars = ""
 
 " show trailing spaces
 set list
-set listchars=trail:•
+set listchars=tab:»\ ,trail:•
  
 " Add ignorance of whitespace to diff
 set diffopt+=iwhite
@@ -106,6 +106,8 @@ set undoreload=10000
 " mode lines
 set modeline
 set modelines=5
+
+set grepprg=rg\ --vimgrep
 
 " System default for mappings is now the "," character
 let mapleader = ","
