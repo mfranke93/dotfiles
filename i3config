@@ -199,16 +199,16 @@ bindsym $mod+x mode "$mode_display"
 # {{{ WORKSPACES
 
 # set workspace names
-set $w1 1:browser
-set $w2 2:office
-set $w3 3:programming
-set $w4 4:ws4
-set $w5 5:ws5
-set $w6 6:ws6
-set $w7 7:ws7
-set $w8 8:ws8
-set $w9 9:ws9
-set $w10 10:multimedia
+set $w1 1
+set $w2 2
+set $w3 3
+set $w4 4
+set $w5 5
+set $w6 6
+set $w7 7
+set $w8 8
+set $w9 9
+set $w10 10
 
 # switch to workspace
 bindsym $mod+1 workspace $w1
@@ -237,14 +237,6 @@ bindsym $mod+Shift+0 move container to workspace $w10
 # make pdfpc open presentation window on second monitor (if desktop 2 is on second monitor)
 assign [title="pdfpc - presentation *"] $w2
 assign [title="pdfpc - presenter *"] $w1
-
-# assign other windows
-assign [title="Office applications" class="[Tt]ermite"] $w2
-assign [class="qutebrowser"] $w1
-assign [class="termite" title="Music"] $w10
-assign [class="termite" title="ncmpcpp*"] $w10
-assign [class="Spotify"] $w10
-assign [class="Google-chrome"] $w10
 
 # }}}
 # {{{ I3-GAPS

@@ -5,8 +5,8 @@ while (<>) {
     my $str = $_;
     my $len = length;
 
-    if ($len > 40) {
-        print substr($str, 0, 40) . "…";
+    if ($len > 60) {
+        print substr($str, 0, 60) . "…";
     }
     else {
         print;

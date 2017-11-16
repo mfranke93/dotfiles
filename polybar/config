@@ -73,7 +73,7 @@ scroll-down = i3wm-wsprev
 ; ======================================
 [module/gap]
 type = custom/script
-exec = "echo '    '"
+exec = "echo ' '"
 exec-if = "/bin/true"
 format = <label>
 module-margin-right = 10
@@ -104,38 +104,38 @@ index-sort = true
 wrapping-scroll = false
 ; Only show workspaces on the same output as the bar
 ;pin-workspaces = true
-label-mode-padding = 2
+label-mode-padding = 0
 label-mode-foreground = #000
 label-mode-background = ${colors.primary}
 ; focused = Active workspace on focused monitor
-label-focused = %icon%
+label-focused = %name%
 label-focused-background = ${colors.background-alt}
 label-focused-underline= ${colors.primary}
 label-focused-padding = 1
 ; unfocused = Inactive workspace on any monitor
-label-unfocused = %icon%
+label-unfocused = %name%
 label-unfocused-padding = 1
 ; visible = Active workspace on unfocused monitor
-label-visible = %icon%
+label-visible = %name%
 label-visible-background = ${self.label-focused-background}
 label-visible-underline = ${self.label-focused-underline}
 label-visible-padding = ${self.label-focused-padding}
 ; urgent = Workspace with urgency hint set
-label-urgent = %icon%
+label-urgent = %name%
 label-urgent-background = ${colors.alert}
 label-urgent-padding = 1
 ; workspace icons
-ws-icon-0 = multimedia; 
-ws-icon-1 = browser; 
-ws-icon-2 = office; 
-ws-icon-3 = programming;
-ws-icon-4 = ws4;
-ws-icon-5 = ws5;
-ws-icon-6 = ws6;
-ws-icon-7 = ws7;
-ws-icon-8 = ws8;
-ws-icon-9 = ws9;
-fuzzy-match = true
+; ws-icon-0 = multimedia; 
+; ws-icon-1 = browser; 
+; ws-icon-2 = office; 
+; ws-icon-3 = programming;
+; ws-icon-4 = ws4;
+; ws-icon-5 = ws5;
+; ws-icon-6 = ws6;
+; ws-icon-7 = ws7;
+; ws-icon-8 = ws8;
+; ws-icon-9 = ws9;
+; fuzzy-match = true
 
 [module/mpd]
 type = custom/script
