@@ -1,8 +1,10 @@
 [options]
 
-font = Fira Mono 10
+#font = Fira Mono 10
+font = xos4 Terminus 10
 modify_other_keys = false
 
 [colors]
 
-background = rgba(15, 15, 15, 0.85)
+#background = rgba(15, 15, 15, 0.85)
+background = rgb(40, 40, 40)
