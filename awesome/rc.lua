@@ -10,6 +10,8 @@ local beautiful = require("beautiful")
 local naughty = require("naughty")
 local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup").widget
+-- volumearc (https://github.com/streetturtle/awesome-wm-widgets/tree/master/volumearc-widget)
+require("volumearc")
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -92,9 +94,12 @@ end
 -- Create a textclock widget
 mytextclock = wibox.widget.textclock("%-d.%-m, %p %_I:%M")
 
--- create watch widget
+-- create watch widgets
 mypowerwidget = awful.widget.watch("/home/max/.config/awesome/power", 5)
 mynetwidget = awful.widget.watch("/home/max/.config/awesome/net", 5)
+mytaskwidget = awful.widget.watch("/home/max/.config/awesome/task", 5)
+mymailwidget = awful.widget.watch("/home/max/.config/awesome/mail", 5)
+myvolumewidget = volumearc_widget
 
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
@@ -195,6 +200,12 @@ awful.screen.connect_for_each_screen(function(s)
             --mykeyboardlayout,
             wibox.widget.systray(),
             wibox.widget.textbox(" "),
+            myvolumewidget,
+            wibox.widget.textbox(" | "),
+            mymailwidget,
+            wibox.widget.textbox(" | "),
+            mytaskwidget,
+            wibox.widget.textbox(" | "),
             mynetwidget,
             wibox.widget.textbox(" | "),
             mypowerwidget,
@@ -320,6 +331,10 @@ globalkeys = gears.table.join(
               {description = "start office session", group = "system"}),
     awful.key({ modkey }, "c", function() awful.spawn("qutebrowser") end,
               {description = "web browser", group = "launcher"}),
+    awful.key({ modkey }, "p", function() awful.spawn("termite --exec=cava --title=cava --config=/home/max/termiteconf.cava") end,
+              {description = "cava", group = "launcher"}),
+    awful.key({ modkey }, "z", function() awful.spawn("nvim-qt") end,
+              {description = "nvim-qt", group = "launcher"}),
 
     -- System
     awful.key({ modkey }, "l", function() awful.spawn("/home/max/bin/i3exit lock") end,
@@ -384,7 +399,23 @@ clientkeys = gears.table.join(
             c.maximized_horizontal = not c.maximized_horizontal
             c:raise()
         end ,
-        {description = "(un)maximize horizontally", group = "client"})
+        {description = "(un)maximize horizontally", group = "client"}),
+    awful.key({ modkey,           }, "-",
+        function (c)
+            c.opacity = c.opacity - 0.1
+            if c.opacity < 0 then
+                c.opacity = 0
+            end
+        end ,
+        {description = "make window transparent", group = "client"}),
+    awful.key({ modkey, "Shift"   }, "-",
+        function (c)
+            c.opacity = c.opacity + 0.1
+            if c.opacity > 1 then
+                c.opacity = 1
+            end
+        end ,
+        {description = "make window opaque", group = "client"})
 )
 
 -- Bind all key numbers to tags.

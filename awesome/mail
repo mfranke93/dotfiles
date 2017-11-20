@@ -1,0 +1,12 @@
+#!/bin/zsh
+
+mailnew=""
+newmailnumber=`find ~/mail -type f | grep '/INBOX[^\/]*/new/' | wc -l`
+
+str=" "
+if [[ $newmailnumber -gt 0 ]]
+then
+    str="${newmailnumber}"
+fi
+
+echo -n $str

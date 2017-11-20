@@ -1,0 +1,46 @@
+#!/bin/zsh
+
+# COUNT TASKS, ORDERED BY THEIR URGENCY/DUE DATE
+
+overdue=$(task "(+OVERDUE and urg < 15)" count 2>/dev/null)
+today=$(task "(+TODAY and -OVERDUE and urg < 15)" count 2>/dev/null)
+tomorrow=$(task "(+TOMORROW and urg < 15)" count 2>/dev/null)
+week=$(task "(due.before=monday and due.after:tomorrow+24h and +DUE and urg < 15)" count 2>/dev/null)
+important=$(task "urg >= 15 (+DUE or +OVERDUE)" count 2>/dev/null)
+someday=$(task "(+PENDING and due='' and urg < 15)" count 2>/dev/null)
+
+sym_urgent=" "
+sym_overdue=" "
+sym_today=" "
+sym_tomorrow=" "
+sym_week=" "
+sym_someday=" "
+
+str=""
+
+if [ "$important" -gt "0" ]
+then
+    str="${str} ${sym_urgent}${important} "
+fi
+if [ "$overdue" -gt "0" ]
+then
+    str="${str} ${sym_overdue}${overdue} "
+fi
+if [ "$today" -gt "0" ]
+then
+    str="${str} ${sym_today}${today} "
+fi
+if [ "$tomorrow" -gt "0" ]
+then
+    str="${str} ${sym_tomorrow}${tomorrow} "
+fi
+if [ "$week" -gt "0" ]
+then
+    str="${str} ${sym_week}${week} "
+fi
+if [ "$someday" -gt "0" ]
+then
+    str="${str} ${sym_someday}${someday} "
+fi
+
+echo ${str}
