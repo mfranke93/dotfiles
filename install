@@ -15,6 +15,9 @@ install-target()
 {
     echo -e "\033[32mInstalling target \033[34m$1\033[0m"
     case $1 in
+        awesome)
+            install-directory awesome ~/.config/awesome
+            ;;
         nvim)
             # neovim
             install-directory nvim ~/.config/nvim
