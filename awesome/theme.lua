@@ -25,7 +25,7 @@ theme.fg_urgent     = "#ffffff"
 theme.fg_minimize   = "#ffffff"
 
 theme.useless_gap   = dpi(2)
-theme.border_width  = dpi(1)
+theme.border_width  = 0
 theme.border_normal = "#000000"
 theme.border_focus  = "#222222"
 theme.border_marked = "#91231c"
@@ -46,7 +46,7 @@ theme.tasklist_bg_focus = "#333333"
 --theme.taglist_bg_focus = "#ff0000"
 
 -- Generate taglist squares:
-local taglist_square_size = dpi(4)
+local taglist_square_size = dpi(3)
 theme.taglist_squares_sel = theme_assets.taglist_squares_sel(
     taglist_square_size, theme.fg_normal
 )

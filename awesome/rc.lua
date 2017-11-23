@@ -12,6 +12,7 @@ local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup").widget
 -- volumearc (https://github.com/streetturtle/awesome-wm-widgets/tree/master/volumearc-widget)
 require("volumearc")
+require("battery")
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -88,6 +89,13 @@ local function client_menu_toggle_fn()
         end
     end
 end
+
+local function run_office_or_fg()
+    local matcher = function(c)
+        return awful.rules.match(c, {class = 'Termite', name = 'Office'})
+    end
+    awful.client.run_or_raise('termite --title Office --exec "/home/max/bin/office"', matcher)
+end
 -- }}}
 
 -- {{{ Wibar
@@ -95,10 +103,16 @@ end
 mytextclock = wibox.widget.textclock("%-d.%-m, %p %_I:%M")
 
 -- create watch widgets
-mypowerwidget = awful.widget.watch("/home/max/.config/awesome/power", 5)
+mypowerwidget = batteryarc_widget
 mynetwidget = awful.widget.watch("/home/max/.config/awesome/net", 5)
-mytaskwidget = awful.widget.watch("/home/max/.config/awesome/task", 5)
-mymailwidget = awful.widget.watch("/home/max/.config/awesome/mail", 5)
+mytaskwidget = awful.widget.watch("/home/max/.config/awesome/task", 5, function(widget, stdout, _, _, _)
+    widget:set_markup(stdout)
+end)
+
+mymailwidget = awful.widget.watch("/home/max/.config/awesome/mail", 5, function(widget, stdout, _, _, _)
+    widget:set_markup(stdout)
+end)
+mymailwidget:connect_signal("button::press", run_office_or_fg)
 myvolumewidget = volumearc_widget
 
 -- Create a wibox for each screen and add it
@@ -167,7 +181,7 @@ awful.screen.connect_for_each_screen(function(s)
     awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, s, awful.layout.layouts[1])
 
     -- Create a promptbox for each screen
-    --s.mypromptbox = awful.widget.prompt()
+    s.mypromptbox = awful.widget.prompt()
     -- Create an imagebox widget which will contain an icon indicating which layout we're using.
     -- We need one layoutbox per screen.
     s.mylayoutbox = awful.widget.layoutbox(s)
@@ -190,9 +204,8 @@ awful.screen.connect_for_each_screen(function(s)
         layout = wibox.layout.align.horizontal,
         { -- Left widgets
             layout = wibox.layout.fixed.horizontal,
-            --mylauncher,
             s.mytaglist,
-            --s.mypromptbox,
+            s.mypromptbox,
         },
         s.mytasklist, -- Middle widget
         { -- Right widgets
@@ -314,20 +327,20 @@ globalkeys = gears.table.join(
     awful.key({ modkey },            "r",     function () awful.screen.focused().mypromptbox:run() end,
               {description = "run prompt", group = "launcher"}),
 
-    awful.key({ modkey }, "x",
-              function ()
-                  awful.prompt.run {
-                    prompt       = "Run Lua code: ",
-                    textbox      = awful.screen.focused().mypromptbox.widget,
-                    exe_callback = awful.util.eval,
-                    history_path = awful.util.get_cache_dir() .. "/history_eval"
-                  }
-              end,
-              {description = "lua execute prompt", group = "awesome"}),
+    --awful.key({ modkey }, "x",
+    --          function ()
+    --              awful.prompt.run {
+    --                prompt       = "Run Lua code: ",
+    --                textbox      = awful.screen.focused().mypromptbox.widget,
+    --                exe_callback = awful.util.eval,
+    --                history_path = awful.util.get_cache_dir() .. "/history_eval"
+    --              }
+    --          end,
+    --          {description = "lua execute prompt", group = "awesome"}),
     -- Menubar
     awful.key({ modkey }, "n", function() awful.spawn("termite -t ranger -e ranger") end,
               {description = "file manager", group = "launcher"}),
-    awful.key({ }, "XF86Launch1", function() awful.spawn("termite -t Office -e /home/max/bin/office") end,
+    awful.key({ }, "XF86Launch1", run_office_or_fg,
               {description = "start office session", group = "system"}),
     awful.key({ modkey }, "c", function() awful.spawn("qutebrowser") end,
               {description = "web browser", group = "launcher"}),

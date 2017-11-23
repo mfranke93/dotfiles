@@ -16,31 +16,38 @@ sym_tomorrow=" "
 sym_week=" "
 sym_someday=" "
 
+c_urg="#f05033"
+c_overdue="#f0b03e"
+c_today="#d0c74f"
+c_tomorrow="#b7e433"
+c_week="#82f040"
+c_someday="#8080d0"
+
 str=""
 
 if [ "$important" -gt "0" ]
 then
-    str="${str} ${sym_urgent}${important} "
+    str="${str} <span color=\"${c_urg}\">${sym_urgent}${important}</span>"
 fi
 if [ "$overdue" -gt "0" ]
 then
-    str="${str} ${sym_overdue}${overdue} "
+    str="${str} <span color=\"${c_overdue}\">${sym_overdue}${overdue}</span>"
 fi
 if [ "$today" -gt "0" ]
 then
-    str="${str} ${sym_today}${today} "
+    str="${str} <span color=\"${c_today}\">${sym_today}${today}</span>"
 fi
 if [ "$tomorrow" -gt "0" ]
 then
-    str="${str} ${sym_tomorrow}${tomorrow} "
+    str="${str} <span color=\"${c_tomorrow}\">${sym_tomorrow}${tomorrow}</span>"
 fi
 if [ "$week" -gt "0" ]
 then
-    str="${str} ${sym_week}${week} "
+    str="${str} <span color=\"${c_week}\">${sym_week}${week}</span>"
 fi
 if [ "$someday" -gt "0" ]
 then
-    str="${str} ${sym_someday}${someday} "
+    str="${str} <span color=\"${c_someday}\">${sym_someday}${someday}</span>"
 fi
 
 echo ${str}
