@@ -25,22 +25,12 @@ function! UpdateStatusLineColors()
                 \}
 
     " bar colors
+    hi User1 ctermfg=232 ctermbg=069 guifg=#222222 guibg=#486aff
     hi User3 guibg=#aaccff guifg=#222222 ctermfg=232 ctermbg=153
     hi User4 guibg=#6688ff guifg=#222222 ctermfg=232 ctermbg=074
     hi User2 guibg=#88aaff guifg=#222222 ctermfg=232 ctermbg=110
     hi User5 guibg=#486aff guifg=#222222 ctermfg=232 ctermbg=069
     hi User7 guibg=#aaccff guifg=#dd0000 ctermfg=124 ctermbg=153
-
-    " colors for modes
-    hi NormalModeHighlight ctermfg=232 ctermbg=069 guifg=#222222 guibg=#486aff
-    hi InsertModeHighlight ctermfg=232 ctermbg=208 guifg=#222222 guibg=#ffa000
-    hi VisualModeHighlight ctermfg=232 ctermbg=082 guifg=#222222 guibg=#33ff33
-    hi OtherModeHighlight  ctermfg=232 ctermbg=011 guifg=#222222 guibg=#aaaa44
-    hi TerminalModeHighlight ctermfg=232 ctermbg=196 guifg=#222222 guibg=#ff2000
-
-    " link to User1
-    hi! link User1 NONE
-    hi! link User1 NormalModeHighlight
 
     " last window always has status line
     set laststatus=2
@@ -68,17 +58,16 @@ augroup END
 
 " set color depending on mode
 function! ModeColor()
-    exe 'hi! link User1 NONE'
     if (mode() =~# '\v(n|no)')
-        exe 'hi! link User1 NormalModeHighlight'
+        exe 'hi User1 ctermfg=232 ctermbg=069 guifg=#222222 guibg=#486aff'
     elseif (mode() ==# 'i')
-        exe 'hi! link User1 InsertModeHighlight'
+        exe 'hi User1 ctermfg=232 ctermbg=208 guifg=#222222 guibg=#ffa000'
     elseif (mode() =~# '\v(v|V)' || g:currentmode[mode()] ==# 'V·Block' || get(g:currentmode, mode(), '') ==# 't') || mode() == ''
-        exe 'hi! link User1 VisualModeHighlight'
+        exe 'hi User1 ctermfg=232 ctermbg=082 guifg=#222222 guibg=#33ff33'
     elseif (mode() == 't')
-        exe 'hi! link User1 TerminalModeHighlight'
+        exe 'hi User1 ctermfg=232 ctermbg=196 guifg=#222222 guibg=#ff2000'
     else
-        exe 'hi! link User1 OtherModeHighlight'
+        exe 'hi OtherModeHighlight  ctermfg=232 ctermbg=011 guifg=#222222 guibg=#aaaa44'
     endif
 
     redraw
