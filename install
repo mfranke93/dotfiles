@@ -78,6 +78,7 @@ install-target()
             install-file qutebrowserconfig.py ~/.config/qutebrowser/config.py
             install-file xinitrc ~/.xinitrc
             install-file termiteconfig ~/.config/termite/config
+            install-file zathurarc ~/.config/zathura/zathurarc
             ;;
         ranger)
             mkdir -pv ~/.config/ranger
