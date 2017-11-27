@@ -3,7 +3,14 @@ lock() {
   i3lock-fancy --greyscale --text "" -- scrot
 }
 
-case "$1" in
+if [[ $# -eq 0 ]]
+then
+    action=$(echo -e "lock\nlogout\nsuspend\nhibernate\nreboot\nshutdown" | rofi -dmenu)
+else
+    action=$1
+fi
+
+case "$action" in
   lock)
     lock
     ;;

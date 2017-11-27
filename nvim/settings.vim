@@ -116,18 +116,8 @@ let maplocalleader = "\\"
 " Syntax coloring lines that are too long just slows down the world
 set synmaxcol=256
 
-"-----------------------------------------------------------------------------
-" Set up the window colors and size
-"-----------------------------------------------------------------------------
-
-if $TERM == "xterm-256color"
-  set t_Co=256
-elseif $TERM == "screen-256color"
-  set t_Co=256
-endif
-
-" colorscheme gruvbox
-colorscheme apprentice
+colorscheme gruvbox
+"colorscheme apprentice
 set bg=dark
 nohls
 

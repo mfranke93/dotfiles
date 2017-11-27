@@ -1,0 +1,1 @@
+set synctex-editor-command "nvr --remote +%{line} %{input} ; nvr --remote-keys zz"

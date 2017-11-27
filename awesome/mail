@@ -1,0 +1,12 @@
+#!/bin/zsh
+
+mailnew=""
+newmailnumber=`find ~/mail -type f | grep '/INBOX[^\/]*/new/' | wc -l`
+
+str=" "
+if [[ $newmailnumber -gt 0 ]]
+then
+    str="<span color=\"#f0bc3e\">${mailnew}</span>"
+fi
+
+echo -n "$str"

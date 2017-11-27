@@ -32,8 +32,10 @@ done
 vol()
 {
     if [[ -z $1 ]]; then
-        echo "Usage: $0 mute|unmute|<volume-percent>"
-        return 1
+        pactl list sinks \
+            | awk '/^\s+Mute: yes$/ { print "[muted]" }; /^\s+Volume: .*$/ { print $5 }' \
+            | ( i=0 ; while read v; do if [[ $i -eq 0 ]]; then b=$v; i=1; else a=$v; fi; done; echo $a $b )
+        return 0
     fi
 
     case $1 in
