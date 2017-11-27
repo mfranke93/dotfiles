@@ -1,0 +1,21 @@
+#!/bin/zsh
+
+if [[ $# < 1 ]]
+then
+    echo "Usage: $0 <master tex file> [...]"
+    exit 1
+fi
+
+local sourcefiles=$@
+local masterfile=$1
+
+while true 
+do 
+    # latexmk to pdf, overrun errors, create synctex file, write errors as file:line:msg
+    latexmk -pdf -interaction=nonstopmode -latexoption=-synctex=1 -latexoption=-file-line-error $masterfile
+    # read out file:line:error lines into quickfix list of nvim server
+    nvr -q <( grep -e "[./a-zA-Z_0-9-]*:[[:digit:]]\+:.*" ${masterfile/.tex/.log} )
+    # wait for modifications in watched files
+    inotifywait -e modify ${sourcefiles}
+done
+

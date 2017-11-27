@@ -73,6 +73,7 @@ install-target()
             ;;
         misc)
             install-file Xresources ~/.Xresources
+            install-file bin/autolatex ~/bin/autolatex
             install-file dunstrc ~/.config/dunst/dunstrc
             install-file gpg-agent.conf ~/.gnupg/gpg-agent.conf
             install-file qutebrowserconfig.py ~/.config/qutebrowser/config.py
