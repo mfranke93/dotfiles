@@ -6,13 +6,13 @@ local wibox = require("wibox")
 local cairo = require("lgi").cairo
 local color = require("gears.color")
 
-local GET_VOLUME_CMD = 'amixer -D pulse sget Master'
+GET_VOLUME_CMD = 'amixer -D pulse sget Master'
 local INC_VOLUME_CMD = 'amixer -D pulse sset Master 5%+'
 local DEC_VOLUME_CMD = 'amixer -D pulse sset Master 5%-'
 local TOG_VOLUME_CMD = 'amixer -D pulse sset Master toggle'
 
 local volumearc = wibox.widget {
-    max_value = 1,
+    max_value = 255,
     thickness = 2,
     start_angle = 4.71238898, -- 2pi*3/4
     forced_height = 15,
@@ -27,14 +27,20 @@ local volumearc = wibox.widget {
 
 volumearc_widget = wibox.container.mirror(volumearc, { horizontal = true })
 
-local update_graphic = function(widget, stdout, _, _, _)
+update_graphic = function(widget, stdout, _, _, _)
     local mute = string.match(stdout, "%[(o[nf]f?)%]")
     local volume = string.match(stdout, "(%d?%d?%d)%%")
     volume = tonumber(string.format("% 3d", volume))
 
-    widget.value = volume / 100;
+    widget.value = volume;
     if mute == "off" then
         widget.colors = { "#606060" }--{ beautiful.widget_red }
+    elseif volume >= 220 then
+        widget.colors = { "#f08033" }
+    elseif volume >= 170 then
+        widget.colors = { "#c09033" }
+    elseif volume >= 100 then
+        widget.colors = { "#c0c033" }
     else
         widget.colors = { beautiful.widget_main_color }
     end

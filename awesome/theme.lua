@@ -21,10 +21,10 @@ theme.bg_systray    = theme.bg_normal
 
 theme.fg_normal     = "#aaaaaa"
 theme.fg_focus      = "#ffffff"
-theme.fg_urgent     = "#ffffff"
-theme.fg_minimize   = "#ffffff"
+theme.fg_urgent     = "#ffff80"
+theme.fg_minimize   = "#80ddff"
 
-theme.useless_gap   = dpi(2)
+theme.useless_gap   = dpi(3)
 theme.border_width  = 0
 theme.border_normal = "#000000"
 theme.border_focus  = "#222222"
@@ -48,7 +48,7 @@ theme.tasklist_bg_focus = "#333333"
 -- Generate taglist squares:
 local taglist_square_size = dpi(3)
 theme.taglist_squares_sel = theme_assets.taglist_squares_sel(
-    taglist_square_size, theme.fg_normal
+    taglist_square_size, theme.fg_focus
 )
 theme.taglist_squares_unsel = theme_assets.taglist_squares_unsel(
     taglist_square_size, theme.fg_normal

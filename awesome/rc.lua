@@ -363,9 +363,19 @@ globalkeys = gears.table.join(
               {description = "previous song", group = "multimedia"}),
     awful.key({ }, "XF86AudioNext", function() awful.spawn("/home/max/bin/mpcctl next") end,
               {description = "next song", group = "multimedia"}),
-    awful.key({ }, "XF86AudioRaiseVolume", function() awful.spawn("pactl set-sink-volume 0 \"+5%\"") end,
+    awful.key({ }, "XF86AudioRaiseVolume", function() 
+        awful.spawn("pactl set-sink-volume 0 \"+5%\"")
+        awful.spawn.easy_async(GET_VOLUME_CMD, function(stdout, stderr, exitreason, exitcode)
+            update_graphic(volumearc, stdout, stderr, exitreason, exitcode)
+        end)
+    end,
               {description = "raise volume", group = "multimedia"}),
-    awful.key({ }, "XF86AudioLowerVolume", function() awful.spawn("pactl set-sink-volume 0 \"-5%\"") end,
+    awful.key({ }, "XF86AudioLowerVolume", function() 
+        awful.spawn("pactl set-sink-volume 0 \"-5%\"")
+        awful.spawn.easy_async(GET_VOLUME_CMD, function(stdout, stderr, exitreason, exitcode)
+            update_graphic(volumearc, stdout, stderr, exitreason, exitcode)
+        end)
+    end,
               {description = "lower volume", group = "multimedia"}),
     awful.key({ }, "XF86AudioMute", function() awful.spawn("pactl set-sink-mute 0 toggle") end,
               {description = "toggle mute", group = "multimedia"})
