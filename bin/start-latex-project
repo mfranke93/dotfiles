@@ -1,0 +1,19 @@
+#!/bin/zsh
+
+if [[ $# -eq 0 ]]
+then
+    echo "Usage: $0 <master file> [slave file] [...]"
+    return 1
+fi
+
+local masterfile=$1
+local slavefiles=$@
+local sessionname="autolatex-${masterfile/.tex/}"
+
+# start detached tmux session
+tmux new-session -s "${sessionname}" -d
+tmux send-keys -t "$sessionname:0" "nvim-qt \"+silent Server\" \"+silent MasterTex\" $@"
+tmux new-window -t "$sessionname"
+tmux send-keys -t "$sessionname:1" "zathura ${masterfile/.tex/.pdf}"
+tmux new-window -t "$sessionname"
+tmux send-keys -t "$sessionname:2" "autolatex ${slavefiles}"
