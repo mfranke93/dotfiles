@@ -16,6 +16,7 @@ do
     # read out file:line:error lines into quickfix list of nvim server
     nvr -q <( grep -e "[./a-zA-Z_0-9-]*:[[:digit:]]\+:.*" ${masterfile/.tex/.log} )
     # wait for modifications in watched files
-    inotifywait -e modify ${sourcefiles}
+    cmd="inotifywait -e modify ${sourcefiles}"
+    eval $cmd
 done
 
