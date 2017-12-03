@@ -12,7 +12,8 @@ local sessionname="autolatex-${masterfile/.tex/}"
 
 # start detached tmux session
 tmux new-session -s "${sessionname}" -d
-tmux send-keys -t "$sessionname:0" "nvim-qt \"+silent Server\" \"+silent MasterTex\" $@"
+cmd="nvim-qt \"+silent Server\" \"+silent MasterTex\" ${slavefiles} "
+tmux send-keys -t "$sessionname:0" $cmd
 tmux new-window -t "$sessionname"
 tmux send-keys -t "$sessionname:1" "zathura ${masterfile/.tex/.pdf}"
 tmux new-window -t "$sessionname"
