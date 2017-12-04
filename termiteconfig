@@ -6,5 +6,4 @@ modify_other_keys = false
 
 [colors]
 
-#background = rgba(15, 15, 15, 0.85)
-background = rgb(40, 40, 40)
+background = rgba(30, 30, 30, 0.82)
