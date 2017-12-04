@@ -6,6 +6,11 @@ augroup GraphvizFiletype
   au! BufRead,BufNewFile,BufEnter *.gv set filetype=dot
 augroup END
 
+" Force use tex
+augroup TexFileOpen
+    au! BufRead,BufNewFile *.tex set filetype=tex
+augroup END
+
 "-----------------------------------------------------------------------------
 " Function to make current instance remote-send:able server for neovim-remote
 "-----------------------------------------------------------------------------
