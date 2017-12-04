@@ -1,4 +1,4 @@
 #!/bin/zsh
 
-datetime=$(LANG=ja_JP.utf8 date +"%a %m-%d %p %l:%M ")
+datetime=$(LANG=ja_JP.utf8 date +"%a %m-%d %p %-I:%M ")
 echo -n ${datetime/午/}
