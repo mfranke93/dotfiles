@@ -60,9 +60,9 @@ font-1 = siji:pixelsize=10;1
 font-2 = fontawesome:size=10;1
 font-3 = fixed:pixelsize=10;1
 font-4 = unifont:fontformat=truetype:size=8:antialias=false;0
-modules-left = i3 
+modules-left = i3
 modules-center = mpd
-modules-right = vbox gap mail gap task gap filesystem_root filesystem_home gap cpu temperature memory power gap net gap volume gap date 
+modules-right = mail gap task gap filesystem_root filesystem_home gap cpu temperature memory power gap net gap volume gap date 
 tray-position = right
 tray-padding = 2
 scroll-up = i3wm-wsnext
@@ -83,7 +83,7 @@ padding-right = 10
 type = internal/fs
 interval = 25
 mount-0 = /
-format-mounted-prefix = " "
+format-mounted-prefix = "  "
 label-mounted = "%percentage_used%% "
 format-mounted-prefix-foreground = ${colors.foreground-alt}
 format-mounted-underline = ${colors.fs-color1}
@@ -118,7 +118,7 @@ label-unfocused-padding = 1
 ; visible = Active workspace on unfocused monitor
 label-visible = %name%
 label-visible-background = ${self.label-focused-background}
-label-visible-underline = ${self.label-focused-underline}
+label-visible-underline = ${colors.secondary}
 label-visible-padding = ${self.label-focused-padding}
 ; urgent = Workspace with urgency hint set
 label-urgent = %name%
@@ -146,7 +146,7 @@ exec = "/home/max/.config/polybar/mpd"
 [module/cpu]
 type = internal/cpu
 interval = 2
-format-prefix = " "
+format-prefix = "  "
 format-prefix-foreground = ${colors.foreground-alt}
 format-underline = ${colors.sys-color1}
 label = "%percentage%% "
@@ -162,19 +162,34 @@ label = "%percentage_used%% "
 [module/date]
 type = custom/script
 interval = 5
-format-prefix = " "
+format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
 format-underline = ${colors.date-color}
 exec = /home/max/.config/polybar/time
 
 [module/volume]
 type = internal/volume
-format-volume = <label-volume> 
-format-volume-prefix = " "
+
+; Soundcard to be used
+; Usually in the format hw:#
+master-soundcard = default
+speaker-soundcard = default
+headphone-soundcard = default
+
+; Name of the master mixer
+; Default: Master
+master-mixer = Master
+
+format-volume = <label-volume>
+label-volume = "%percentage%% "
+label-muted = "%percentage%% "
+label-headphones = "%percentage%% "
+format-volume-prefix = "  "
+format-headphones-prefix = "  "
 format-volume-prefix-foreground = ${colors.foreground-alt}
 label-volume-foreground = ${root.foreground}
 format-volume-underline = ${colors.vol-color}
-format-muted-prefix = " "
+format-muted-prefix = "  "
 format-muted-foreground = ${colors.foreground-alt}
 format-muted-underline = #888888
 
@@ -211,13 +226,6 @@ type = custom/script
 interval = 5
 format = <label>
 exec = "/home/max/.config/polybar/net"
-
-[module/vbox]
-type = custom/script
-interval = 5
-format = <label>
-exec = "/home/max/.config/polybar/vbox"
-exec-if = "/home/max/.config/polybar/vbox"
 
 [module/power]
 type = custom/script
