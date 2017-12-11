@@ -57,9 +57,8 @@ bindsym XF86WLAN exec termite --title "Network connections" -e "nmtui"
 # kill focused window
 bindsym $mod+Shift+q kill
 
-# start dmenu (a program launcher)
-bindsym $mod+Shift+d exec dmenu_run
-bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+# start rofi (a program launcher)
+bindsym $mod+d exec rofi -show run
 
 # browser and email
 bindsym $mod+c exec qutebrowser --backend webengine
