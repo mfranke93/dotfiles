@@ -1,0 +1,17 @@
+#!/bin/zsh
+
+if [[ $# -lt 1 ]]
+then
+    echo "Usage: $0 <cmake build dir>"
+    exit 1
+fi
+
+f="/tmp/$(mktemp --dry-run --suffix=.fifo buildlog-XXXXXXXX)"
+mkfifo $f
+
+cmake --build $1 2>&1 | tee $f &
+pid=$!
+nvr -q <( cat $f | grep '^[[:alnum:]/._-]*:[[:digit:]]\+:[[:digit:]]\+:.*' )
+
+wait $pid
+rm $f

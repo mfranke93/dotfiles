@@ -74,6 +74,7 @@ install-target()
         misc)
             install-file Xresources ~/.Xresources
             install-file bin/autolatex ~/bin/autolatex
+            install-file bin/build-cmake-project ~/bin/build-cmake-project
             install-file bin/start-latex-project ~/bin/start-latex-project
             install-file dunstrc ~/.config/dunst/dunstrc
             install-file gpg-agent.conf ~/.gnupg/gpg-agent.conf
