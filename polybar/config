@@ -16,6 +16,7 @@ background-alt = #444
 foreground = #dfdfdf
 foreground-alt = #555
 primary = #ffb52a
+inactive-workspace = #ffb56a
 secondary = #e60053
 alert = #bd2c40
 ; colors for underlines
@@ -118,7 +119,7 @@ label-unfocused-padding = 1
 ; visible = Active workspace on unfocused monitor
 label-visible = %name%
 label-visible-background = ${self.label-focused-background}
-label-visible-underline = ${colors.secondary}
+label-visible-underline = ${colors.inactive-workspace}
 label-visible-padding = ${self.label-focused-padding}
 ; urgent = Workspace with urgency hint set
 label-urgent = %name%
