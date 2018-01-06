@@ -58,6 +58,7 @@ install-target()
             install-file bin/office ~/bin/office
             install-file khalconfig ~/.config/khal/config
             install-file taskrc ~/.taskrc
+            install-directory taskwarrior_hooks ~/.task/hooks
             ;;
         i3)
             install-directory polybar/ ~/.config/polybar

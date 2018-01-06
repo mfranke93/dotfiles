@@ -44,3 +44,8 @@ report._reviewed.filter=( reviewed.none: or reviewed.before:now-1week ) and ( +P
 #taskd.credentials=mumintroll/max/8275e6bd-8b41-476b-a59d-7f2bb144cc28
 weekstart=Monday
 nag=
+
+uda.smart_recurrence.type=duration
+uda.smart_recurrence.label=Smart recurrence
+uda.recurrent_time_of_day.type=string
+uda.recurrent_time_of_day.label=Recurrent time of day

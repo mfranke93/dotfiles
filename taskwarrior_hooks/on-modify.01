@@ -1,0 +1,32 @@
+#!/usr/bin/env python3
+
+import json
+import sys
+import datetime
+
+def duedate(recurrence):
+    today = datetime.datetime.now().replace(hour=0, minute=0, second=0)
+    recur = recurrence.split("P")[1]
+    if 'D' in recur:
+        recur_days = recur.split("D")[0]
+        offset = datetime.timedelta(days=int(recur_days))
+        newdue = today + offset
+
+        return newdue.strftime("%Y%m%d")
+    else:
+        sys.exit(1)
+
+
+original_task = json.loads(sys.stdin.readline())
+modified_task = json.loads(sys.stdin.readline())
+
+if 'smart_recurrence' in modified_task:
+    if original_task['status'] == 'pending' and modified_task['status'] == 'completed':
+        # create new task
+        original_task['due'] = "{}T{}".format(duedate(modified_task['smart_recurrence']),
+                modified_task['recurrent_time_of_day'])
+        json.dump(original_task, sys.stdout)
+        sys.exit(0)
+
+json.dump(modified_task, sys.stdout)
+sys.exit(0)
