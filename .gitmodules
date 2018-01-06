@@ -1,15 +1,15 @@
 [submodule "third_party/vim-monokai"]
 	path = third_party/vim-monokai
-	url = git@github.com:crusoexia/vim-monokai
+	url = https://github.com/crusoexia/vim-monokai
 [submodule "third_party/vim-plug"]
 	path = third_party/vim-plug
-	url = git@github.com:junegunn/vim-plug.git
+	url = https://github.com/junegunn/vim-plug.git
 [submodule "third_party/zsh-syntax-highlighting"]
 	path = third_party/zsh-syntax-highlighting
-	url = git@github.com:zsh-users/zsh-syntax-highlighting.git
+	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
 [submodule "third_party/z"]
 	path = third_party/z
-	url = git@github.com:rupa/z.git
+	url = https://github.com/rupa/z.git
 [submodule "third_party/Apprentice"]
 	path = third_party/Apprentice
 	url = https://github.com/romainl/Apprentice
