@@ -19,7 +19,7 @@ workspace_layout tabbed
 focus_follows_mouse no
 
 # 2px window borders
-for_window [class="^.*$"] border pixel 2
+for_window [class="^.*$"] border pixel 1
 
 # }}}
 # {{{ COLORS
@@ -74,7 +74,7 @@ bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
 bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
 
 # Extra XF86 key
-bindsym XF86Launch1 exec termite --title "Office applications" -e office
+bindsym $mod+o exec termite --title "Office applications" -e office
 
 # Screen shot
 bindsym XF86WebCam exec scrot
@@ -244,7 +244,7 @@ assign [title="pdfpc - presenter *"] $w1
 # }}}
 # {{{ I3-GAPS
 
-gaps inner 4
+gaps inner 15
 gaps outer 0
 smart_gaps on
 smart_borders on
@@ -263,6 +263,9 @@ exec --no-startup-id dunst
 
 # lock on DKMS events (suspend...)
 #exec --no-startup-id xss-lock -- i3lock-fancy --greyscale --text "" -- scrot
+
+# automount removable storage
+exec --no-startup-id udiskie --use-udisks2 --notify-command "notify-send '{event}' '{device_presentation}'"
 
 # set wallpaper
 exec --no-startup-id feh --bg-scale ${HOME}/Pictures/wallpaper
