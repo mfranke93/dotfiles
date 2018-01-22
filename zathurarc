@@ -1,1 +1,8 @@
 set synctex-editor-command "nvr --remote +%{line} %{input} ; nvr --remote-keys zz"
+
+map [normal]            <C-Space>   toggle_statusbar
+map [fullscreen]        <C-Space>   toggle_statusbar
+map [normal]            F           follow
+map [fullscreen]        F           follow
+map [normal]            f           toggle_fullscreen
+map [fullscreen]        f           toggle_fullscreen
