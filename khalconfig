@@ -16,6 +16,7 @@ longdatetimeformat = %Y-%m-%d %H:%M
 
 [view]
 agenda_event_format = {calendar-color}{cancelled}{start-end-time-style} {title}{repeat-symbol} {description-separator}{location}{reset}
+theme = dark
 
 [keybindings]
 external_edit = E
