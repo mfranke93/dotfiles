@@ -18,14 +18,14 @@ else
     ipv6=$default
 fi
 
-if ( ip link | grep enp0s25 | grep "state UP" > /dev/null )
+if ( ip link | grep enp3s0f1 | grep "state UP" > /dev/null )
 then
     eth="%{u${c2}}%{F${f}}"
 else
     eth=$default
 fi
 
-if ( ip link | grep wlp3s0 | grep "state UP" > /dev/null )
+if ( ip link | grep wlp2s0 | grep "state UP" > /dev/null )
 then
     wlan="%{u${c3}}%{F${f}}"
 else

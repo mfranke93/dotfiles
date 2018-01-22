@@ -39,7 +39,7 @@ mail-color = #f0f040
 
 
 [bar/default]
-monitor = ${env:MONITOR:LVDS1}
+monitor = ${env:MONITOR:eDP1}
 width = 100%
 height = 24
 ;offset-x = 1%
@@ -56,11 +56,11 @@ padding-left = 0
 padding-right = 0
 module-margin-left = 0
 module-margin-right = 0
-font-0 = xos4 terminus:pixelsize=10;1
-font-1 = siji:pixelsize=10;1
-font-2 = fontawesome:size=10;1
-font-3 = fixed:pixelsize=10;1
-font-4 = unifont:fontformat=truetype:size=8:antialias=false;0
+font-0 = Fira Mono:pixelsize=12;1
+font-1 = siji:pixelsize=12;1
+font-2 = fontawesome:size=12;1
+font-3 = fixed:pixelsize=12;1
+font-4 = unifont:fontformat=truetype:size=10:antialias=false;0
 modules-left = i3
 modules-center = mpd
 modules-right = mail gap task gap filesystem_root filesystem_home gap cpu temperature memory power gap net gap volume gap date 
