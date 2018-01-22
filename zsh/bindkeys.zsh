@@ -9,7 +9,7 @@ bindkey "^E"      end-of-line                          # ctrl-e
 bindkey "^D"      delete-char                          # ctrl-d
 bindkey "^F"      forward-char                         # ctrl-f
 bindkey "^B"      backward-char                        # ctrl-b
-bindkey -v   # Default to standard vi bindings, regardless of editor string
+bindkey -e   # Default to emacs bindings
 
 # ESC-v to edit command
 autoload edit-command-line; zle -N edit-command-line
