@@ -11,9 +11,11 @@ bindkey "^F"      forward-char                         # ctrl-f
 bindkey "^B"      backward-char                        # ctrl-b
 bindkey -e   # Default to emacs bindings
 
-# ESC-v to edit command
-autoload edit-command-line; zle -N edit-command-line
-bindkey -M vicmd v edit-command-line
+# Edit the current command line in $EDITOR
+autoload -U edit-command-line
+zle -N edit-command-line
+bindkey '\C-x\C-e' edit-command-line
+
 
 # search in history with arrow keys
 autoload -U up-line-or-beginning-search
