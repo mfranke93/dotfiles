@@ -16,3 +16,6 @@
 [submodule "third_party/gruvbox"]
 	path = third_party/gruvbox
 	url = https://github.com/morhetz/gruvbox
+[submodule "third_party/codefocus"]
+	path = third_party/codefocus
+	url = https://github.com/alexanderlobov/config.git

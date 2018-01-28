@@ -116,8 +116,7 @@ let maplocalleader = "\\"
 " Syntax coloring lines that are too long just slows down the world
 set synmaxcol=256
 
-colorscheme gruvbox
-"colorscheme apprentice
+colorscheme codefocus
 set bg=dark
 nohls
 
