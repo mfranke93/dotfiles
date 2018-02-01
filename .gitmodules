@@ -16,6 +16,6 @@
 [submodule "third_party/gruvbox"]
 	path = third_party/gruvbox
 	url = https://github.com/morhetz/gruvbox
-[submodule "third_party/codefocus"]
-	path = third_party/codefocus
-	url = https://github.com/alexanderlobov/config.git
+[submodule "third_party/codefocus-vim"]
+	path = third_party/codefocus-vim
+	url = https://github.com/mfranke93/codefocus-vim.git
