@@ -40,5 +40,5 @@ set net_inc = 5
 source ~/.muttrc.mailboxes
 
 # add link to PGP key in header
-my_hdr X-PGP-Key: http://keys.gnupg.net/pks/lookup?search=0xc4349885&op=vindex
+my_hdr X-PGP-Key: https://pgp.mit.edu/pks/lookup?search=0xCEE0C3DAD21F6629&op=index
 

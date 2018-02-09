@@ -5,7 +5,7 @@
 set crypt_use_gpgme = yes
 
 
-set pgp_sign_as = 0xC4349885
+set pgp_sign_as = 0xCEE0C3DAD21F6629
 set pgp_timeout = 60
 set pgp_good_sign = "^gpg: Good signature from"
 # sign all
