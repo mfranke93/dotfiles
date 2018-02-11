@@ -3,6 +3,41 @@ function prompt_char {
     echo '▶'
 }
 
+function preexec {
+    # set timer before command
+    _zsh_cmd_timer=$SECONDS
+}
+
+function precmd {
+    # if timer set, calculate command execution duration
+    if [ $_zsh_cmd_timer ]
+    then
+        _zsh_timer_show=$(($SECONDS - $_zsh_cmd_timer))
+        unset $_zsh_cmd_timer
+    fi
+}
+
+function last_command_duration {
+    # if larger than 5s, display in right side of prompt
+    if [[ $_zsh_timer_show -ge ${MINIMUM_COMMAND_DURATION_SHOWN:-5} ]]
+    then
+        str="${_zsh_timer_show}s"
+        if [[ $_zsh_timer_show -ge 60 ]]
+        then
+            sec=$((_zsh_timer_show % 60))
+            min=$((_zsh_timer_show / 60))
+            str="${min}m ${sec}s"
+            if [[ $min -ge 60 ]]
+            then
+                hour=$((min / 60))
+                min=$((min % 60))
+                str="${hour}h ${min}m ${sec}s"
+            fi
+        fi
+
+        echo $str
+    fi
+}
 
 # http://blog.joshdick.net/2012/12/30/my_git_prompt_for_zsh.html
 # copied from https://gist.github.com/4415470
@@ -216,6 +251,13 @@ function current_jobs_tmux {
 
 function last_return_value {
     local retval="$?"
+
+    # need to do this here to not destroy $?
+    local duration=$(last_command_duration)
+    if [[ "$duration" != "" ]]; then
+        echo -ne "%{$FG[012]%}$duration%{$reset_color%} "
+    fi
+
     if [[ "$retval" -gt "0" ]]; then
         echo -nE "%{$FG[009]%}$retval%{$reset_color%} "
     fi
@@ -235,4 +277,3 @@ function is_ssh {
 PROMPT='
  $(last_return_value)$(current_jobs_tmux) ${PR_GREEN}%n%{$reset_color%}$(is_ssh)@%{$reset_color%}$(hostname_colored)%{$FG[007]%}:%{$reset_color%}${PR_BOLD_YELLOW}$(current_pwd)%{$reset_color%} $(parse_git_state)
 $(prompt_char) '
-

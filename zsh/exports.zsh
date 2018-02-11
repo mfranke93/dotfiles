@@ -5,8 +5,11 @@ then
 fi
 
 # Setup terminal, and turn on colors
-export TERM=xterm-256color
+export TERM=st-256color
 export CLICOLOR=1
+
+# show command runtime if >10s
+export MINIMUM_COMMAND_DURATION_SHOWN=10
 
 # key timeout
 export KEYTIMEOUT=1
@@ -14,12 +17,12 @@ export KEYTIMEOUT=1
 # vim
 if which nvim 2>&1 > /dev/null
 then
-	export EDITOR=$(which nvim)
+    export EDITOR=$(which nvim)
 elif which vim 2>&1 > /dev/null
 then
-	export EDITOR=$(which vim)
+    export EDITOR=$(which vim)
 else
-	export EDITOR=$(which vi)
+    export EDITOR=$(which vi)
 fi
 
 # pass: copy to primary
