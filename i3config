@@ -46,13 +46,13 @@ client.urgent			$orange $orange $dark    $white
 # {{{ BINDINGS-LAUNCH
 
 # start a terminal
-bindsym $mod+Return exec termite
+bindsym $mod+Return exec st
 
 # start a GVIM session
 bindsym $mod+z exec nvim-qt
 
 # start network connection manager/editor
-bindsym XF86WLAN exec termite --title "Network connections" -e "nmtui"
+bindsym XF86WLAN exec st -t "Network connections" -e "nmtui"
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -64,17 +64,17 @@ bindsym $mod+d exec rofi -show run
 bindsym $mod+c exec qutebrowser --backend webengine
 
 # file manager
-bindsym $mod+n exec termite --title ranger -e ranger
+bindsym $mod+n exec st -t ranger -e ranger
 
 # media player
-bindsym $mod+p exec termite --title Music -e ncmpcpp
+bindsym $mod+p exec st -t Music -e ncmpcpp
 
 # Screen brightness controls
 bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
 bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
 
 # Extra XF86 key
-bindsym $mod+o exec termite --title "Office applications" -e office
+bindsym $mod+o exec st -t "Office applications" -e office
 
 # Screen shot
 bindsym XF86WebCam exec scrot

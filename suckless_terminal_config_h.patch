@@ -1,0 +1,63 @@
+8c8
+< char font[] = "Liberation Mono:pixelsize=12:antialias=true:autohint=true";
+---
+> char font[] = "Fira Mono:size=12:antialias=true:autohint=true";
+83c83
+< static unsigned int tabspaces = 8;
+---
+> static unsigned int tabspaces = 4;
+87,105c87,102
+< 	/* 8 normal colors */
+< 	"black",
+< 	"red3",
+< 	"green3",
+< 	"yellow3",
+< 	"blue2",
+< 	"magenta3",
+< 	"cyan3",
+< 	"gray90",
+< 
+< 	/* 8 bright colors */
+< 	"gray50",
+< 	"red",
+< 	"green",
+< 	"yellow",
+< 	"#5c5cff",
+< 	"magenta",
+< 	"cyan",
+< 	"white",
+---
+>     "#3B4252",
+>     "#BF616A",
+>     "#A3BE8C",
+>     "#EBCB8B",
+>     "#81A1C1",
+>     "#B48EAD",
+>     "#88C0D0",
+>     "#E5E9F0",
+>     "#4C566A",
+>     "#BF616A",
+>     "#A3BE8C",
+>     "#EBCB8B",
+>     "#81A1C1",
+>     "#B48EAD",
+>     "#8FBCBB",
+>     "#ECEFF4",
+110,111c107,110
+< 	"#cccccc",
+< 	"#555555",
+---
+>     "#d8dee9",
+>     "#282828",
+>     "#D8DEE9",
+>     "#2E3440"
+119,122c118,121
+< unsigned int defaultfg = 7;
+< unsigned int defaultbg = 0;
+< unsigned int defaultcs = 256;
+< unsigned int defaultrcs = 257;
+---
+> unsigned int defaultfg = 256;
+> unsigned int defaultbg = 257;
+> unsigned int defaultcs = 258;
+> unsigned int defaultrcs = 259;
