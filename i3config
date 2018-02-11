@@ -265,7 +265,7 @@ exec --no-startup-id dunst
 #exec --no-startup-id xss-lock -- i3lock-fancy --greyscale --text "" -- scrot
 
 # automount removable storage
-exec --no-startup-id udiskie --use-udisks2 --notify-command "notify-send '{event}' '{device_presentation}'"
+exec --no-startup-id udiskie --use-udisks2 --no-tray --no-notify
 
 # set wallpaper
 exec --no-startup-id feh --bg-scale ${HOME}/Pictures/wallpaper
