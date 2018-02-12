@@ -4,20 +4,22 @@
 # gpg backend
 set crypt_use_gpgme = yes
 
+# ensure deprecated options are disabled or disarmed
+set pgp_autoinline = no
+set pgp_clearsign_command = ''
+set pgp_mime_auto = ask-yes
+set pgp_replyinline = no
 
-set pgp_sign_as = 0xCEE0C3DAD21F6629
-set pgp_timeout = 60
-set pgp_good_sign = "^gpg: Good signature from"
-# sign all
-set crypt_autosign = yes
-# encrypt replies to signed
-set crypt_replysign = yes
-# encrypt replies to encrypted
-set crypt_replyencrypt = yes
-# encrypt and sign replies to encrypted
-set crypt_replysignencrypted = yes
-# automatically verify signatures for encrypted
-set crypt_verify_sig = yes
+# semi-automated encrypted reply to encrypted messages
+# Notes:
+# - this can always be disabled by PGP-menu ('p')
+# - crypt_autoencrypt or crypt_replyencrypt (if set) disables crypt_opportunistic_encrypt
+set crypt_opportunistic_encrypt = yes
+set crypt_autoencrypt = no
+set crypt_replyencrypt = no
 
-# encrypt Sent copy (Fcc) with PGP
+# whether or not display unusable (revoked, expired, disabled) keys
+set pgp_show_unusable = yes
+set crypt_timestamp = no
+
 set pgp_encrypt_self = yes
