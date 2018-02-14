@@ -65,3 +65,10 @@ augroup bgterm
     autocmd VimEnter *                          hi Normal ctermbg=none
 augroup END
 
+" show cursorline only in normal mode
+augroup cursorline
+    autocmd!
+    autocmd InsertEnter *                       set nocursorline
+    autocmd InsertLeave *                       set cursorline
+    autocmd Colorscheme *                       set cursorline
+augroup END
