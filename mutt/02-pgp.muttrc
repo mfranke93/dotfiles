@@ -24,5 +24,5 @@ set crypt_timestamp = no
 
 set pgp_autosign = yes
 
-set pgp_encrypt_self = yes
-set smime_encrypt_self = yes
+#set pgp_encrypt_self = yes
+#set smime_encrypt_self = yes
