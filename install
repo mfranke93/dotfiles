@@ -80,7 +80,7 @@ install-target()
             install-file bin/start-latex-project ~/bin/start-latex-project
             install-file dunstrc ~/.config/dunst/dunstrc
             install-file gpg-agent.conf ~/.gnupg/gpg-agent.conf
-            cp -fPv qutebrowserconfig.py ~/.config/qutebrowser/config.py
+            install-file qutebrowserconfig.py ~/.config/qutebrowser/config.py
             install-file xinitrc ~/.xinitrc
             install-file termiteconfig ~/.config/termite/config
             install-file zathurarc ~/.config/zathura/zathurarc
