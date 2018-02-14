@@ -4,7 +4,6 @@ ui = blinkenlights
 accounts = mumintroll, st104538
 pythonfile = ~/.offlineimap.py
 maxsyncaccounts = 4
-socktimeout = 60
 
 [Account mumintroll]
 localrepository = mumintroll-local
