@@ -1,4 +1,4 @@
-set synctex-editor-command "nvr --remote +%{line} %{input} ; nvr --remote-keys zz"
+set synctex-editor-command "nvr --remote +%{line} %{input} ; nvr --remote-send zz"
 
 map [normal]            <C-Space>   toggle_statusbar
 map [fullscreen]        <C-Space>   toggle_statusbar
@@ -6,3 +6,8 @@ map [normal]            F           follow
 map [fullscreen]        F           follow
 map [normal]            f           toggle_fullscreen
 map [fullscreen]        f           toggle_fullscreen
+
+set font "Fira Mono Regular 10"
+
+map [normal]            i           toggle_index
+map [index]             <esc>       abort
