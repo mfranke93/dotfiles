@@ -5,7 +5,7 @@ then
 fi
 
 # Setup terminal, and turn on colors
-export TERM=st-256color
+export TERM=termite
 export CLICOLOR=1
 
 # show command runtime if >10s
