@@ -1,6 +1,6 @@
 function prompt_char {
     git branch >/dev/null 2>/dev/null && echo '±' && return
-    echo '▶'
+    echo '»'
 }
 
 function preexec {

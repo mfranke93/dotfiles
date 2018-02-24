@@ -5,7 +5,6 @@ then
 fi
 
 # Setup terminal, and turn on colors
-export TERM=termite
 export CLICOLOR=1
 
 # show command runtime if >10s
