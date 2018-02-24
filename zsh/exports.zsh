@@ -30,3 +30,4 @@ export PASSWORD_STORE_X_SELECTION=primary
 export LESS='--ignore-case --raw-control-chars --quit-if-one-screen --no-init'
 export PAGER='less'
 
+export MANPAGER="/bin/sh -c \"col -b | nvim -c 'set ft=man ts=8 nomod nolist nonu noma' -\""
