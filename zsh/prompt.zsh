@@ -115,11 +115,11 @@ function parse_git_state() {
             commit_ahead="$(\git rev-list --count $remote_branch..HEAD 2>/dev/null)"
             commit_behind="$(\git rev-list --count HEAD..$remote_branch 2>/dev/null)"
             if [[ "$commit_ahead" -ne "0" && "$commit_behind" -ne "0" ]]; then
-                has_commit="%{$FG[yellow]%}+$commit_ahead%{$reset_color%}/%{$fg[cyan]%}-$commit_behind%{$reset_color%}"
+                has_commit="%{$FG[yellow]%}+$commit_ahead%{$reset_color%}/%{$fg[006]%}-$commit_behind%{$reset_color%}"
             elif [[ "$commit_ahead" -ne "0" ]]; then
                 has_commit="%{$fg[yellow]%}$commit_ahead%{$reset_color%}"
             elif [[ "$commit_behind" -ne "0" ]]; then
-                has_commit="%{$FG[cyan]%}-$commit_behind%{$reset_color%}"
+                has_commit="%{$FG[006]%}-$commit_behind%{$reset_color%}"
             fi
         fi
     fi
