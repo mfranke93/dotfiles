@@ -1,7 +1,9 @@
 [general]
-ui = ttyui
+#ui = Curses.Blinkenlights
+ui = blinkenlights
 accounts = mumintroll, st104538
 pythonfile = ~/.offlineimap.py
+maxsyncaccounts = 4
 
 [Account mumintroll]
 localrepository = mumintroll-local
@@ -29,7 +31,7 @@ holdconnectionopen = yes
 [Account st104538]
 localrepository = st104538-local
 remoterepository = st104538-remote
-autorefresh = 0.5
+autorefresh = 10
 
 [Repository st104538-local]
 type = Maildir

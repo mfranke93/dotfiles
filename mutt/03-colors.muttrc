@@ -1,95 +1,43 @@
-# Mutt color file
-# Maintainer: Jon Häggblad <jon@haeggblad.com>
-# URL: http://www.haeggblad.com
-# Last Change: 2013 May 17
-# Version: 0.1
-#
-# Mutt colorscheme loosely inspired by vim colorscheme wombat.vim.
-#
-# Changelog:
-#   0.1 - Initial version
+# vim:ft=muttrc
+# color configuration
 
+color   normal          color7      default
+color   indicator       color3      color0
+color   status          color11     default
+color   tree            color3      default
+color   signature       color12     default
+color   message         color7      default
+color   attachment      color6      default
+color   error           color9      default
+color   tilde           color1      color0
 
-# --- vombatidae text colors ---
-#  color normal         color230      color234
-#  color message        color230      color234
+color   search          color5      default
+color   markers         color10     default
 
-# --- slightly less yellow text colors ---
-color normal            color253        default # mod
-# color normal          color253        color233 # mod
-#  color normal         color253        default # mod
-color indicator         color230        color238
-color status            color101        color16
-#  color tree           color113        color234
-#  color tree           color173        color234
-color tree              color208        default
-color signature         color102        default
-color message           color253        default
-color attachment        color117        default
-color error             color30         default
-color tilde             color130        color235
+color   bold            color15     default
+color   underline       color15     default
 
-color search       color100     default
-color markers      color138     default
+color   quoted          color4      default                     # quoted text
+color   quoted1         color5      default
+color   quoted2         color6      default
+color   quoted3         color10     default
+color   quoted4         color12     default
+color   quoted5         color13     default
+color   quoted6         color14     default
+color   quoted7         color9      default
+color   quoted8         color2      default
+color   quoted9         color1      default
 
-#  mono bold          reverse
-#  color bold         color173 color191
-#  mono underline     reverse
-#  color underline    color48  color191
+color   index           color1      default     ~F              # Flagged
+color   index           color6      default     ~N              # New
+color   index           color13     default     ~O
+color   index           color11     default     ~T              # Tagged
+color   index           color8      default     ~D              # Deleted
 
-color quoted        color107     default             # quoted text
-color quoted1       color66      default
-color quoted2       color32      default
-color quoted3       color30      default
-color quoted4       color99      default
-color quoted5       color36      default
-color quoted6       color114     default
-color quoted7       color109     default
-color quoted8       color41      default
-color quoted9       color138     default
-
-# color body          cyan  default  "((ftp|http|https)://|news:)[^ >)\"\t]+"
-# color body          cyan  default  "[-a-z_0-9.+]+@[-a-z_0-9.]+"
-# color body          red   default  "(^| )\\*[-a-z0-9*]+\\*[,.?]?[ \n]"
-# color body          green default  "(^| )_[-a-z0-9_]+_[,.?]?[\n]"
-# color body          red   default  "(^| )\\*[-a-z0-9*]+\\*[,.?]?[ \n]"
-# color body          green default  "(^| )_[-a-z0-9_]+_[,.?]?[ \n]"
-color index             color202        default  ~F         # Flagged
-color index             color39         default  ~N          # New
-color index             color39         default  ~O
-color index             color229        default  ~T         # Tagged
-color index             color240        default  ~D         # Deleted
-
-# ---
-
-#mono body      reverse         '^(subject):.*'
-#color body     brightwhite magenta     '^(subject):.*'
-#mono body      reverse         '[[:alpha:]][[:alnum:]-]+:'
-#color body     black cyan      '[[:alpha:]][[:alnum:]-]+:'
-
-# --- header ---
-
-color hdrdefault        color30         default
-color header            color132        default    '^date:'
-color header            color153        default    '^(to|cc|bcc):'
-color header            color120        default    '^from:'
-color header            color178        default    '^subject:'
-color header            color31         default    '^user-agent:'
-color header            color29         default    '^reply-to:'
-
-#color header   magenta default '^(status|lines|date|received|sender|references):'
-#color header   magenta default '^(pr|mime|x-|user|return|content-)[^:]*:'
-#color header   brightyellow default '^content-type:'
-#color header   magenta default '^content-type: *text/plain'
-# color header  brightgreen default '^list-[^:]*:'
-#mono  header    bold               '^(subject):.*$'
-#color header   brightcyan default      '^(disposition)'
-#color header   green default   '^(mail-)?followup'
-#color header   white default   '^reply'
-#color header   brightwhite default     '^(resent)'
-# color header  brightwhite default     '^from:'
-
-#mono index     bold '~h "^content-type: *(multipart/(mixed|signed|encrypted)|application/)"'
-#color index    green black '~h "^content-type: *multipart/(signed|encrypted)"'
-
-#color sidebar_new color39 color234
+color   hdrdefault      color6      default
+color   header          color5      default     '^date:'
+color   header          color4      default     '^(to|cc|bcc):'
+color   header          color10     default     '^from:'
+color   header          color11     default     '^subject:'
+color   header          color12     default     '^user-agent:'
+color   header          color2      default     '^reply-to:'

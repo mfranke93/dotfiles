@@ -29,3 +29,6 @@ alias git='GPG_TTY=$(tty) git'
 
 # :)
 alias wtf='dmesg'
+
+# :))
+alias :q=exit

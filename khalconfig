@@ -13,6 +13,7 @@ dateformat = %Y-%m-%d
 longdateformat = %Y-%m-%d
 datetimeformat = %Y-%m-%d %H:%M
 longdatetimeformat = %Y-%m-%d %H:%M
+unicode_symbols = False
 
 [view]
 agenda_event_format = {calendar-color}{cancelled}{start-end-time-style} {title}{repeat-symbol} {description-separator}{location}{reset}

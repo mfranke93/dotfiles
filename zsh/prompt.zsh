@@ -1,8 +1,43 @@
 function prompt_char {
     git branch >/dev/null 2>/dev/null && echo '±' && return
-    echo '▶'
+    echo '»'
 }
 
+function preexec {
+    # set timer before command
+    _zsh_cmd_timer=$SECONDS
+}
+
+function precmd {
+    # if timer set, calculate command execution duration
+    if [ $_zsh_cmd_timer ]
+    then
+        _zsh_timer_show=$(($SECONDS - $_zsh_cmd_timer))
+        unset $_zsh_cmd_timer
+    fi
+}
+
+function last_command_duration {
+    # if larger than 5s, display in right side of prompt
+    if [[ $_zsh_timer_show -ge ${MINIMUM_COMMAND_DURATION_SHOWN:-5} ]]
+    then
+        str="${_zsh_timer_show}s"
+        if [[ $_zsh_timer_show -ge 60 ]]
+        then
+            sec=$((_zsh_timer_show % 60))
+            min=$((_zsh_timer_show / 60))
+            str="${min}m ${sec}s"
+            if [[ $min -ge 60 ]]
+            then
+                hour=$((min / 60))
+                min=$((min % 60))
+                str="${hour}h ${min}m ${sec}s"
+            fi
+        fi
+
+        echo $str
+    fi
+}
 
 # http://blog.joshdick.net/2012/12/30/my_git_prompt_for_zsh.html
 # copied from https://gist.github.com/4415470
@@ -20,15 +55,15 @@ done
 GIT_PROMPT_SYMBOL="%{$fg[blue]%}±"
 GIT_PROMPT_PREFIX="%{$fg[green]%} [%{$reset_color%}"
 GIT_PROMPT_SUFFIX="%{$fg[green]%}]%{$reset_color%}"
-GIT_PROMPT_AHEAD="%{$FG[196]%}ANUM%{$reset_color%}"
-GIT_PROMPT_BEHIND="%{$FG[045]%}BNUM%{$reset_color%}"
-GIT_PROMPT_UNTRACKED="%{$FG[196]%}*%{$reset_color%}"
+GIT_PROMPT_AHEAD="%{$FG[yellow]%}ANUM%{$reset_color%}"
+GIT_PROMPT_BEHIND="%{$FG[orange]%}BNUM%{$reset_color%}"
+GIT_PROMPT_UNTRACKED="%{$FG[red]%}*%{$reset_color%}"
 GIT_PROMPT_MODIFIED="%{$fg_bold[yellow]%}d%{$reset_color%}"
 GIT_PROMPT_STAGED="%{$fg_bold[green]%}s%{$reset_color%}"
 GIT_PROMPT_STASHED="%{$fg_bold[yellow]%}+%{$reset_color%}"
-GIT_PROMPT_MERGING="%{$FG[201]%}MERGING%{$reset_color%}"
-GIT_PROMPT_REBASING="%{$FG[201]%}REBASING%{$reset_color%}"
-GIT_PROMPT_CHERRYPICKING="%{$FG[201]%}CHERRY-PICKING%{$reset_color%}"
+GIT_PROMPT_MERGING="%{$FG[13]%}MERGING%{$reset_color%}"
+GIT_PROMPT_REBASING="%{$FG[13]%}REBASING%{$reset_color%}"
+GIT_PROMPT_CHERRYPICKING="%{$FG[13]%}CHERRY-PICKING%{$reset_color%}"
 
 # Show Git branch/tag, or name-rev if on detached head
 function parse_git_branch() {
@@ -80,11 +115,11 @@ function parse_git_state() {
             commit_ahead="$(\git rev-list --count $remote_branch..HEAD 2>/dev/null)"
             commit_behind="$(\git rev-list --count HEAD..$remote_branch 2>/dev/null)"
             if [[ "$commit_ahead" -ne "0" && "$commit_behind" -ne "0" ]]; then
-                has_commit="%{$FG[196]%}+$commit_ahead%{$reset_color%}/%{$fg[cyan]%}-$commit_behind%{$reset_color%}"
+                has_commit="%{$FG[yellow]%}+$commit_ahead%{$reset_color%}/%{$fg[cyan]%}-$commit_behind%{$reset_color%}"
             elif [[ "$commit_ahead" -ne "0" ]]; then
                 has_commit="%{$fg[yellow]%}$commit_ahead%{$reset_color%}"
             elif [[ "$commit_behind" -ne "0" ]]; then
-                has_commit="%{$FG[045]%}-$commit_behind%{$reset_color%}"
+                has_commit="%{$FG[cyan]%}-$commit_behind%{$reset_color%}"
             fi
         fi
     fi
@@ -114,7 +149,7 @@ function parse_git_state() {
             d_lines=0
         fi
 
-        has_lines="%{$fg[green]%}+$i_lines%{$reset_color%}/%{$FG[196]%}-$d_lines%{$reset_color%}"
+        has_lines="%{$fg[green]%}+$i_lines%{$reset_color%}/%{$FG[009]%}-$d_lines%{$reset_color%}"
     fi
     
     # set color of branch name depending on local and remote state: red if uncommitted changes,
@@ -204,7 +239,7 @@ function current_jobs_tmux {
     # Count stopped jobs
     if (( s = $(jobs -s | wc -l) )); then
         [[ -n "$ret" ]] && ret+='/'
-        ret+="%{$FG[208]%}${s}z%{$reset_color%}"
+        ret+="%{$FG[009]%}${s}z%{$reset_color%}"
     fi
 
     if [[ -n "$ret" ]]; then
@@ -216,16 +251,23 @@ function current_jobs_tmux {
 
 function last_return_value {
     local retval="$?"
+
+    # need to do this here to not destroy $?
+    local duration=$(last_command_duration)
+    if [[ "$duration" != "" ]]; then
+        echo -ne "%{$FG[012]%}$duration%{$reset_color%} "
+    fi
+
     if [[ "$retval" -gt "0" ]]; then
-        echo -nE "%{$FG[196]%}$retval%{$reset_color%} "
+        echo -nE "%{$FG[009]%}$retval%{$reset_color%} "
     fi
 }
 
 function is_ssh {
     if [[ -n "$SSH_CLIENT" ]]; then
-        echo -ne "%{$FG[045]%}"
+        echo -ne "%{$FG[cyan]%}"
     elif [[ -n "$SSH_TTY" ]]; then
-        echo -ne "%{$FG[045]%}"
+        echo -ne "%{$FG[cyan]%}"
     else
         echo -ne "%{$fg[white]%}"
     fi
@@ -233,6 +275,5 @@ function is_ssh {
 
 
 PROMPT='
- $(last_return_value)$(current_jobs_tmux) ${PR_GREEN}%n%{$reset_color%}$(is_ssh)@%{$reset_color%}$(hostname_colored)%{$FG[246]%}:%{$reset_color%}${PR_BOLD_YELLOW}$(current_pwd)%{$reset_color%} $(parse_git_state)
+ $(last_return_value)$(current_jobs_tmux) ${PR_GREEN}%n%{$reset_color%}$(is_ssh)@%{$reset_color%}$(hostname_colored)%{$FG[007]%}:%{$reset_color%}${PR_BOLD_YELLOW}$(current_pwd)%{$reset_color%} $(parse_git_state)
 $(prompt_char) '
-

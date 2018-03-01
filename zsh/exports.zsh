@@ -5,8 +5,10 @@ then
 fi
 
 # Setup terminal, and turn on colors
-export TERM=xterm-256color
 export CLICOLOR=1
+
+# show command runtime if >10s
+export MINIMUM_COMMAND_DURATION_SHOWN=10
 
 # key timeout
 export KEYTIMEOUT=1
@@ -14,12 +16,12 @@ export KEYTIMEOUT=1
 # vim
 if which nvim 2>&1 > /dev/null
 then
-	export EDITOR=$(which nvim)
+    export EDITOR=$(which nvim)
 elif which vim 2>&1 > /dev/null
 then
-	export EDITOR=$(which vim)
+    export EDITOR=$(which vim)
 else
-	export EDITOR=$(which vi)
+    export EDITOR=$(which vi)
 fi
 
 # pass: copy to primary
@@ -28,3 +30,4 @@ export PASSWORD_STORE_X_SELECTION=primary
 export LESS='--ignore-case --raw-control-chars --quit-if-one-screen --no-init'
 export PAGER='less'
 
+export MANPAGER="/bin/sh -c \"col -b | nvim -c 'set ft=man ts=8 nomod nolist nonu noma' -\""

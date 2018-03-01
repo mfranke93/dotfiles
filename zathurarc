@@ -6,3 +6,8 @@ map [normal]            F           follow
 map [fullscreen]        F           follow
 map [normal]            f           toggle_fullscreen
 map [fullscreen]        f           toggle_fullscreen
+
+set font "Fira Mono Regular 10"
+
+map [normal]            i           toggle_index
+map [index]             <esc>       abort
