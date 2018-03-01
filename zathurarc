@@ -1,4 +1,4 @@
-set synctex-editor-command "nvr --remote +%{line} %{input} ; nvr --remote-keys zz"
+set synctex-editor-command "nvr --remote +%{line} %{input} ; nvr --remote-send zz"
 
 map [normal]            <C-Space>   toggle_statusbar
 map [fullscreen]        <C-Space>   toggle_statusbar
