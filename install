@@ -29,6 +29,7 @@ install-target()
             ln -sfv $(pwd)/third_party/codefocus-vim/colors/codefocus.vim nvim/colors
             ;;
         mutt)
+            gpg -d mutt/99-savehooks.muttrc.gpg > mutt/99-savehooks.muttrc
             install-directory mutt/ ~/.mutt
             install-file mailcap ~/.mailcap
             install-file offlineimap/offlineimap.py ~/.offlineimap.py
