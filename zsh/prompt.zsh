@@ -176,9 +176,9 @@ function parse_git_state() {
 
 function is_ssh {
     if [[ -n "$SSH_CLIENT" ]]; then
-        echo -ne "%F{cyan}%n@%F{green}%m%f:"
+        echo -ne "%F{cyan}%n%F{yellow}@%F{green}%m%f:"
     elif [[ -n "$SSH_TTY" ]]; then
-        echo -ne "%F{cyan}%n@%F{green}%m%f:"
+        echo -ne "%F{cyan}%n%F{yellow}@%F{green}%m%f:"
     fi
 }
 
