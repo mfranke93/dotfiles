@@ -51,7 +51,6 @@ install-target()
         zsh)
             install-file zshrc ~/.zshrc
             install-directory zsh ~/.zsh
-            install-directory third_party/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ~/.zsh/zsh-syntax-highlighting.zsh
             install-directory third_party/z/z.sh ~/.zsh/z.sh
             ;;
         office)
