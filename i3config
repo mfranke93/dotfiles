@@ -267,14 +267,14 @@ exec --no-startup-id dunst
 # automount removable storage
 exec --no-startup-id udiskie --use-udisks2 --no-tray --no-notify
 
-# set wallpaper
-exec --no-startup-id feh --bg-scale ${HOME}/Pictures/wallpaper
-
 # composite manager
 exec --no-startup-id compton
 
 # start polybar (should be last)
 exec --no-startup-id polybar -c /home/max/.config/polybar/config default
+
+# set background to last set one
+exec --no-startup-id /home/max/.fehbg
 
 # }}}
 
