@@ -18,8 +18,8 @@ workspace_layout tabbed
 # mouse stuff
 focus_follows_mouse no
 
-# 2px window borders
-for_window [class="^.*$"] border pixel 1
+# 0px window borders
+for_window [class="^.*$"] border pixel 0
 
 # }}}
 # {{{ COLORS

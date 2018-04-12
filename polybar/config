@@ -61,7 +61,7 @@ font-1 = siji:pixelsize=12;1
 font-2 = fontawesome:size=12;1
 font-3 = fixed:pixelsize=12;1
 font-4 = unifont:fontformat=truetype:size=10:antialias=false;0
-modules-left = i3
+modules-left = i3 gap xwindow
 modules-center = mpd
 modules-right = mail gap task gap filesystem_root filesystem_home gap cpu temperature memory power gap net gap volume gap date 
 tray-position = right
@@ -234,6 +234,14 @@ interval = 5
 format = <label>
 exec = "/home/max/.config/polybar/power"
 format-underline = ${colors.sys-color4}
+
+[module/xwindow]
+type=internal/xwindow
+format = <label>
+format-underline = #81A1C1
+format-padding = 0
+label = %title%
+label-maxlen = 30
 
 [settings]
 screenchange-reload = true

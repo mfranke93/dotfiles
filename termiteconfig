@@ -4,6 +4,8 @@ font = Fira Mono 12
 #font = xos4 Terminus 10
 modify_other_keys = false
 
+dynamic_title = true
+
 # Copyright (c) 2016-present Arctic Ice Studio <development@arcticicestudio.com>
 # Copyright (c) 2016-present Sven Greb <code@svengreb.de>
 
