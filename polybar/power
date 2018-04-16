@@ -35,4 +35,4 @@ then
     sym=""
 fi
 
-echo "${underline}%{F#555}${sym} %{F#dfdfdf}${capa}% "
+echo " ${underline}%{F#555}${sym} %{F#dfdfdf}${capa}% "
