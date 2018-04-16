@@ -18,7 +18,7 @@ foreground-alt = #555
 primary = #ffb52a
 inactive-workspace = #ffb56a
 secondary = #e60053
-alert = #bd2c40
+alert = #BF616A
 ; colors for underlines
 ; mpd
 mpd-color = #00c0f0
@@ -63,7 +63,7 @@ font-3 = fixed:pixelsize=12;1
 font-4 = unifont:fontformat=truetype:size=10:antialias=false;0
 modules-left = i3 gap xwindow
 modules-center = mpd
-modules-right = mail gap task gap gap power gap net gap volume gap date
+modules-right = mail gap task gap power gap net gap volume gap date
 tray-position = right
 tray-padding = 2
 scroll-up = i3wm-wsnext
@@ -92,33 +92,26 @@ label-mode-foreground = #000
 label-mode-background = ${colors.primary}
 ; focused = Active workspace on focused monitor
 label-focused = %name%
-label-focused-background = ${colors.background-alt}
-label-focused-underline= ${colors.primary}
+label-focused-foreground = ${colors.background}
+label-focused-background = #81A1C1
+label-focused-underline= #8FBCBB
 label-focused-padding = 1
 ; unfocused = Inactive workspace on any monitor
 label-unfocused = %name%
 label-unfocused-padding = 1
+label-unfocused-background = ${colors.background}
+label-unfocused-underline = #8FBCBB
+label-unfocused-foreground = #81A1C1
 ; visible = Active workspace on unfocused monitor
 label-visible = %name%
-label-visible-background = ${self.label-focused-background}
-label-visible-underline = ${colors.inactive-workspace}
+label-visible-foreground = ${colors.background}
+label-visible-background = #A3BE8C
+label-visible-underline = #A3BE8C
 label-visible-padding = ${self.label-focused-padding}
 ; urgent = Workspace with urgency hint set
 label-urgent = %name%
 label-urgent-background = ${colors.alert}
 label-urgent-padding = 1
-; workspace icons
-; ws-icon-0 = multimedia; 
-; ws-icon-1 = browser; 
-; ws-icon-2 = office; 
-; ws-icon-3 = programming;
-; ws-icon-4 = ws4;
-; ws-icon-5 = ws5;
-; ws-icon-6 = ws6;
-; ws-icon-7 = ws7;
-; ws-icon-8 = ws8;
-; ws-icon-9 = ws9;
-; fuzzy-match = true
 
 [module/mpd]
 type = custom/script
