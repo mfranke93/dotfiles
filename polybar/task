@@ -9,13 +9,6 @@ week=$(task "(due.before=monday and due.after:tomorrow+24h and +DUE and urg < 15
 important=$(task "urg >= 15 (+DUE or +OVERDUE or +READY)" count 2>/dev/null)
 someday=$(task "(+PENDING and due='' and urg < 15)" count 2>/dev/null)
 
-col_urgent="#f02020"
-col_overdue="#f08020"
-col_today="#f0f020"
-col_tomorrow="#c0f020"
-col_week="#40f020"
-col_someday="#20d0f0"
-
 f="#dfdfdf"
 f2="#555"
 
@@ -30,27 +23,27 @@ str=""
 
 if [ "$important" -gt "0" ]
 then
-    str="${str}%{F${f2}}%{u${col_urgent}} ${sym_urgent}%{F${f}}${important} "
+    str="${str}%{F${f2}} ${sym_urgent}%{F${f}}${important} "
 fi
 if [ "$overdue" -gt "0" ]
 then
-    str="${str}%{F${f2}}%{u${col_overdue}} ${sym_overdue}%{F${f}}${overdue} "
+    str="${str}%{F${f2}} ${sym_overdue}%{F${f}}${overdue} "
 fi
 if [ "$today" -gt "0" ]
 then
-    str="${str}%{F${f2}}%{u${col_today}} ${sym_today}%{F${f}}${today} "
+    str="${str}%{F${f2}} ${sym_today}%{F${f}}${today} "
 fi
 if [ "$tomorrow" -gt "0" ]
 then
-    str="${str}%{F${f2}}%{u${col_tomorrow}} ${sym_tomorrow}%{F${f}}${tomorrow} "
+    str="${str}%{F${f2}} ${sym_tomorrow}%{F${f}}${tomorrow} "
 fi
 if [ "$week" -gt "0" ]
 then
-    str="${str}%{F${f2}}%{u${col_week}} ${sym_week}%{F${f}}${week} "
+    str="${str}%{F${f2}} ${sym_week}%{F${f}}${week} "
 fi
 if [ "$someday" -gt "0" ]
 then
-    str="${str}%{F${f2}}%{u${col_someday}} ${sym_someday}%{F${f}}${someday} "
+    str="${str}%{F${f2}} ${sym_someday}%{F${f}}${someday} "
 fi
 
 echo ${str}

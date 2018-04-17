@@ -1,33 +1,30 @@
 #!/bin/zsh
 
-c1="#20ffa0"
-c2="#20ffc0"
-c3="#20ffe0"
 f="#999"
 f2="#333"
 s3=""
 s2=""
 s1=""
 
-default="%{u${f2}}%{F${f2}}"
+default="%{F${f2}}"
 
 if (ip addr | grep inet6 | grep global > /dev/null)
 then
-    ipv6="%{u${c1}}%{F${f}}"
+    ipv6="%{F${f}}"
 else
     ipv6=$default
 fi
 
 if ( ip link | grep enp3s0f1 | grep "state UP" > /dev/null )
 then
-    eth="%{u${c2}}%{F${f}}"
+    eth="%{F${f}}"
 else
     eth=$default
 fi
 
 if ( ip link | grep wlp2s0 | grep "state UP" > /dev/null )
 then
-    wlan="%{u${c3}}%{F${f}}"
+    wlan="%{F${f}}"
 else
     wlan=$default
 fi

@@ -14,11 +14,9 @@ underline=""
 if [ "$capa" -lt "16" ]
 then
     sym=""
-    underline="%{u#f00}"
 elif [ "$capa" -lt "36" ]
 then
     sym=""
-    underline="%{u#dd0}"
 elif [ "$capa" -lt "66" ]
 then
     sym=""
@@ -35,4 +33,4 @@ then
     sym=""
 fi
 
-echo " ${underline}%{F#555}${sym} %{F#dfdfdf}${capa}% "
+echo " %{F#dfdfdf}${capa}% "

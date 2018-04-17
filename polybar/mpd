@@ -14,11 +14,9 @@ then
         then
             playpause=""
             fgcolor="#dfdfdf"
-            ulcolor="#20a0f0"
         else
             playpause=""
             fgcolor="#555"
-            ulcolor="#555"
         fi
 
         flags=""
@@ -39,7 +37,7 @@ then
             flags="${flags} "
         fi
 
-        echo "%{u${ulcolor}}%{F${fgcolor}} ${playpause}  ${currentsong}  ${flags} "
+        echo "%{F${fgcolor}} ${playpause}  ${currentsong}  ${flags} "
         
     else
         exit 1

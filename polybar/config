@@ -20,23 +20,7 @@ inactive-workspace = #ffb56a
 secondary = #e60053
 alert = #BF616A
 ; colors for underlines
-; mpd
-mpd-color = #00c0f0
-; fs
-fs-color1 = #6178e1
-fs-color2 = #41b1ff
-; temp, cpu, ...
-sys-color1 = #40ffdd
-sys-color2 = #40d0d0
-sys-color3 = #40b0c0
-sys-color4 = #4090b0
-; volume
-vol-color = #d020c8
-; date
-date-color = #2020e0
-; mail
-mail-color = #f0f040
-
+underline-blue = #81A1C1
 
 [bar/default]
 monitor = ${env:MONITOR:eDP1}
@@ -93,15 +77,15 @@ label-mode-background = ${colors.primary}
 ; focused = Active workspace on focused monitor
 label-focused = %name%
 label-focused-foreground = ${colors.background}
-label-focused-background = #81A1C1
-label-focused-underline= #8FBCBB
+label-focused-background = ${colors.underline-blue}
+label-focused-underline= ${colors.underline-blue}
 label-focused-padding = 1
 ; unfocused = Inactive workspace on any monitor
 label-unfocused = %name%
 label-unfocused-padding = 1
 label-unfocused-background = ${colors.background}
-label-unfocused-underline = #8FBCBB
-label-unfocused-foreground = #81A1C1
+label-unfocused-underline= ${colors.underline-blue}
+label-unfocused-foreground = ${colors.underline-blue}
 ; visible = Active workspace on unfocused monitor
 label-visible = %name%
 label-visible-foreground = ${colors.background}
@@ -117,6 +101,7 @@ label-urgent-padding = 1
 type = custom/script
 interval = 0.3
 format = <label>
+format-underline = ${colors.underline-blue}
 exec = "/home/max/.config/polybar/mpd"
 
 [module/date]
@@ -124,7 +109,7 @@ type = custom/script
 interval = 5
 format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
-format-underline = ${colors.date-color}
+format-underline = ${colors.underline-blue}
 exec = /home/max/.config/polybar/time
 
 [module/volume]
@@ -147,8 +132,8 @@ label-headphones = "%percentage% "
 format-volume-prefix = "  "
 format-headphones-prefix = "  "
 format-volume-prefix-foreground = ${colors.foreground-alt}
-label-volume-foreground = ${root.foreground}
-format-volume-underline = ${colors.vol-color}
+format-volume-foreground = ${root.foreground}
+format-volume-underline = ${colors.underline-blue}
 format-muted-prefix = "  "
 format-muted-foreground = ${colors.foreground-alt}
 format-muted-underline = #888888
@@ -158,30 +143,33 @@ type = custom/script
 interval = 10
 format = <label>
 exec = "/home/max/.config/polybar/mail"
+format-underline = ${colors.underline-blue}
 
 [module/task]
 type = custom/script
 interval = 5
 format = <label>
 exec = "/home/max/.config/polybar/task"
+format-underline = ${colors.underline-blue}
 
 [module/net]
 type = custom/script
 interval = 5
 format = <label>
 exec = "/home/max/.config/polybar/net"
+format-underline = ${colors.underline-blue}
 
 [module/power]
 type = custom/script
 interval = 5
 format = <label>
 exec = "/home/max/.config/polybar/power"
-format-underline = ${colors.sys-color4}
+format-underline = ${colors.underline-blue}
 
 [module/xwindow]
 type=internal/xwindow
 format = <label>
-format-underline = #81A1C1
+format-underline = ${colors.underline-blue}
 format-padding = 0
 label = %title%
 label-maxlen = 30
