@@ -33,4 +33,4 @@ then
     sym=""
 fi
 
-echo " %{F#dfdfdf}${capa}% "
+echo " %{F#555}${sym} %{F#dfdfdf}${capa} "
