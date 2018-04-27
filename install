@@ -15,17 +15,11 @@ install-target()
 {
     echo -e "\033[32mInstalling target \033[34m$1\033[0m"
     case $1 in
-        awesome)
-            install-directory awesome ~/.config/awesome
-            ;;
         nvim)
             # neovim
             install-directory nvim ~/.config/nvim
             mkdir -pv nvim/{colors,autoload}
-            ln -sfv $(pwd)/third_party/vim-monokai/colors/monokai.vim nvim/colors
             ln -sfv $(pwd)/third_party/vim-plug/plug.vim nvim/autoload
-            ln -sfv $(pwd)/third_party/Apprentice/colors/apprentice.vim nvim/colors
-            ln -sfv $(pwd)/third_party/gruvbox/colors/gruvbox.vim nvim/colors
             ln -sfv $(pwd)/third_party/codefocus-vim/colors/codefocus.vim nvim/colors
             ;;
         mutt)

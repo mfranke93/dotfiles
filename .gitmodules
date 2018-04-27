@@ -1,21 +1,12 @@
-[submodule "third_party/vim-monokai"]
-	path = third_party/vim-monokai
-	url = https://github.com/crusoexia/vim-monokai
 [submodule "third_party/vim-plug"]
 	path = third_party/vim-plug
 	url = https://github.com/junegunn/vim-plug.git
-[submodule "third_party/zsh-syntax-highlighting"]
-	path = third_party/zsh-syntax-highlighting
-	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
 [submodule "third_party/z"]
 	path = third_party/z
 	url = https://github.com/rupa/z.git
-[submodule "third_party/Apprentice"]
-	path = third_party/Apprentice
-	url = https://github.com/romainl/Apprentice
-[submodule "third_party/gruvbox"]
-	path = third_party/gruvbox
-	url = https://github.com/morhetz/gruvbox
 [submodule "third_party/codefocus-vim"]
 	path = third_party/codefocus-vim
 	url = https://github.com/mfranke93/codefocus-vim.git
+[submodule "third_party/zsh-autoenv"]
+	path = third_party/zsh-autoenv
+	url = https://github.com/Tarrasch/zsh-autoenv.git

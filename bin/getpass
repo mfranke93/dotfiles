@@ -7,4 +7,4 @@
 # are doing, we will just unmap it and sleep for 45 seconds. after that, all
 # resources will be freed again, but until then the window will not be visible
 # either.
-urxvt -title "getpass" -e zsh -c "passmenu; xdotool getwindowfocus windowunmap; sleep 45"
+termite --title "getpass" -e 'zsh -c "passmenu; xdotool getwindowfocus windowunmap; sleep 45"'
