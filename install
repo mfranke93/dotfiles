@@ -46,6 +46,7 @@ install-target()
             install-file zshrc ~/.zshrc
             install-directory zsh ~/.zsh
             install-directory third_party/z/z.sh ~/.zsh/z.sh
+            install-directory third_party/zsh-autoenv/ ~/.zsh/zsh-autoenv
             ;;
         office)
             gpg -d vdirsyncerconfig.gpg > vdirsyncerconfig
