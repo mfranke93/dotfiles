@@ -1,47 +1,25 @@
-#!/bin/zsh
+#!/usr/bin/env python3
 
-source ${HOME}/.config/mpd/mpdhost
+import mpd
 
-# check if mpc is running and playlist not empty
-if ( mpc 2>&1 > /dev/null )
-then
-    out=$(mpc 2>/dev/null)
-    if ( echo $out | grep -e "^\[paused\]\|\[playing\]" 2>&1 > /dev/null )
-    then
-        currentsong=$(mpc current 2>/dev/null | /home/max/.config/polybar/shorten.pl )
-        
-        if (echo $out | grep "^\[playing\]" 2>&1 > /dev/null )
-        then
-            playpause=""
-            fgcolor="#dfdfdf"
-        else
-            playpause=""
-            fgcolor="#555"
-        fi
+client = mpd.MPDClient(use_unicode=True)
+client.connect("localhost", 6600)
 
-        flags=""
-        if (echo $out | grep "repeat: on" 2>&1 > /dev/null )
-        then
-            flags="${flags} "
-        fi
-        if (echo $out | grep "random: on" 2>&1 > /dev/null )
-        then
-            flags="${flags} "
-        fi
-        if (echo $out | grep "single: on" 2>&1 > /dev/null )
-        then
-            flags="${flags} "
-        fi
-        if (echo $out | grep "consume: on" 2>&1 > /dev/null )
-        then
-            flags="${flags} "
-        fi
+status = client.status()
+cursong = client.currentsong()
 
-        echo "%{F${fgcolor}} ${playpause}  ${currentsong}  ${flags} "
-        
-    else
-        exit 1
-    fi
-else
-    exit 1
-fi
+fgcolor = "#dfdfdf" if status['state'] == 'play' else "#555"
+
+flags = " "
+if status['repeat'] == "1":
+    flags += " "
+if status['random'] == "1":
+    flags += " "
+if status['single'] == "1":
+    flags += "1 "
+if status['consume'] == "1":
+    flags += " "
+
+title = cursong['title']
+
+print("%{F" + fgcolor + "} "+ title+flags, end='')
