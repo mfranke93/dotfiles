@@ -5,7 +5,6 @@ call plug#begin()
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'vimwiki/vimwiki'
-Plug 'airblade/vim-gitgutter'
 call plug#end()
 
 "-----------------------------------------------------------------------------

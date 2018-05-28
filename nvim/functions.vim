@@ -62,7 +62,7 @@ augroup END
 " set background to match terminal after vi is loaded
 augroup bgterm
     autocmd!
-    autocmd VimEnter *                          hi Normal ctermbg=none
+    autocmd VimEnter,ColorScheme * hi Normal ctermbg=none
 augroup END
 
 " show cursorline only in normal mode
@@ -71,4 +71,19 @@ augroup cursorline
     autocmd InsertEnter *                       set nocursorline
     autocmd InsertLeave *                       set cursorline
     autocmd Colorscheme *                       set cursorline
+augroup END
+
+" split help window to right
+function! ILikeHelpToTheRight()
+    " only if window wide enough
+    if winwidth('%') > 160
+        "if !exists('w:help_is_moved') || w:help_is_moved != "right"
+            wincmd L
+            let w:help_is_moved = "right"
+        "endif
+    endif
+endfunction
+
+augroup HelpPages
+    autocmd FileType help nested call ILikeHelpToTheRight()
 augroup END
