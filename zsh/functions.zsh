@@ -51,3 +51,17 @@ vol()
     esac
 }
 
+# -------------------------------------------------------------------
+# Script to combine the creation of a directory and changing into it
+# -------------------------------------------------------------------
+function mcd {
+    if [[ $# -ne 1 ]]
+    then
+        echo "Usage: $0 <dirname>"
+        exit 1
+    fi
+
+    mkdir -p "$1"
+    cd "$1"
+}
+
