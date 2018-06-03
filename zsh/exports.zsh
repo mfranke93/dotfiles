@@ -31,3 +31,7 @@ export LESS='--ignore-case --raw-control-chars --quit-if-one-screen --no-init'
 export PAGER='less'
 
 export MANPAGER="/bin/sh -c \"col -b | nvim -c 'set ft=man ts=8 nomod nolist nonu noma' -\""
+
+# use GPG as ssh agent
+export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+gpgconf --launch gpg-agent
