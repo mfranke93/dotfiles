@@ -9,7 +9,7 @@ client.connect("localhost", 6600)
 status = client.status()
 
 if status['state'] == 'stop':
-    print(' ', end='')  # otherwise polybar won't clear
+    print('%{U#0000}', end='')  # otherwise polybar won't clear
     sys.exit()
 
 cursong = client.currentsong()
