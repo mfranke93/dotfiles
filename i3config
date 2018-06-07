@@ -162,6 +162,12 @@ mode "resize" {
         bindsym Up resize shrink height 10 px or 10 ppt
         bindsym Right resize grow width 10 px or 10 ppt
 
+        # finer increments
+        bindsym Shift+Left resize shrink width 1 px
+        bindsym Shift+Down resize grow height 1 px
+        bindsym Shift+Up resize shrink height 1 px
+        bindsym Shift+Right resize grow width 1 px
+
         # back to normal: Enter or Escape
         bindsym Return mode "default"
         bindsym Escape mode "default"
@@ -187,10 +193,12 @@ bindsym $mod+Print mode "$mode_system"
 
 ## Manual management of external displays
 # Set the shortcuts and what they do
-set $mode_display Ext Screen (v) VGA ON, (x) VGA OFF
+set $mode_display Ext Screen (v) VGA ON, (x) VGA OFF, (h) HDMI ON, (n) HDMI OFF
 mode "$mode_display" {
-    bindsym v exec --no-startup-id xrandr --output VGA1 --left-of LVDS1 --auto, mode "default"
-    bindsym x exec --no-startup-id xrandr --output VGA1 --auto --off --output LVDS1, mode "default"
+    bindsym v exec --no-startup-id xrandr --output DP1 --above eDP1 --auto, mode "default"
+    bindsym h exec --no-startup-id xrandr --output HDMI2 --right-of eDP1 --auto, mode "default"
+    bindsym x exec --no-startup-id xrandr --output DP1 --auto --off
+    bindsym v exec --no-startup-id xrandr --output HDMI2 --auto --off
 
     # back to normal: Enter or Escape
     bindsym Return mode "default"
