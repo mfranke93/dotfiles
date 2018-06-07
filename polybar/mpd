@@ -1,11 +1,17 @@
 #!/usr/bin/env python3
 
+import sys
 import mpd
 
 client = mpd.MPDClient(use_unicode=True)
 client.connect("localhost", 6600)
 
 status = client.status()
+
+if status['state'] == 'stop':
+    print(' ', end='')  # otherwise polybar won't clear
+    sys.exit()
+
 cursong = client.currentsong()
 
 fgcolor = "#dfdfdf" if status['state'] == 'play' else "#555"
