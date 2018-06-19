@@ -1,6 +1,5 @@
 [general]
-#ui = Curses.Blinkenlights
-ui = blinkenlights
+ui = basic
 accounts = mumintroll, st104538
 pythonfile = ~/.offlineimap.py
 maxsyncaccounts = 4
@@ -58,4 +57,4 @@ header = "mailboxes "
 peritem = "+%(accountname)s/%(foldername)s"
 sep = " "
 footer = "\n"
-incremental = no
+incremental = yes

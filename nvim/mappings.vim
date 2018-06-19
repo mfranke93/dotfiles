@@ -14,46 +14,6 @@ nmap <silent> <LEADER>n :nohls<CR>
 map <S-Insert> <MiddleMouse>
 map! <S-Insert> <MiddleMouse>
 
-" Disable arrow keys to get rid of the habit of using them.
-noremap <Up> <NOP>
-noremap <Down> <NOP>
-noremap <Left> <NOP>
-noremap <Right> <NOP>
-inoremap <Up> <NOP>
-inoremap <Down> <NOP>
-inoremap <Left> <NOP>
-inoremap <Right> <NOP>
-noremap <S-Up> <NOP>
-noremap <S-Down> <NOP>
-noremap <S-Left> <NOP>
-noremap <S-Right> <NOP>
-inoremap <S-Up> <NOP>
-inoremap <S-Down> <NOP>
-inoremap <S-Left> <NOP>
-inoremap <S-Right> <NOP>
-noremap <C-Up> <NOP>
-noremap <C-Down> <NOP>
-noremap <C-Left> <NOP>
-noremap <C-Right> <NOP>
-inoremap <C-Up> <NOP>
-inoremap <C-Down> <NOP>
-inoremap <C-Left> <NOP>
-inoremap <C-Right> <NOP>
-noremap <S-C-Up> <NOP>
-noremap <S-C-Down> <NOP>
-noremap <S-C-Left> <NOP>
-noremap <S-C-Right> <NOP>
-inoremap <S-C-Up> <NOP>
-inoremap <S-C-Down> <NOP>
-inoremap <S-C-Left> <NOP>
-inoremap <S-C-Right> <NOP>
-
-" Move between windows (does not work in tmux)
-nnoremap <Up> :wincmd k<cr>
-nnoremap <Down> :wincmd j<cr>
-nnoremap <Right> :wincmd l<cr>
-nnoremap <Left> :wincmd h<cr>
-
 "-----------------------------------------------------------------------------
 " save and make by ,m
 "-----------------------------------------------------------------------------
@@ -65,5 +25,9 @@ inoremap [2~ <NOP>
 " disable the MENU key in insert mode. It does weird stuff
 inoremap [29~ <NOP>
 
-" <C-Space> for local expansion
-inoremap <C-Space> <C-X><C-P>
+" <C-Space> for omnifunc
+inoremap <C-Space> <C-X><C-O>
+
+" <Up/Down> for selecting in completion (Pmenu)
+inoremap <Up> <C-P>
+inoremap <Down> <C-N>
