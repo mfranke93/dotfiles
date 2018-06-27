@@ -197,8 +197,8 @@ set $mode_display Ext Screen (v) VGA ON, (x) VGA OFF, (h) HDMI ON, (n) HDMI OFF
 mode "$mode_display" {
     bindsym v exec --no-startup-id xrandr --output DP1 --above eDP1 --auto, mode "default"
     bindsym h exec --no-startup-id xrandr --output HDMI2 --right-of eDP1 --auto, mode "default"
-    bindsym x exec --no-startup-id xrandr --output DP1 --auto --off
-    bindsym n exec --no-startup-id xrandr --output HDMI2 --auto --off
+    bindsym x exec --no-startup-id xrandr --output DP1 --auto --off, mode "default"
+    bindsym n exec --no-startup-id xrandr --output HDMI2 --auto --off, mode "default"
 
     # back to normal: Enter or Escape
     bindsym Return mode "default"
