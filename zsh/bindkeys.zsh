@@ -9,7 +9,7 @@ bindkey "^E"      end-of-line                          # ctrl-e
 bindkey "^D"      delete-char                          # ctrl-d
 bindkey "^F"      forward-char                         # ctrl-f
 bindkey "^B"      backward-char                        # ctrl-b
-bindkey -e   # Default to emacs bindings
+bindkey -v   # Default to vi bindings
 
 # Edit the current command line in $EDITOR
 autoload -U edit-command-line

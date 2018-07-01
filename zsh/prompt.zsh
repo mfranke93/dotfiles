@@ -184,3 +184,14 @@ function is_ssh {
 
 export PROMPT=' $(is_ssh)$(prompt_pwd)$(prompt_detached_zombie)$(prompt_prompt) '
 export RPROMPT='$(parse_git_state)'
+
+# do cursor change on normal mode
+function zle-line-init zle-keymap-select {
+    case $KEYMAP in
+        viins|main) print -n -- '\e]12;#E5E9F0\a' ;;
+        vicmd) print -n -- '\e]12;#A3BE8C\a' ;;
+    esac
+}
+
+zle -N zle-line-init
+zle -N zle-keymap-select
