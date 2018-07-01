@@ -2,7 +2,7 @@
 
 font = Fira Mono 12
 #font = xos4 Terminus 10
-#modify_other_keys = false
+modify_other_keys = false
 
 dynamic_title = true
 
