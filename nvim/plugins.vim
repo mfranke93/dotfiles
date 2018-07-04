@@ -22,7 +22,9 @@ nnoremap <leader>t :Tags<cr>
 nnoremap <leader>a :Ag<cr>
 
 let g:LanguageClient_serverCommands = {
-    \ 'javascript': ['tcp://127.0.0.1:2089']
+    \ 'javascript': ['javascript-typescript-langserver'],
+    \ 'cpp' : ['clangd'],
+    \ 'cpp.doxygen' : ['clangd']
     \ }
 
 nnoremap <F5> :call LanguageClient_contextMenu()<CR>
