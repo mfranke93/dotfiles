@@ -51,14 +51,6 @@ command! -nargs=0 DiffOrig rightbelow vertical new |
             \ wincmd p | 
             \ diffthis
 
-
-
-" Doxygen syntax highlight in CPP comments
-augroup project
-    autocmd!
-    autocmd BufRead,BufNewFile *.hpp,*.cpp      set filetype=cpp.doxygen
-augroup END
-
 " set background to match terminal after vi is loaded
 augroup bgterm
     autocmd!

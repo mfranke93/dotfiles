@@ -22,7 +22,7 @@ nnoremap <leader>t :Tags<cr>
 nnoremap <leader>a :Ag<cr>
 
 let g:LanguageClient_serverCommands = {
-    \ 'javascript': ['javascript-typescript-langserver'],
+    \ 'javascript': ['javascript-typescript-stdio'],
     \ 'cpp' : ['clangd'],
     \ 'cpp.doxygen' : ['clangd']
     \ }
@@ -32,3 +32,6 @@ nnoremap <F5> :call LanguageClient_contextMenu()<CR>
 nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
 nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+
+" Deoplete
+let g:deoplete#enable_at_startup = 1
