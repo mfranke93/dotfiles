@@ -4,7 +4,7 @@
 set $mod Mod4
 
 # Font for window titles. Size 0 to hide it.
-font pango:xos4 Terminus 0
+font pango:Fira Mono 8
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -17,9 +17,6 @@ workspace_layout tabbed
 
 # mouse stuff
 focus_follows_mouse no
-
-# 0px window borders
-for_window [class="^.*$"] border pixel 0
 
 # }}}
 # {{{ COLORS
@@ -35,7 +32,7 @@ set $purple	#8473A7
 set $red	#B58900
 set $orange	#E59847
 set $cyan	#2AA198
-set $dark	#222222
+set $dark	#282828
 #class                  border  backgr. text    indicator
 client.focused			$white  $white  $dark    $dark
 client.unfocused		$dark   $dark   $white   $white
@@ -130,7 +127,8 @@ bindsym $mod+f fullscreen toggle
 
 # border toggle
 bindsym $mod+g border pixel 0
-bindsym $mod+Shift+g border pixel 2
+bindsym $mod+b border normal
+bindsym $mod+Shift+g border pixel 1
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
