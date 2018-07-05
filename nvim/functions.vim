@@ -57,14 +57,6 @@ augroup bgterm
     autocmd VimEnter,ColorScheme * hi Normal ctermbg=none
 augroup END
 
-" show cursorline only in normal mode
-augroup cursorline
-    autocmd!
-    autocmd InsertEnter *                       set nocursorline
-    autocmd InsertLeave *                       set cursorline
-    autocmd Colorscheme *                       set cursorline
-augroup END
-
 " split help window to right
 function! ILikeHelpToTheRight()
     " only if window wide enough
