@@ -4,7 +4,7 @@
 set $mod Mod4
 
 # Font for window titles. Size 0 to hide it.
-font pango:Fira Mono 8
+font pango:Fira Code 8
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
