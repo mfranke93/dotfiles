@@ -21,7 +21,7 @@ set-option -g visual-silence off
 set-window-option -g monitor-activity off
 set-option -g bell-action none
 
-set -g default-terminal "tmux"
+set -g default-terminal "tmux-256color"
 
 # }}}
 # {{{ CONTROLS
