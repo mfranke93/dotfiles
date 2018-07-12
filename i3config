@@ -47,6 +47,8 @@ client.urgent			$orange $orange $dark    $white
 
 # start a terminal
 bindsym $mod+Return exec termite
+bindsym $mod+Shift+Return exec termite --class "termite-floating"
+for_window [ class = "^termite-floating$" ] floating enable
 
 # start a GVIM session
 bindsym $mod+z exec nvim-qt
