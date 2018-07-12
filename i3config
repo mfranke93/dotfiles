@@ -64,7 +64,7 @@ bindsym $mod+d exec rofi -show run
 bindsym $mod+t exec rofi -show window
 
 # browser and email
-bindsym $mod+c exec qutebrowser --backend webengine
+bindsym $mod+c exec firefox
 
 # file manager
 bindsym $mod+n exec termite --title ranger -e ranger
