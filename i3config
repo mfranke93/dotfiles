@@ -18,6 +18,9 @@ workspace_layout tabbed
 # mouse stuff
 focus_follows_mouse no
 
+# show title, but no border
+for_window [ class = "^.*$" ] border normal 0
+
 # }}}
 # {{{ COLORS
 
@@ -127,8 +130,7 @@ bindsym $mod+f fullscreen toggle
 
 # border toggle
 bindsym $mod+g border pixel 0
-bindsym $mod+b border normal
-bindsym $mod+Shift+g border pixel 1
+bindsym $mod+b border normal 0
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
