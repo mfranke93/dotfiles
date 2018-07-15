@@ -121,7 +121,7 @@ function parse_git_state() {
             d_lines=0
         fi
 
-        has_lines="${has_lines}%F{green}+$i_lines%f/%F{red}-$d_lines%f"
+        has_lines="${has_lines}%F{green}+$i_lines%F{black}/%F{red}-$d_lines%f"
     fi
     
     # set color of branch name depending on local and remote state: red if uncommitted changes,
