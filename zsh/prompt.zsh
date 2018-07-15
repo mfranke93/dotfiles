@@ -92,6 +92,13 @@ function parse_git_state() {
     local has_lines
     local shortstat # only to check for uncommitted changes
     shortstat="$(LC_ALL=C \git diff --shortstat HEAD 2>/dev/null)"
+    local binchanges
+    binchanges="$(LC_ALL=C \git diff --numstat 2>/dev/null | grep -c '^-\s\+-')"
+
+    if (( $binchanges > 0 ))
+    then
+        has_lines="%F{magenta}b%F{black},"
+    fi
 
     # check if unstaged changes
     if [[ -n "$shortstat" ]]; then
@@ -114,7 +121,7 @@ function parse_git_state() {
             d_lines=0
         fi
 
-        has_lines="%F{green}+$i_lines%f/%F{red}-$d_lines%f"
+        has_lines="${has_lines}%F{green}+$i_lines%f/%F{red}-$d_lines%f"
     fi
     
     # set color of branch name depending on local and remote state: red if uncommitted changes,
@@ -163,12 +170,12 @@ function parse_git_state() {
 
     if [[ -n "$has_lines" ]]; then
         if [[ -n "$has_commit" ]]; then
-            ret="$ret($has_lines,$has_commit)"
+            ret="$ret%F{black}($has_lines%F{black},$has_commit%F{black})"
         else
-            ret="$ret($has_lines)"
+            ret="$ret%F{black}($has_lines%F{black})"
         fi
     elif [[ -n "$has_commit" ]]; then
-        ret="$ret($has_commit)"
+        ret="$ret%F{black}($has_commit%F{black})"
     fi
 
     echo -n "$ret"
