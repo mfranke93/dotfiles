@@ -1,3 +1,3 @@
 if exists('g:GuiLoaded')
-    Guifont Fira Code:h10
+    Guifont Fira Code:h9
 endif

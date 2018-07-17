@@ -1,6 +1,6 @@
 [options]
 
-font = Fira Code 10
+font = Fira Code 9
 modify_other_keys = false
 
 dynamic_title = true
