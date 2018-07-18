@@ -24,7 +24,7 @@ nnoremap <leader>a :Ag<cr>
 let g:LanguageClient_serverCommands = {
     \ 'javascript': ['javascript-typescript-stdio'],
     \ 'cpp' : ['clangd'],
-    \ 'cpp.doxygen' : ['clangd']
+    \ 'python': ['pyls']
     \ }
 
 nnoremap <F5> :call LanguageClient_contextMenu()<CR>
