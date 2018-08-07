@@ -1,14 +1,8 @@
 # vim:ft=muttrc
 
-# read password from pgp encrypted file
-source "echo \"set my_pass=$(pass sniff@mumintroll.org)\" |"
-
-set smtp_url = "smtp://sniff@mumintroll.org@send.one.com:587/"
+set sendmail="/usr/sbin/msmtp"
 set realname = "Max Franke"
 set from = "Max Franke <sniff@mumintroll.org>"
-set ssl_starttls = yes
-set ssl_force_tls = yes
-set smtp_pass = $my_pass
 
 # using offlineimap
 set mbox_type   = Maildir

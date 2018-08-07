@@ -28,6 +28,7 @@ install-target()
             install-file mailcap ~/.mailcap
             install-file offlineimap/offlineimap.py ~/.offlineimap.py
             install-file offlineimap/offlineimaprc ~/.offlineimaprc
+            install-file msmtprc ~/.msmtprc
             ;;
         git)
             install-file bin/git-remotify ~/bin/git-remotify
