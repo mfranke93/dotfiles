@@ -1,0 +1,13 @@
+#!/bin/zsh
+# vim: ft=zsh
+
+# only start new if does not yet exist
+tmux has-session -t imapd
+if [ $? != 0 ]
+then
+    # launch session
+    tmux -2 new-session -s imapd -n imapd -d -- "offlineimap"
+    tmux set status off
+fi
+
+tmux attach -t imapd

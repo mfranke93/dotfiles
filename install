@@ -29,6 +29,7 @@ install-target()
             install-file offlineimap/offlineimap.py ~/.offlineimap.py
             install-file offlineimap/offlineimaprc ~/.offlineimaprc
             install-file msmtprc ~/.msmtprc
+            install-file bin/imapd ~/bin/imapd
             ;;
         git)
             install-file bin/git-remotify ~/bin/git-remotify
@@ -52,7 +53,6 @@ install-target()
         office)
             gpg -d vdirsyncerconfig.gpg > vdirsyncerconfig
             install-file vdirsyncerconfig ~/.vdirsyncer/config
-            install-file bin/office ~/bin/office
             install-file khalconfig ~/.config/khal/config
             install-file taskrc ~/.taskrc
             install-directory taskwarrior_hooks ~/.task/hooks

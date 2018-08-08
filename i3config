@@ -76,8 +76,9 @@ bindsym $mod+p exec termite --title Music -e ncmpcpp
 bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
 bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
 
-# Extra XF86 key
-bindsym $mod+o exec termite --title "Office applications" -e office
+# mail program and offlineimap
+bindsym $mod+o exec termite --title "mail" -e neomutt
+bindsym $mod+i exec termite --class "termite-floating" --title "offlineimap" -e /home/max/bin/imapd
 
 # Screen shot
 bindsym XF86WebCam exec scrot
