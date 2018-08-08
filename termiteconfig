@@ -1,6 +1,6 @@
 [options]
 
-font = Fira Code 9
+font = Fira Mono 10
 modify_other_keys = false
 
 dynamic_title = true
@@ -14,7 +14,7 @@ dynamic_title = true
 
 [colors]
 foreground = #D8DEE9
-background = rgb(40,40,40)
+background = rgba(40,40,40,0.9)
 foreground_bold = #D8DEE9
 cursor = #D8DEE9
 cursor_foreground = #2E3440
