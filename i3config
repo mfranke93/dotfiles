@@ -122,6 +122,10 @@ bindsym $mod+Shift+Right move right
 bindsym $mod+Next   workspace next
 bindsym $mod+Prior  workspace prev
 
+# move to other monitor
+bindsym $mod+Shift+Next move workspace to left
+bindsym $mod+Shift+Prior move workspace to right
+
 # split in horizontal orientation
 bindsym $mod+h split h
 
