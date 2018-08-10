@@ -62,6 +62,7 @@ install-target()
             install-directory rofi/ ~/.config/rofi
             install-file bin/i3exit ~/bin/i3exit
             install-file bin/i3status-feeder.pl ~/bin/i3status-feeder.pl
+            install-file bin/auto-polybar ~/bin/auto-polybar
             install-file i3config ~/.config/i3/config
             install-file bin/getpass ~/bin/getpass
             install-file compton.conf ~/.compton.conf

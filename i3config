@@ -198,10 +198,10 @@ bindsym $mod+Print mode "$mode_system"
 # Set the shortcuts and what they do
 set $mode_display Ext Screen (v) VGA ON, (x) VGA OFF, (h) HDMI ON, (n) HDMI OFF
 mode "$mode_display" {
-    bindsym v exec --no-startup-id xrandr --output DP1 --above eDP1 --auto, mode "default"
-    bindsym h exec --no-startup-id xrandr --output HDMI2 --right-of eDP1 --auto, mode "default"
-    bindsym x exec --no-startup-id xrandr --output DP1 --auto --off, mode "default"
-    bindsym n exec --no-startup-id xrandr --output HDMI2 --auto --off, mode "default"
+    bindsym v exec --no-startup-id xrandr --output DP1 --above eDP1 --auto, exec --no-startup-id auto-polybar, mode "default"
+    bindsym h exec --no-startup-id xrandr --output HDMI2 --right-of eDP1 --auto, exec --no-startup-id auto-polybar, mode "default"
+    bindsym x exec --no-startup-id xrandr --output DP1 --auto --off, exec --no-startup-id auto-polybar, mode "default"
+    bindsym n exec --no-startup-id xrandr --output HDMI2 --auto --off, exec --no-startup-id auto-polybar, mode "default"
 
     # back to normal: Enter or Escape
     bindsym Return mode "default"
@@ -267,7 +267,7 @@ exec --no-startup-id udiskie --use-udisks2 --no-tray --no-notify
 exec --no-startup-id compton
 
 # start polybar (should be last)
-exec --no-startup-id polybar -c /home/max/.config/polybar/config default
+exec --no-startup-id /home/max/bin/auto-polybar
 
 # set background to last set one
 exec --no-startup-id /home/max/.fehbg

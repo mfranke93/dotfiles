@@ -1,0 +1,15 @@
+#!/bin/bash
+
+killall polybar
+ 
+# find all active monitors
+connected=$(xrandr | grep -E " connected (primary )?[1-9]+" | sed -e "s/\([A-Z0-9]\+\) connected.*/\1/")
+#Take the first display to be the primary
+mainMonitor=$(echo $connected | awk '{print $1}')
+MONITOR=$mainMonitor polybar default &> /dev/null &
+secondaryDisplays=$(echo $connected | sed 's/ /\n/g' | tail -n +2)
+if [ ! -z "$secondaryDisplays" ]; then
+    for display in $secondaryDisplays; do
+        MONITOR=$display polybar external &> /dev/null &
+    done
+fi
