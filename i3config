@@ -99,10 +99,8 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 "+5%" 
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 "-5%" #decrease sound volume
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
 
-bindsym $mod+m exec /home/max/bin/currentlyplayed
-
 # }}}
-# {{{ BINDINGS-NAVIGATION
+# {{{1 BINDINGS-NAVIGATION
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -119,8 +117,9 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # go left/right workspace
-bindsym $mod+Next   workspace next
-bindsym $mod+Prior  workspace prev
+bindsym $mod+Next   workspace next_on_output
+bindsym $mod+Prior  workspace prev_on_output
+bindsym $mod+Tab    workspace back_and_forth
 
 # move to other monitor
 bindsym $mod+Shift+Next move workspace to left
@@ -214,7 +213,106 @@ mode "$mode_display" {
 # Declare here the shortcut to bring the display selection menu
 bindsym $mod+x mode "$mode_display"
 
-# }}}
+# {{{2 Marks and jumping to marks
+set $mode_set_mark Set mark
+mode "$mode_set_mark" {
+    bindsym a mark a, mode "default"
+    bindsym b mark b, mode "default"
+    bindsym c mark c, mode "default"
+    bindsym d mark d, mode "default"
+    bindsym e mark e, mode "default"
+    bindsym f mark f, mode "default"
+    bindsym g mark g, mode "default"
+    bindsym h mark h, mode "default"
+    bindsym i mark i, mode "default"
+    bindsym j mark j, mode "default"
+    bindsym k mark k, mode "default"
+    bindsym l mark l, mode "default"
+    bindsym m mark m, mode "default"
+    bindsym n mark n, mode "default"
+    bindsym o mark o, mode "default"
+    bindsym p mark p, mode "default"
+    bindsym q mark q, mode "default"
+    bindsym r mark r, mode "default"
+    bindsym s mark s, mode "default"
+    bindsym t mark t, mode "default"
+    bindsym u mark u, mode "default"
+    bindsym v mark v, mode "default"
+    bindsym w mark w, mode "default"
+    bindsym x mark x, mode "default"
+    bindsym y mark y, mode "default"
+    bindsym z mark z, mode "default"
+
+    bindsym Shift+a mark --add a, mode "default"
+    bindsym Shift+b mark --add b, mode "default"
+    bindsym Shift+c mark --add c, mode "default"
+    bindsym Shift+d mark --add d, mode "default"
+    bindsym Shift+e mark --add e, mode "default"
+    bindsym Shift+f mark --add f, mode "default"
+    bindsym Shift+g mark --add g, mode "default"
+    bindsym Shift+h mark --add h, mode "default"
+    bindsym Shift+i mark --add i, mode "default"
+    bindsym Shift+j mark --add j, mode "default"
+    bindsym Shift+k mark --add k, mode "default"
+    bindsym Shift+l mark --add l, mode "default"
+    bindsym Shift+m mark --add m, mode "default"
+    bindsym Shift+n mark --add n, mode "default"
+    bindsym Shift+o mark --add o, mode "default"
+    bindsym Shift+p mark --add p, mode "default"
+    bindsym Shift+q mark --add q, mode "default"
+    bindsym Shift+r mark --add r, mode "default"
+    bindsym Shift+s mark --add s, mode "default"
+    bindsym Shift+t mark --add t, mode "default"
+    bindsym Shift+u mark --add u, mode "default"
+    bindsym Shift+v mark --add v, mode "default"
+    bindsym Shift+w mark --add w, mode "default"
+    bindsym Shift+x mark --add x, mode "default"
+    bindsym Shift+y mark --add y, mode "default"
+    bindsym Shift+z mark --add z, mode "default"
+
+    bindsym BackSpace unmark
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+m mode "$mode_set_mark"
+
+set $mode_jump_mark Jump to mark
+mode "$mode_jump_mark" {
+    bindsym a [con_mark="a"] focus, mode "default"
+    bindsym b [con_mark="b"] focus, mode "default"
+    bindsym c [con_mark="c"] focus, mode "default"
+    bindsym d [con_mark="d"] focus, mode "default"
+    bindsym e [con_mark="e"] focus, mode "default"
+    bindsym f [con_mark="f"] focus, mode "default"
+    bindsym g [con_mark="g"] focus, mode "default"
+    bindsym h [con_mark="h"] focus, mode "default"
+    bindsym i [con_mark="i"] focus, mode "default"
+    bindsym j [con_mark="j"] focus, mode "default"
+    bindsym k [con_mark="k"] focus, mode "default"
+    bindsym l [con_mark="l"] focus, mode "default"
+    bindsym m [con_mark="m"] focus, mode "default"
+    bindsym n [con_mark="n"] focus, mode "default"
+    bindsym o [con_mark="o"] focus, mode "default"
+    bindsym p [con_mark="p"] focus, mode "default"
+    bindsym q [con_mark="q"] focus, mode "default"
+    bindsym r [con_mark="r"] focus, mode "default"
+    bindsym s [con_mark="s"] focus, mode "default"
+    bindsym t [con_mark="t"] focus, mode "default"
+    bindsym u [con_mark="u"] focus, mode "default"
+    bindsym v [con_mark="v"] focus, mode "default"
+    bindsym w [con_mark="w"] focus, mode "default"
+    bindsym x [con_mark="x"] focus, mode "default"
+    bindsym y [con_mark="y"] focus, mode "default"
+    bindsym z [con_mark="z"] focus, mode "default"
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+0x27 mode "$mode_jump_mark"
+# 2}}}
+
+# 1}}}
 # {{{ WORKSPACES
 
 # switch to workspace
@@ -271,7 +369,7 @@ exec --no-startup-id udiskie --use-udisks2 --no-tray --no-notify
 exec --no-startup-id compton
 
 # start polybar (should be last)
-exec --no-startup-id /home/max/bin/auto-polybar
+exec_always --no-startup-id /home/max/bin/auto-polybar
 
 # set background to last set one
 exec --no-startup-id /home/max/.fehbg
