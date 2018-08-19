@@ -30,6 +30,7 @@ install-target()
             install-file offlineimap/offlineimaprc ~/.offlineimaprc
             install-file msmtprc ~/.msmtprc
             install-file bin/imapd ~/bin/imapd
+            install-file notmuch-hook.sh ~/.notmuch-hook.sh
             ;;
         git)
             install-file bin/git-remotify ~/bin/git-remotify

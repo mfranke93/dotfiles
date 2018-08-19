@@ -7,11 +7,11 @@ set from = "Max Franke <sniff@mumintroll.org>"
 # using offlineimap
 set mbox_type   = Maildir
 
-set spoolfile   = "~/mail/mumintroll/INBOX"
-set folder      = "~/mail/"
-set record      = "+mumintroll/INBOX.Sent"
-set postponed   = "+mumintroll/INBOX.Drafts"
-set mbox        = "+mumintroll/INBOX.Saved"
+set spoolfile   = "~/mail"
+set folder      = "~/mail"
+set record      = "+mumintroll/INBOX"
+set postponed   = "+mumintroll/INBOX"
+set mbox        = "+mumintroll/INBOX"
 
 # do not wait to enter manually
 unset imap_passive
@@ -31,7 +31,10 @@ set header_cache = "~/.mutt-hcache"
 set net_inc = 5
 
 # mailboxes
-source ~/.muttrc.mailboxes
+mailboxes "+mumintroll/INBOX" "+st104538/INBOX"
+
+set virtual_spoolfile=yes
+source ~/.mailboxes
 
 # add link to PGP key in header
 my_hdr X-PGP-Key: https://pgp.mit.edu/pks/lookup?search=0xA3214C5ADDBFD930&op=index

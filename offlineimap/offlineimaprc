@@ -9,6 +9,8 @@ localrepository = mumintroll-local
 remoterepository = mumintroll-remote
 # refresh every 30s
 autorefresh = 0.5
+# notmuch
+postsynchook = ~/.notmuch-hook.sh
 
 [Repository mumintroll-local]
 type = Maildir
@@ -31,6 +33,7 @@ holdconnectionopen = yes
 localrepository = st104538-local
 remoterepository = st104538-remote
 autorefresh = 10
+postsynchook = ~/.notmuch-hook.sh
 
 [Repository st104538-local]
 type = Maildir
@@ -49,12 +52,3 @@ keepalive = 60
 # hold connection open
 holdconnectionopen = yes
 folderfilter = lambda foldername: foldername in [ 'INBOX' ]
-
-[mbnames]
-enabled = yes
-filename = ~/.muttrc.mailboxes
-header = "mailboxes "
-peritem = "+%(accountname)s/%(foldername)s"
-sep = " "
-footer = "\n"
-incremental = yes

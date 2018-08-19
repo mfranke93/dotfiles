@@ -9,7 +9,9 @@ bind pager G bottom
 bind attach,index g first-entry
 bind attach,index G last-entry
 
-# Sidebar Navigation ---------------------------------
-bind index,pager <down>   sidebar-next
-bind index,pager <up>     sidebar-prev
-bind index,pager <right>  sidebar-open
+bind attach,pager <down>   next-line
+bind attach,pager <up>     previous-line
+
+macro index A "<modify-labels>+archive -unread -inbox\n" "Archive message"
+macro index c "<change-vfolder>?" "Change to vfolder overview"
+macro index \\\\ "<vfolder-from-query>" "Search mailbox"
