@@ -13,5 +13,6 @@ bind attach,pager <down>   next-line
 bind attach,pager <up>     previous-line
 
 macro index A "<modify-labels>+archive -unread -inbox\n" "Archive message"
+macro index S "<modify-labels>-unread -inbox +spam\n" "Mark as spam"
 macro index c "<change-vfolder>?" "Change to vfolder overview"
 macro index \\\\ "<vfolder-from-query>" "Search mailbox"
