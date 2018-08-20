@@ -47,7 +47,7 @@ font-3 = fixed:pixelsize=9;1
 font-4 = unifont:fontformat=truetype:size=9:antialias=false;0
 modules-left = i3
 modules-center = mpd
-modules-right = mail gap task gap power gap net gap volume gap date
+modules-right = sync gap mail gap task gap power gap net gap volume gap date
 tray-position = right
 tray-padding = 2
 scroll-up = i3wm-wsnext
@@ -197,6 +197,16 @@ type = custom/script
 interval = 5
 format = <label>
 exec = "/home/max/.config/polybar/power"
+format-underline = ${colors.underline-blue}
+
+; ipc module that shows when a sync is running
+[module/sync]
+type = custom/ipc
+hook-0 = echo ''
+hook-1 = echo '  '
+initial = 1
+
+format-foreground = #999
 format-underline = ${colors.underline-blue}
 
 [settings]
