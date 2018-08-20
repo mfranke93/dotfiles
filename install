@@ -31,6 +31,8 @@ install-target()
             install-file msmtprc ~/.msmtprc
             install-file bin/imapd ~/bin/imapd
             install-file notmuch-hook.sh ~/.notmuch-hook.sh
+            gpg -d mailboxes.gpg > mailboxes
+            install-file mailboxes ~/.mailboxes
             ;;
         git)
             install-file bin/git-remotify ~/bin/git-remotify
