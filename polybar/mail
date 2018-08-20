@@ -4,8 +4,8 @@ mailnew=""
 mailflagged=""
 f="#dfdfdf"
 f2="#555"
-newmailnumber=`find ~/mail -type f | grep '/INBOX[^\/]*/new/' | wc -l`
-flaggedmailnumber=`find ~/mail -type f | grep '/INBOX.*,[A-Z]*F[A-Z]*$' | wc -l`
+newmailnumber=$(notmuch count -- tag:unread)
+flaggedmailnumber=$(notmuch count -- tag:flagged)
 
 str=""
 
