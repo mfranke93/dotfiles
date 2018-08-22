@@ -99,6 +99,9 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 "+5%" 
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 "-5%" #decrease sound volume
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
 
+# wiggler
+bindsym $mod+Shift+0x27 exec --no-startup-id /home/max/bin/wiggler
+
 # }}}
 # {{{1 BINDINGS-NAVIGATION
 
@@ -366,7 +369,7 @@ exec --no-startup-id dunst
 exec --no-startup-id udiskie --use-udisks2 --no-tray --no-notify
 
 # composite manager
-exec --no-startup-id compton
+exec_always --no-startup-id compton
 
 # start polybar (should be last)
 exec_always --no-startup-id /home/max/bin/auto-polybar

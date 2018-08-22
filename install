@@ -84,6 +84,7 @@ install-target()
             install-file xinitrc ~/.xinitrc
             install-file termiteconfig ~/.config/termite/config
             install-file zathurarc ~/.config/zathura/zathurarc
+            install-file bin/wiggler ~/bin/wiggler
             ;;
         ranger)
             mkdir -pv ~/.config/ranger

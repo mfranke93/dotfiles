@@ -1,0 +1,23 @@
+#!/bin/zsh
+
+# count number of scripts running (print pgid and count unique so that this subshell does not count)
+count=$(ps -eo pgid,args | grep $0 | awk '{print $1}' | uniq | sort | wc -l)
+if [[ $count -gt 1 ]]
+then
+    polybar-msg hook wiggler 1
+    killall $(basename $0)
+    exit
+else
+    polybar-msg hook wiggler 2
+fi
+
+delay=${1:-5}
+delay=$((delay * 60))
+
+while true
+do
+    sleep $delay
+    xdotool mousemove_relative -- 1 0
+    sleep $delay
+    xdotool mousemove_relative -- -1 0
+done

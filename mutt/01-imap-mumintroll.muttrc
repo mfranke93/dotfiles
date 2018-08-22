@@ -10,7 +10,7 @@ set mbox_type   = Maildir
 set spoolfile   = "~/mail"
 set folder      = "~/mail"
 set record      = "+mumintroll/INBOX"
-set postponed   = "+mumintroll/INBOX"
+set postponed   = "+mumintroll/Draft"
 set mbox        = "+mumintroll/INBOX"
 
 # do not wait to enter manually
@@ -31,7 +31,7 @@ set header_cache = "~/.mutt-hcache"
 set net_inc = 5
 
 # mailboxes
-mailboxes "+mumintroll/INBOX" "+st104538/INBOX"
+mailboxes "+mumintroll/INBOX" "+mumintroll/Draft" "+st104538/INBOX"
 
 set virtual_spoolfile=yes
 source ~/.mailboxes
