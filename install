@@ -70,6 +70,7 @@ install-target()
             install-file i3config ~/.config/i3/config
             install-file bin/getpass ~/bin/getpass
             install-file compton.conf ~/.compton.conf
+            install-file bin/i3-tagjump ~/bin/i3-tagjump
             ;;
         tmux)
             install-file tmuxconf ~/.tmux.conf

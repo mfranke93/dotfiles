@@ -316,6 +316,9 @@ mode "$mode_jump_mark" {
     bindsym Escape mode "default"
 }
 bindsym $mod+0x27 mode "$mode_jump_mark"
+
+# jump after search
+bindsym $mod+grave exec --no-startup-id i3-tagjump
 # 2}}}
 
 # 1}}}

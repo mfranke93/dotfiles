@@ -1,0 +1,3 @@
+#!/bin/zsh
+
+i3-msg "[con_mark=\"$(i3-msg -t get_marks | gron | grep '"' | cut -d\" -f2 | rofi -dmenu)\"] focus"
