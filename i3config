@@ -81,7 +81,7 @@ bindsym $mod+o exec termite --title "mail" -e neomutt
 bindsym $mod+i exec termite --class "termite-floating" --title "offlineimap" -e /home/max/bin/imapd
 
 # Screen shot
-bindsym XF86WebCam exec scrot
+bindsym $mod+F10 exec scrot
 
 # Lock key
 bindsym $mod+l exec /home/max/bin/i3exit lock
@@ -101,6 +101,9 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute s
 
 # wiggler
 bindsym $mod+Shift+0x27 exec --no-startup-id /home/max/bin/wiggler
+
+# execute i3 command without spawning a terminal (means it can be executed on the current window)
+bindsym $mod+slash exec --no-startup-id i3-input
 
 # }}}
 # {{{1 BINDINGS-NAVIGATION

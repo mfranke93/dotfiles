@@ -206,6 +206,9 @@ hook-0 = echo ''
 hook-1 = echo '  '
 initial = 1
 
+format-foreground = #999
+format-underline = ${colors.underline-blue}
+
 ; ipc module that shows when the wiggler is running
 [module/wiggler]
 type = custom/ipc

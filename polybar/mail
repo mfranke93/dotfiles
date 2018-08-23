@@ -19,4 +19,4 @@ then
     str="${str}%{F${f2}} ${mailflagged}%{F${f}} ${flaggedmailnumber} "
 fi
 
-echo -n $str
+echo -n "%{F#555}$str"
