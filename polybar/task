@@ -10,6 +10,8 @@ important=$(task "urg >= 15 (+DUE or +OVERDUE or +READY)" count 2>/dev/null)
 someday=$(task "(+PENDING and due='' and urg < 15)" count 2>/dev/null)
 
 f="#dfdfdf"
+orange="#ebab8b"
+red="#bf616a"
 f2="#555"
 
 sym_urgent=" "
@@ -23,11 +25,11 @@ str=""
 
 if [ "$important" -gt "0" ]
 then
-    str="${str}%{F${f2}} ${sym_urgent}%{F${f}}${important} "
+    str="${str}%{F${red}} ${sym_urgent}%{F${red}}${important} "
 fi
 if [ "$overdue" -gt "0" ]
 then
-    str="${str}%{F${f2}} ${sym_overdue}%{F${f}}${overdue} "
+    str="${str}%{F${orange}} ${sym_overdue}%{F${orange}}${overdue} "
 fi
 if [ "$today" -gt "0" ]
 then
