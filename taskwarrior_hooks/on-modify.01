@@ -25,8 +25,10 @@ if 'smart_recurrence' in modified_task:
         # create new task
         original_task['due'] = "{}T{}".format(duedate(modified_task['smart_recurrence']),
                 modified_task['recurrent_time_of_day'])
-        json.dump(original_task, sys.stdout)
-        sys.exit(0)
+        uuid = original_task['uuid']
+        del original_task['uuid']
+        with open('/home/max/.cache/task_recur_{}'.format(uuid), 'w') as f:
+            json.dump(original_task, f)
 
 json.dump(modified_task, sys.stdout)
 sys.exit(0)

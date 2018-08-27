@@ -86,6 +86,7 @@ install-target()
             install-file termiteconfig ~/.config/termite/config
             install-file zathurarc ~/.config/zathura/zathurarc
             install-file bin/wiggler ~/bin/wiggler
+            install-directory scripts ~/.scripts
             ;;
         ranger)
             mkdir -pv ~/.config/ranger
