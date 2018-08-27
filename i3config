@@ -79,6 +79,7 @@ bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightne
 # mail program and offlineimap
 bindsym $mod+o exec termite --title "mail" -e neomutt
 bindsym $mod+i exec termite --class "termite-floating" --title "offlineimap" -e /home/max/bin/imapd
+bindsym $mod+k exec termite --class "termite-floating" --title "calendar" -e "khal interactive"
 
 # Screen shot
 bindsym $mod+F10 exec scrot
