@@ -21,6 +21,9 @@ focus_follows_mouse no
 # show title, but no border
 for_window [ class = "^.*$" ] border normal 0
 
+# for forced float by window name
+for_window [ title = "\[\[float\]\]" ] floating enable, resize set 800 600
+
 # }}}
 # {{{ COLORS
 
