@@ -27,6 +27,8 @@ if 'smart_recurrence' in modified_task:
                 modified_task['recurrent_time_of_day'])
         uuid = original_task['uuid']
         del original_task['uuid']
+        del original_task['entry']
+        del original_task['modified']
         with open('/home/max/.cache/task_recur_{}'.format(uuid), 'w') as f:
             json.dump(original_task, f)
 
