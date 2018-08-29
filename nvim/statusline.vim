@@ -45,11 +45,16 @@ function! UpdateStatusLineColors()
     set statusline +=%2*\ %-v\                                          " column
     set statusline +=%3*\ %<%{pathshorten(expand('%:f'))}\              " filename
     set statusline +=%3*%=                                              " space
+    set statusline +=%7*%{g:jobrunning}\                                " show if job running
     set statusline +=%7*%m%r%h%w%q%k%3*\                                " flags
     set statusline +=%2*\ %{&ft}\                                       " file type
     set statusline +=%4*\ %{&ff}\                                       " file format
     set statusline +=%5*\ %{&fenc}\                                     " file encoding
 endfunction
+
+if !exists("g:jobrunning")
+    let g:jobrunning = ""
+endif
 
 augroup reload_colors_necessary
     autocmd!
