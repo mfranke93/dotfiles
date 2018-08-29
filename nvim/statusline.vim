@@ -31,6 +31,7 @@ function! UpdateStatusLineColors()
     hi User2 cterm=bold gui=bold guifg=#88aaff ctermfg=110
     hi User5 cterm=bold gui=bold guifg=#486aff ctermfg=069
     hi User7 cterm=bold gui=bold guifg=#aaccff ctermfg=153
+    hi User8 cterm=bold gui=bold guifg=#A3BE8C ctermfg=10
 
     " last window always has status line
     set laststatus=2
@@ -45,7 +46,7 @@ function! UpdateStatusLineColors()
     set statusline +=%2*\ %-v\                                          " column
     set statusline +=%3*\ %<%{pathshorten(expand('%:f'))}\              " filename
     set statusline +=%3*%=                                              " space
-    set statusline +=%7*%{g:jobrunning}\                                " show if job running
+    set statusline +=%8*%{g:jobrunning}\                                " show if job running
     set statusline +=%7*%m%r%h%w%q%k%3*\                                " flags
     set statusline +=%2*\ %{&ft}\                                       " file type
     set statusline +=%4*\ %{&ff}\                                       " file format
