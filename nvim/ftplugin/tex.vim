@@ -13,7 +13,11 @@ inoremap <buffer> <= \\Leftarrow
 
 set timeoutlen=500
 
-let g:syncpdf = ""
+" set only if not set
+if !exists("g:syncpdf")
+    let g:syncpdf = ""
+endif
+
 function! Synctex()
     execute "silent !zathura --synctex-forward " . line('.') . ":" . col('.') . ":" . bufname('%') . " " . g:syncpdf
 endfunction
@@ -21,5 +25,5 @@ function! UseMaster()
     let g:syncpdf = bufname('%')[:-5] . ".pdf"
 endfunction
 
-nnoremap <C-enter> :call Synctex()<cr>
+nnoremap <C-Space> :call Synctex()<cr>
 command! MasterTex call UseMaster()
