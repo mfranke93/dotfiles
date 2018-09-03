@@ -10,7 +10,7 @@ set mbox_type   = Maildir
 set spoolfile   = "~/mail"
 set folder      = "~/mail"
 set record      = "+mumintroll/INBOX"
-set postponed   = "+mumintroll/Draft"
+set postponed   = "+mumintroll/INBOX.Draft"
 set mbox        = "+mumintroll/INBOX"
 
 # do not wait to enter manually
