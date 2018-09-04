@@ -80,7 +80,7 @@ font-4 = unifont:fontformat=truetype:size=9:antialias=false;0
 modules-left = i3
 modules-center = mpd
 modules-right = mail gap task gap power gap net gap volume gap date
-tray-position = right
+tray-position =
 tray-padding = 2
 scroll-up = i3wm-wsnext
 scroll-down = i3wm-wsprev
