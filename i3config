@@ -145,8 +145,8 @@ bindsym $mod+v split v
 bindsym $mod+f fullscreen toggle
 
 # border toggle
-bindsym $mod+g border pixel 0
-bindsym $mod+b border normal 0
+bindsym $mod+Shift+g border pixel 0
+bindsym $mod+g border normal 0
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
